@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ</title>
+
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+
+    <!-- DASHBOARD CSS -->
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+    <!-- QUIZ CSS -->
+    <link rel="stylesheet" href="../../css/quiz.css">
+
+
+    <!-- LINK ICON AWESOME -->
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="main-page-fisika">
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+    <!-- FORMULA RANDOM -->
+    <div class="formula-random"></div>
+
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo"></a>
+        </div>
+
+        <div class="nav-center">
+            <a href="../main/dashboard.html">Dashboard</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- SECTION FISIKA -->
+    <section class="section">
+        <div class="card">
+            <h2 class="h2">FISIKA</h2>
+            <p class="p">loremdjifjdasjhhdsigdufha</p>
+            <a href="../quiz/fisika/quiz_fisika.html">
+                <button class="tombol">
+                    START
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECTION KIMIA -->
+    <section class="section">
+        <div class="card">
+            <h2 class="h2">KIMIA</h2>
+            <p class="p">loremdjifjdasjhhdsigdufha</p>
+            <a href="../quiz/kimia/quiz_kimia.html">
+                <button class="tombol">
+                    START
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- JS GLOBAL -->
+    <script src="../../js/global.js"></script>
+
+    <!-- JS DASHBOARD -->
+    <script src="../../js/dashboard.js"></script>
+
+    <!-- FUNCTION LOGOUT -->
+    <script>
+        function logout() {
+            window.location.href = "../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+</body>
+
+</html>

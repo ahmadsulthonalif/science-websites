@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Fisika</title>
+
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="../../../../css/global.css">
+
+    <!-- CSS DASHBOARD -->
+    <link rel="stylesheet" href="../../../../css/dashboard.css">
+
+    <!-- CSS CALCULATOR -->
+    <link rel="stylesheet" href="../../../../css/calculator.css">
+</head>
+
+<body class="calc-page">
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+    <!-- FORMULA RANDOM -->
+    <div class="formula-random"></div>
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <!-- NAV MINI -->
+            <div class="calc-nav">
+                <a href="#glb">GLB</a>
+                <a href="#glbb">GLBB</a>
+                <a href="#gaya">Gaya</a>
+            </div>
+            <a href="#" class="logo"></a>
+        </div>
+
+        <div class="nav-center">
+            <a href="../../../main/dashboard.html">Dashboard</a>
+            <a href="../../fisika/main_page_fisika.html">Fisika</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ======================
+         SECTION GLB
+    ====================== -->
+    <section id="glb" class="calc-section">
+
+        <h2>Gerak Lurus Beraturan (GLB)</h2>
+
+        <div class="calc-card">
+
+            <!-- PILIH VARIABLE -->
+            <div class="rumus-pilih">
+                <button onclick="setGLB('s')">Cari S</button>
+                <button onclick="setGLB('v')">Cari v</button>
+                <button onclick="setGLB('t')">Cari t</button>
+            </div>
+
+            <!-- RUMUS DINAMIS -->
+            <p id="rumus_glb" class="rumus-display">Pilih dulu variabel</p>
+
+            <!-- INPUT -->
+            <div id="input_glb"></div>
+
+            <button onclick="hitungGLB()">Hitung</button>
+
+            <p id="hasil_glb"></p>
+        </div>
+
+    </section>
+
+    <!-- ======================
+         SECTION GAYA
+    ====================== -->
+    <section id="glb" class="calc-section">
+
+        <h2>GAYA</h2>
+
+        <div class="calc-card">
+
+            <!-- PILIH VARIABLE -->
+            <div class="rumus-pilih">
+                <button onclick="setGaya('f')">Cari F</button>
+                <button onclick="setGaya('m')">Cari m</button>
+                <button onclick="setGaya('a')">Cari a</button>
+            </div>
+
+            <!-- RUMUS DINAMIS -->
+            <p id="rumus_gaya" class="rumus-display">Pilih dulu variabel</p>
+
+            <!-- INPUT -->
+            <div id="input_gaya"></div>
+
+            <button onclick="hitungGaya()">Hitung</button>
+
+            <p id="hasil_gaya"></p>
+        </div>
+
+    </section>
+
+    <!-- FUNCTION -->
+    <script>
+        function logout() {
+            window.location.href = "../../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+
+    <!-- JS -->
+    <script src="../../../../js/calculator_fisika.js"></script>
+    <script src="../../../../js/global.js"></script>
+    <script src="../../../../js/dashboard.js"></script>
+</body>
+
+</html>

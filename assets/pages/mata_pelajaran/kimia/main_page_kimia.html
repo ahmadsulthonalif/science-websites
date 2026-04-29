@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapel Kimia</title>
+
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+
+    <!-- DASHBOARD CSS -->
+    <link rel="stylesheet" href="../../../css/dashboard.css">
+
+    <!-- MATA PELAJARAN CSS -->
+    <link rel="stylesheet" href="../../../css/mata_pelajaran.css">
+
+    <!-- LINK ICON AWESOME -->
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="main-page-fisika">
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+    <!-- FORMULA RANDOM -->
+    <div class="formula-random"></div>
+
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="../../main/dashboard.html" class="logo"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="menu-wrapper">
+
+        <h1 class="judul card">KIMIA</h1>
+
+        <div class="menu">
+            <a href="../kimia/materi/materi.html" class="menu-card">
+                <h2>MATERI</h2>
+            </a>
+
+            <a href="../kimia/calculator/calculator.html" class="menu-card">
+                <h2>CALCULATOR</h2>
+            </a>
+        </div>
+
+    </section>
+
+    <!-- JS GLOBAL -->
+    <script src="../../../js/global.js"></script>
+
+    <!-- JS DASHBOARD -->
+    <script src="../../../js/dashboard.js"></script>
+
+    <!-- FUNCTION LOGOUT -->
+    <script>
+        function logout() {
+            window.location.href = "../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+</body>
+
+</html>

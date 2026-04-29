@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Fisika</title>
+
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="../../../../css/global.css">
+
+    <!-- CSS DASHBOARD -->
+    <link rel="stylesheet" href="../../../../css/dashboard.css">
+
+    <!-- CSS CALCULATOR -->
+    <link rel="stylesheet" href="../../../../css/calculator.css">
+</head>
+
+<body class="calc-page">
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+    <!-- FORMULA RANDOM -->
+    <div class="formula-random"></div>
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <!-- NAV MINI -->
+            <div class="calc-nav">
+                <a href="#r1">1</a>
+            </div>
+            <a href="#" class="logo"></a>
+        </div>
+
+        <div class="nav-center">
+            <a href="../../../main/dashboard.html">Dashboard</a>
+            <a href="../../kimia/main_page_kimia.html">Kimia</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ======================
+        SECTION 1 STOIKIOMETRI
+    ====================== -->
+    <section id="r1" class="calc-section">
+
+        <h2>Perhitungan Stoikiometri</h2>
+
+        <div class="calc-card">
+
+            <!-- PILIH VARIABLE -->
+            <div class="rumus-pilih">
+                <button onclick="set1('m_1')">Cari m</button>
+                <button onclick="set1('n_1')">Cari n</button>
+                <button onclick="set1('mr_1')">Cari mr</button>
+            </div>
+
+            <!-- RUMUS DINAMIS -->
+            <p id="rumus_1" class="rumus-display">Pilih dulu variabel</p>
+
+            <!-- INPUT -->
+            <div id="input_1"></div>
+
+            <button onclick="hitung1()">Hitung</button>
+
+            <p id="hasil_1"></p>
+        </div>
+
+    </section>
+
+    <!-- ======================
+        SECTION 2 STOIKIOMETRI
+    ====================== -->
+    <section id="r2" class="calc-section">
+
+        <h2>Perhitungan Stoikiometri 2</h2>
+
+        <div class="calc-card">
+
+            <!-- PILIH VARIABLE -->
+            <div class="rumus-pilih">
+                <button onclick="set2('v_2')">Cari V</button>
+                <button onclick="set2('n_2')">Cari n</button>
+            </div>
+
+            <!-- RUMUS DINAMIS -->
+            <p id="rumus_2" class="rumus-display">Pilih dulu variabel</p>
+
+            <!-- INPUT -->
+            <div id="input_2"></div>
+
+            <button onclick="hitung2()">Hitung</button>
+
+            <p id="hasil_2"></p>
+        </div>
+
+    </section>
+
+    <!-- ======================
+        SECTION 3 STOIKIOMETRI
+    ====================== -->
+    <section id="r3" class="calc-section">
+
+        <h2>Perhitungan Stoikiometri 3</h2>
+
+        <div class="calc-card">
+
+            <!-- PILIH VARIABLE -->
+            <div class="rumus-pilih">
+                <button onclick="set3('m_3')">Cari M</button>
+                <button onclick="set3('n_3')">Cari n</button>
+                <button onclick="set3('v_3')">Cari V</button>
+            </div>
+
+            <!-- RUMUS DINAMIS -->
+            <p id="rumus_3" class="rumus-display">Pilih dulu variabel</p>
+
+            <!-- INPUT -->
+            <div id="input_3"></div>
+
+            <button onclick="hitung3()">Hitung</button>
+
+            <p id="hasil_3"></p>
+        </div>
+
+    </section>
+
+
+    <!-- FUNCTION -->
+    <script>
+        function logout() {
+            window.location.href = "../../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+
+    <!-- JS -->
+    <script src="../../../../js/calculator_kimia.js"></script>
+    <script src="../../../../js/global.js"></script>
+    <script src="../../../../js/dashboard.js"></script>
+</body>
+
+</html>

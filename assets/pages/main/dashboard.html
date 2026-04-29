@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- ================================
+         META DASAR
+    ================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul halaman -->
+    <title>Dashboard</title>
+
+
+    <!-- ================================
+         STYLESHEET
+    ================================= -->
+
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+
+    <!-- CSS DASHBOARD -->
+    <link rel="stylesheet" href="../../css/dashboard.css">
+
+
+    <!-- ================================
+         ICON (FONT AWESOME)
+    ================================= -->
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+</head>
+
+
+<!-- =====================================================
+     BODY
+     .main-page → untuk styling khusus dashboard
+===================================================== -->
+
+<body class="main-page">
+    <!-- random formula -->
+    <div class="formula-random"></div>
+
+    <!-- ================================
+         GRID BACKGROUND (DEKORASI)
+    ================================= -->
+    <div class="grid-bg"></div>
+
+
+    <!-- =====================================================
+         NAVBAR
+         - Navigasi utama
+         - Berisi logo, menu, dan profile
+    ====================================================== -->
+    <nav class="navbar">
+
+        <!-- LEFT: LOGO / HOME -->
+        <div class="nav-left">
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-house-chimney"></i>
+            </a>
+        </div>
+
+        <!-- CENTER: MENU NAVIGASI -->
+        <div class="nav-center">
+            <a href="#home">Home</a>
+            <a href="#steps">Steps</a>
+            <a href="#subjects">Mata Pelajaran</a>
+            <a href="#quiz">Quiz</a>
+        </div>
+
+        <!-- RIGHT: PROFILE -->
+        <div class="nav-right">
+
+            <!-- Profile button -->
+            <div class="profile" id="profileBtn">
+
+                <!-- Initial username (diisi dari JS) -->
+                <span id="profileInitial">A</span>
+
+                <!-- Dropdown profile -->
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         SECTION 1: HOME
+         Landing utama dashboard
+    ====================================================== -->
+    <section class="section home" id="home">
+        <div class="card">
+            <h1>Selamat Datang</h1>
+            <p>Mulai perjalanan belajarmu sekarang</p>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 2: STEPS
+         Navigasi ke langkah belajar
+    ====================================================== -->
+    <section class="section" id="steps">
+        <div class="card">
+            <h2>Langkah Belajar</h2>
+            <p>
+                Ikuti urutan belajar yang sudah disusun agar lebih mudah dipahami.
+            </p>
+
+            <!-- Tombol menuju halaman langkah -->
+            <a href="../steps/step.html">
+                <button class="lihat-langkah-btn">
+                Lihat Langkah
+                </button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 3: MATA PELAJARAN
+         Pilihan subject
+    ====================================================== -->
+    <section class="section subjects" id="subjects">
+
+        <!-- Header -->
+        <div class="card subjects-header">
+            <h2>Mata Pelajaran</h2>
+        </div>
+
+        <!-- Card Fisika -->
+        <div class="subject-card fisika">
+            <a href="../mata_pelajaran/fisika/main_page_fisika.html">
+                <h2>Fisika</h2>
+            </a>
+        </div>
+
+        <!-- Card Kimia -->
+        <div class="subject-card kimia">
+            <a href="../mata_pelajaran/kimia/main_page_kimia.html">
+                <h2>Kimia</h2>
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 4: QUIZ
+    ====================================================== -->
+    <section class="section" id="quiz">
+        <div class="card">
+            <h2>Quiz</h2>
+            <p>Uji pemahamanmu dengan berbagai soal interaktif.</p>
+
+            <!-- Tombol menuju quiz -->
+            <a href="../quiz/main_page_quiz.html">
+                <button class="lihat-quiz-btn">
+                    Lihat Quiz
+                </button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer>
+        <p>&copy; 2026 Alp dan Aldi EduLearn. All rights reserved.</p>
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- JS GLOBAL -->
+    <script src="../../js/global.js"></script>
+
+    <!-- JS KHUSUS DASHBOARD -->
+    <script src="../../js/dashboard.js"></script>
+
+</body>
+
+</html>

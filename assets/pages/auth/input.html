@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- ================================
+         META DASAR
+    ================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul halaman -->
+    <title>FormulaCMD - Input</title>
+
+
+    <!-- ================================
+         GLOBAL CSS
+         Path relatif dari folder /pages/auth
+    ================================= -->
+    <link rel="stylesheet" href="../../css/global.css">
+</head>
+
+
+<!-- =====================================================
+     BODY DENGAN CLASS KHUSUS
+     .input-page untuk scoped styling form
+===================================================== -->
+
+<body class="input-page">
+    <!-- random formula -->
+    <div class="formula-random"></div>
+
+    <!-- ================================
+         GRID BACKGROUND (DEKORASI)
+    ================================= -->
+    <div class="grid-bg"></div>
+
+
+    <!-- ================================
+         CONTAINER UTAMA
+    ================================= -->
+    <div class="container">
+
+        <!-- ================================
+             CARD INPUT
+             Komponen utama untuk form
+        ================================= -->
+        <div class="card">
+
+            <!-- Judul -->
+            <h1 class="title">Masukkan Nama</h1>
+
+            <!-- Deskripsi -->
+            <p class="subtitle">
+                Sebelum melanjutkan, masukkan username kamu terlebih dahulu.
+                Nama ini akan digunakan untuk pengalaman belajar yang lebih personal.
+            </p>
+
+
+            <!-- ================================
+                 FORM INPUT
+                 - Menggunakan id untuk akses JS
+            ================================= -->
+            <form id="usernameForm">
+
+                <!-- Input username -->
+                <input type="text" id="username" placeholder="Masukkan username..." required>
+
+                <!-- Tombol submit -->
+                <button type="submit" class="btn-start">
+                    Lanjut
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <!-- JS GLOBAL (animasi, dll) -->
+    <script src="../../js/global.js"></script>
+
+    <!-- JS KHUSUS INPUT (logic form) -->
+    <script src="../../js/input.js"></script>
+
+</body>
+
+</html>

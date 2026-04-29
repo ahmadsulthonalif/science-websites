@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISIKA | QUIZ</title>
+
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+
+    <!-- DASHBOARD CSS -->
+    <link rel="stylesheet" href="../../../css/dashboard.css">
+
+    <!-- QUIZ CSS -->
+    <link rel="stylesheet" href="../../../css/quiz.css">
+</head>
+
+<body class="quiz-fisika">
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+    <!-- FORMULA RANDOM -->
+    <div class="formula-random"></div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo"></a>
+        </div>
+
+        <div class="nav-center">
+            <a href="../main_page_quiz.html">Quiz Page</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- OPENING QUIZ -->
+    <div class="card">
+        <h1>QUIZ FISIKA</h1><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores blanditiis illum eligendi obcaecati pariatur
+            sequi, assumenda enim accusantium soluta possimus voluptas ex voluptatum repellat. Nam nobis illum
+            voluptatem. Nulla, illo.</p>
+
+        <button id="startBtn" class="btn">mulai</button>
+    </div>
+
+
+    <!-- GLOBAL JS -->
+    <script src="../../../js/global.js"></script>
+
+    <!-- DASHBOARD JS -->
+    <script src="../../../js/dashboard.js"></script>
+
+    <!-- QUIZ FISIKA JS -->
+    <script src="../../../js/quiz_fisika.js"></script>
+
+    <!-- FUNCTION LOGOUT -->
+    <script>
+        function logout() {
+            window.location.href = "../../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+</body>
+
+</html>

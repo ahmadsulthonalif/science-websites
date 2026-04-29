@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+     <!-- ================================
+         META DASAR
+    ================================= -->
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Judul halaman -->
+     <title>FormulaCMD - DESKRIPSI</title>
+
+
+     <!-- ================================
+         GLOBAL CSS
+         Path relatif dari folder /pages
+    ================================= -->
+     <link rel="stylesheet" href="../css/global.css">
+</head>
+
+
+<!-- =====================================================
+     BODY DENGAN CLASS KHUSUS
+     .page2 digunakan untuk scoped styling
+===================================================== -->
+
+<body class="page2">
+     <!-- random formula -->
+     <div class="formula-random"></div>
+
+     <!-- ================================
+         GRID BACKGROUND (DEKORASI)
+    ================================= -->
+     <div class="grid-bg"></div>
+
+
+     <!-- ================================
+         CONTAINER UTAMA
+    ================================= -->
+     <div class="container">
+
+          <!-- ================================
+             CARD
+             - Komponen utama
+             - Ada event hover (sound effect)
+        ================================= -->
+          <div class="card" onmouseenter="playHoverSound()">
+
+               <!-- Judul -->
+               <h1 class="title">Welcome</h1>
+
+               <!-- Deskripsi -->
+               <p class="subtitle">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Suscipit deserunt laborum accusantium nihil sunt quis, quae possimus?
+                    Quaerat, distinctio nulla! Atque rem, mollitia voluptatum deserunt
+                    quia officiis exercitationem inventore ratione.
+               </p>
+
+               <!-- Tombol lanjut ke halaman input -->
+               <a href="auth/input.html" class="btn-start">
+                    Lanjut
+               </a>
+
+          </div>
+     </div>
+
+
+     <!-- ================================
+         GLOBAL JAVASCRIPT
+         Path relatif dari folder /pages
+    ================================= -->
+     <script src="../js/global.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+.tombol {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 210, 225);
+
+    margin-top: 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-color: white;
+
+    box-shadow: 0 4px 15px rgba(31, 114, 150, 0.5);
+
+    transition: all 0.3s ease;
+}
+
+.tombol:hover {
+    color: rgb(87, 87, 87);
+    cursor: pointer;
+    
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* STYLING QUIZ */
+.container {
+    display: flex;
+    flex-direction: column; /* ⬅️ ini yang kamu cari */
+    align-items: center;    /* biar tetap di tengah */
+    gap: 20px;              /* biar ada jarak antar card */
+}
+
+.quiz-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Membuat custom radio button */
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+
+    background: hsl(197, 77%, 45%);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.5);
+
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: hsl(197, 77%, 55%);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.7);
+}
+
+/* ================================
+   HALAMAN HASIL QUIZ
+================================ */
+.quiz-result-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOX UTAMA */
+.result-box {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* SCORE */
+.score {
+    margin: 20px 0;
+    font-size: 28px;
+    color: #38bdf8;
+}
+
+/* REVIEW */
+.review-box {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* ITEM REVIEW */
+.review-item {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* BENAR */
+.benar {
+    border-left: 5px solid #22c55e;
+}
+
+/* SALAH */
+.salah {
+    border-left: 5px solid #ef4444;
+}
+
+/* TEKS */
+.review-item p {
+    margin: 5px 0;
+}

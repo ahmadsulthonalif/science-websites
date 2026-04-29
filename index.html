@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- ================================
+         META DASAR
+         - charset: encoding UTF-8
+         - viewport: biar responsive di mobile
+    ================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul tab browser -->
+    <title>FormulaCMD</title>
+
+    <!-- favicon -->
+     <link rel="shortcut icon" href="assets/images/favicon/favicon.png" type="image/x-icon">
+
+    <!-- ================================
+         GLOBAL STYLESHEET
+         File CSS utama untuk semua halaman
+    ================================= -->
+    <link rel="stylesheet" href="assets/css/global.css">
+
+
+    <!-- ================================
+         GOOGLE FONT (Roboto)
+         - preconnect: mempercepat loading font
+    ================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Import font Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+     <!-- random formula -->
+     <div class="formula-random"></div>
+     <!-- GRID BG -->
+    <div class="grid-bg"></div>
+
+
+    <!-- =====================================================
+         CONTAINER UTAMA
+         Berfungsi sebagai wrapper untuk center layout
+    ====================================================== -->
+    <div class="container">
+
+        <!-- ================================
+             CARD (KOMPONEN UTAMA HALAMAN)
+             Semua konten utama ada di sini
+        ================================= -->
+        <div class="card">
+
+            <!-- Judul utama -->
+            <h1 class="title">FORMULA</h1>
+
+            <!-- Deskripsi / subtitle -->
+            <p class="subtitle">
+                Interactive Science & Coding
+            </p>
+
+            <!-- Tombol navigasi ke halaman berikutnya -->
+            <a href="assets/pages/deskripsi.html" class="btn-start">
+               Start
+            </a>
+
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         GLOBAL JAVASCRIPT
+         - Mengatur efek seperti fade-in / fade-out
+         - Path relatif dari root index
+    ====================================================== -->
+    <script src="assets/js/global.js"></script>
+
+    <script>
+          localStorage.clear();
+    </script>
+</body>
+</html>

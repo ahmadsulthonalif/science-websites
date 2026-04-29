@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Kimia</title>
+
+    <link rel="stylesheet" href="../../../../css/global.css">
+    <link rel="stylesheet" href="../../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../../css/mata_pelajaran.css">
+
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="materi-page">
+
+    <div class="grid-bg"></div>
+    <div class="formula-random"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="../main_page_kimia.html" class="logo"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- WRAPPER -->
+    <div class="materi-wrapper">
+
+        <!-- Stoikiometri -->
+        <section id="sto" class="materi-full active">
+            <div class="materi-content">
+                <div class="materi-text">
+                    <div class="card">
+                        <h1>Stoikiometri</h1>
+                        <p></p>
+                        <p class="rumus"></p>
+                        <p>Stoikiometri adalah cabang ilmu kimia yang mempelajari hubungan kuantitatif (jumlah zat)
+                            dalam reaksi kimia, meliputi massa, mol, volume, dan jumlah partikel. Dasar perhitungannya
+                            adalah persamaan reaksi setara, di mana koefisien reaksi menunjukkan perbandingan mol
+                            zat-zat yang bereaksi. Konsep utama melibatkan konsep mol, Ar/Mr , dan hukum dasar kimia.
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- <div class="materi-img">
+                    <img src="https://dwiveliaaftikasari.wordpress.com/wp-content/uploads/2017/03/81f52-15.png">
+                </div> -->
+            </div>
+        </section>
+
+        <!-- KONSEP MOL -->
+        <section id="k-mol" class="materi-full active">
+            <div class="materi-content">
+                <div class="materi-text">
+                    <div class="card">
+                        <h1>Konsep Mol</h1>
+                        <p></p>
+                        <p class="rumus"></p>
+                        <p>Stoikiometri adalah cabang ilmu kimia yang mempelajari hubungan kuantitatif (jumlah zat)
+                            dalam reaksi kimia, meliputi massa, mol, volume, dan jumlah partikel. Dasar perhitungannya
+                            adalah persamaan reaksi setara, di mana koefisien reaksi menunjukkan perbandingan mol
+                            zat-zat yang bereaksi. Konsep utama melibatkan konsep mol, Ar/Mr , dan hukum dasar kimia.
+                        </p>
+
+                    </div>
+                </div>
+
+                <!-- <div class="materi-img">
+                    <img src="https://dwiveliaaftikasari.wordpress.com/wp-content/uploads/2017/03/81f52-15.png">
+                </div> -->
+            </div>
+        </section>
+
+        
+    </div>
+
+    <!-- NAV SWITCH -->
+    <div class="materi-switch">
+        <button onclick="showMateri('sto')" id="btn-sto">Stoikiometri</button>
+        <button onclick="showMateri('k-mol')" id="btn-k-mol">Konsep Mol</button>
+    </div>
+
+    <!-- JS -->
+    <script src="../../../../js/global.js"></script>
+    <script src="../../../../js/dashboard.js"></script>
+    <script src="../../../../js/materi_kimia.js"></script>
+
+    <script>
+        function logout() {
+            window.location.href = "../../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+
+</body>
+
+</html>

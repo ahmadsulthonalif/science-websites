@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Fisika</title>
+
+    <link rel="stylesheet" href="../../../../css/global.css">
+    <link rel="stylesheet" href="../../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../../css/mata_pelajaran.css">
+
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="materi-page">
+
+    <div class="grid-bg"></div>
+    <div class="formula-random"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo"></a>
+        </div>
+
+        <div class="nav-center">
+            <a href="../../../main/dashboard.html">Dashboard</a>
+            <a href="../../../mata_pelajaran/fisika/main_page_fisika.html">Fisika</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="username">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- WRAPPER -->
+    <div class="materi-wrapper">
+
+        <!-- Umum -->
+        <section id="umum" class="materi-full active">
+            <div class="materi-content">
+                <div class="materi-text">
+                    <div class="card">
+                        <h1>Umum</h1>
+                        <p>Gerak lurus dengan kecepatan konstan.</p>
+                        <p class="rumus">s = v × t</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis exercitationem
+                            culpa autem delectus aut nam magni nobis explicabo, sapiente quod fuga? Modi dolor fuga
+                            minus. Pariatur itaque id dolorum iure?</p>
+
+                    </div>
+                </div>
+
+                <div class="materi-img">
+                    <img src="../../../../images/favicon/favicon.png">
+                </div>
+            </div>
+        </section>
+
+        <!-- GLB -->
+        <section id="glb" class="materi-full">
+            <div class="materi-content">
+                <div class="materi-text">
+                    <div class="card">
+                        <h1>GLB</h1>
+                        <p>Gerak lurus dengan kecepatan konstan.</p>
+                        <p class="rumus">s = v × t</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis exercitationem
+                            culpa autem delectus aut nam magni nobis explicabo, sapiente quod fuga? Modi dolor fuga
+                            minus. Pariatur itaque id dolorum iure?</p>
+
+                    </div>
+                </div>
+
+                <div class="materi-img">
+                    <img src="../../../../images/favicon/favicon.png">
+                </div>
+            </div>
+        </section>
+
+        <!-- GLBB -->
+        <section id="glbb" class="materi-full">
+            <div class="materi-content">
+                <div class="materi-text">
+                    <div class="card">
+                        <h1>GLBB</h1>
+                        <p>Gerak lurus dengan kecepatan konstan.</p>
+                        <p class="rumus">s = v × t</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis exercitationem
+                            culpa autem delectus aut nam magni nobis explicabo, sapiente quod fuga? Modi dolor fuga
+                            minus. Pariatur itaque id dolorum iure?</p>
+
+                    </div>
+                </div>
+
+                <div class="materi-img">
+                    <img src="../../../../images/favicon/favicon.png">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- NAV SWITCH -->
+    <div class="materi-switch">
+        <button onclick="showMateri('umum')" id="btn-umum">Umum</button>
+        <button onclick="showMateri('glb')" id="btn-glb" class="active-btn">GLB</button>
+        <button onclick="showMateri('glbb')" id="btn-glbb">GLBB</button>
+    </div>
+
+    <!-- JS -->
+    <script src="../../../../js/global.js"></script>
+    <script src="../../../../js/dashboard.js"></script>
+    <script src="../../../../js/materi_fisika.js"></script>
+
+    <script>
+        function logout() {
+            window.location.href = "../../../../../index.html";
+            localStorage.clear();
+        }
+    </script>
+
+</body>
+
+</html>

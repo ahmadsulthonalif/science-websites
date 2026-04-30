@@ -2,46 +2,20 @@
    ROOT VARIABLES (THEME & COLOR SYSTEM)
 ===================================================== */
 :root {
-
-    /* ================================
-       TEXT COLORS
-    ================================ */
-
-    /* Warna teks utama (default text) */
     --primary-text-color: rgb(238, 234, 234);
-
-    /* Warna teks sekunder (judul kecil / deskripsi) */
     --secondary-text-color: #1b1b1b;
-
-
-    /* ================================
-       BACKGROUND COLORS
-    ================================ */
-
-    /* Background utama (gradient start) */
     --primary-background-color: hsl(210, 95%, 14%);
-
-    /* Background kedua (gradient end) */
     --secondary-background-color: hsl(210, 94%, 7%);
-
-
-    /* ================================
-       CARD COLORS
-    ================================ */
-
-    /* Warna utama card */
     --card-color: rgba(8, 0, 255, 0.336);
-
-    /* Warna secondary (layer efek glass) */
     --card-secondary-color: rgba(0, 255, 255, 0.02);
-
-    /* Warna saat hover (currently sama, tapi siap dikembangkan) */
     --card-hover-color: rgba(0, 255, 255, 0.02);
+    --accent: #facc15;
+    --accent-hover: #eab308;
 }
 
 
 /* =====================================================
-   GLOBAL RESET (NORMALIZE BROWSER DEFAULT)
+   GLOBAL RESET
 ===================================================== */
 * {
     margin: 0;
@@ -51,51 +25,34 @@
 
 
 /* =====================================================
-   BODY (LAYOUT UTAMA + ANIMATION + FORMULA RANDOM)
+   BODY
 ===================================================== */
 body {
-    /* font */
     font-family: 'Roboto', sans-serif;
-
-    /* Full viewport */
-    height: 100vh;
-
-    /* Background gradient */
+    min-height: 100vh;
     background: linear-gradient(
         135deg,
         var(--primary-background-color),
         var(--secondary-background-color)
     );
-
-    /* Centering layout */
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* Text color default */
     color: var(--primary-text-color);
-
-    /* Fade animation (dipakai JS) */
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
 
-/* State: masuk halaman */
-body.fade-in {
-    opacity: 1;
-}
+body.fade-in  { opacity: 1; }
+body.fade-out { opacity: 0; }
 
-/* State: keluar halaman */
-body.fade-out {
-    opacity: 0;
-}
 
 /* =====================================================
-   FORMULA (RANDOM)
+   FORMULA RANDOM
 ===================================================== */
 .formula-random {
     position: fixed;
-    top: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -108,137 +65,84 @@ body.fade-out {
     color: rgba(255,255,255,0.06);
     font-weight: bold;
     white-space: nowrap;
-}
-
-/* =====================================================
-   FORMULA ANIMATION (SMOOTH)
-===================================================== */
-
-.formula-random span {
-    position: absolute;
-    font-size: 30px;
-    color: rgba(255,255,255,0.06);
-    font-weight: bold;
-    white-space: nowrap;
-
     opacity: 0;
     transform: translateY(10px);
 }
 
-/* masuk */
-.formula-in {
-    animation: formulaFadeIn 1s ease forwards;
-}
+.formula-in  { animation: formulaFadeIn  1s ease forwards; }
+.formula-out { animation: formulaFadeOut 1s ease forwards; }
 
-/* keluar */
-.formula-out {
-    animation: formulaFadeOut 1s ease forwards;
-}
-
-@keyframes formulaFadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes formulaFadeOut {
-    to {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-}
+@keyframes formulaFadeIn  { to { opacity: 1; transform: translateY(0);    } }
+@keyframes formulaFadeOut { to { opacity: 0; transform: translateY(-10px); } }
 
 
 /* =====================================================
-   GRID BACKGROUND (EFEK GARIS HALUS)
+   GRID BACKGROUND
 ===================================================== */
 .grid-bg {
     position: fixed;
-
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
-
-    /* Grid pattern */
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 40px 40px;
-
-    /* Taruh di belakang semua */
     z-index: -1;
-
-    /* Transparansi biar subtle */
     opacity: 0.3;
 }
 
 
 /* =====================================================
-   CONTAINER (WRAPPER FLEX)
+   CONTAINER
 ===================================================== */
 .container {
+    position: relative;
+    z-index: 1;
     width: 100%;
-
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 20px;
 }
 
 
 /* =====================================================
-   CARD (KOMPONEN UTAMA UI)
+   CARD (BASE)
 ===================================================== */
 .card {
-
-    /* Glassmorphism effect */
-    background: linear-gradient(
-        135deg,
-        var(--card-color),
-        var(--card-secondary-color)
-    );
-
-    padding: 50px 40px;
+    background: linear-gradient(135deg, var(--card-color), var(--card-secondary-color));
+    padding: 48px 40px;
     border-radius: 20px;
-
     text-align: center;
-
     backdrop-filter: blur(10px);
-
-    /* Shadow lembut */
-    box-shadow: 0 10px 30px rgba(111, 111, 111, 0.178);
-
-    /* Animasi hover */
-    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
 .card:hover {
-    transform: scale(1.05);
-
-    box-shadow: 0 15px 40px rgba(111, 111, 111, 0.178);
-
-    transition: all 0.3s ease;
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.35);
 }
 
 
 /* =====================================================
    TYPOGRAPHY
 ===================================================== */
-
-/* TITLE (judul utama) */
 .title {
     font-size: 48px;
-    font-weight: bold;
+    font-weight: 800;
     letter-spacing: 3px;
     margin-bottom: 10px;
 }
 
-/* SUBTITLE (deskripsi) */
 .subtitle {
     font-size: 16px;
     color: #cbd5f5;
     margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 
@@ -246,85 +150,154 @@ body.fade-out {
    BUTTON
 ===================================================== */
 .btn-start {
-
+    display: inline-block;
     text-decoration: none;
-
-    padding: 12px 30px;
-
-    /* Warna kontras */
-    background: #facc15;
+    padding: 12px 32px;
+    background: var(--accent);
     color: #0f172a;
-
     border-radius: 30px;
-    font-weight: bold;
-
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn-start:hover {
-    background: #eab308;
-
-    /* efek naik dikit */
+    background: var(--accent-hover);
     transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(250,204,21,0.35);
 }
 
 
 /* =====================================================
-   PAGE 2 (SCOPED STYLE)
-   Aman karena pakai prefix .page2
+   INDEX PAGE — Card tunggal tengah
 ===================================================== */
-.page2 .card {
-    max-width: 500px;
+.index-card {
+    max-width: 440px;
+    width: 100%;
 }
 
-.page2 .subtitle {
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 14px;
+}
+
+
+/* =====================================================
+   DESKRIPSI PAGE — 2 card sejajar
+===================================================== */
+.deskripsi-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 860px;
+}
+
+.deskripsi-header {
+    text-align: center;
+}
+
+.deskripsi-header .title {
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.deskripsi-header .subtitle {
+    margin-bottom: 0;
+}
+
+/* 2 card sejajar */
+.deskripsi-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+}
+
+/* Subject card */
+.subject-card {
+    text-align: left;
+    padding: 36px 30px;
+}
+
+.subject-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.subject-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    color: var(--accent);
+}
+
+.subject-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.subject-list li {
+    font-size: 14px;
+    color: #cbd5f5;
     line-height: 1.6;
-    font-size: 18px;
+}
+
+/* Tag label kecil */
+.tag {
+    display: inline-block;
+    background: rgba(250,204,21,0.15);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.deskripsi-footer {
+    text-align: center;
 }
 
 
 /* =====================================================
-   INPUT PAGE (FORM STYLING)
+   INPUT PAGE
 ===================================================== */
-
-/* Card lebih kecil & fokus */
 .input-page .card {
-    max-width: 450px;
+    max-width: 440px;
+    width: 100%;
 }
 
-/* Layout form vertikal */
 .input-page form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
+    margin-top: 4px;
 }
 
-/* Input field */
 .input-page input {
-    padding: 12px 15px;
-
+    padding: 12px 16px;
     border-radius: 10px;
-    border: none;
+    border: 1px solid transparent;
     outline: none;
-
-    font-size: 16px;
-
-    /* Theme match */
-    background: rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+    background: rgba(255,255,255,0.1);
     color: white;
+    transition: border 0.2s ease;
 }
 
-/* Placeholder */
-.input-page input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
+.input-page input::placeholder { color: rgba(255,255,255,0.45); }
 
-/* Focus state */
-.input-page input:focus {
-    border: 1px solid #facc15;
-}
+.input-page input:focus { border-color: var(--accent); }
 
-/* Button full width */
 .input-page .btn-start {
     width: 100%;
     text-align: center;
@@ -332,65 +305,100 @@ body.fade-out {
 
 
 /* =====================================================
-   RESPONSIVE FIX (AMAN, TETAP CENTER)
+   RESPONSIVE — TABLET (≤ 768px)
 ===================================================== */
+@media (max-width: 768px) {
 
-/* ================================
-   MOBILE (<= 480px)
-================================ */
+    .container {
+        padding: 32px 20px;
+    }
+
+    /* Index */
+    .index-card {
+        max-width: 380px;
+        padding: 40px 28px;
+    }
+
+    .title { font-size: 36px; }
+
+    /* Deskripsi: stack vertikal */
+    .deskripsi-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .deskripsi-wrapper {
+        gap: 24px;
+    }
+
+    .deskripsi-header .title {
+        font-size: 26px;
+    }
+
+    /* Input */
+    .input-page .card {
+        max-width: 380px;
+        padding: 36px 24px;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE — MOBILE (≤ 480px)
+===================================================== */
 @media (max-width: 480px) {
 
+    .container {
+        padding: 24px 16px;
+        align-items: flex-start;
+        padding-top: 48px;
+    }
+
     .card {
-        width: 90%;
-        max-width: 320px; /* biar nggak kegedean */
-        padding: 25px 18px;
-        border-radius: 15px;
+        border-radius: 16px;
+    }
+
+    /* Index */
+    .index-card {
+        padding: 32px 22px;
     }
 
     .title {
-        font-size: 26px;
+        font-size: 28px;
         letter-spacing: 1px;
     }
 
-    .subtitle {
-        font-size: 14px;
-        line-height: 1.6;
-    }
+    .subtitle { font-size: 14px; }
+
+    .card-icon { font-size: 36px; }
+
+    /* Deskripsi */
+    .deskripsi-header .title { font-size: 22px; }
+
+    .subject-card { padding: 28px 20px; }
+
+    .subject-title { font-size: 18px; }
+
+    .subject-list li { font-size: 13px; }
+
+    /* Input */
+    .input-page .card { padding: 28px 18px; }
 
     .btn-start {
-        width: 100%;
-        padding: 10px;
+        padding: 11px 24px;
+        font-size: 14px;
     }
 }
 
 
-/* ================================
-   TABLET (<= 768px)
-================================ */
-@media (max-width: 768px) {
-
-    .card {
-        width: 85%;
-        max-width: 400px;
-        padding: 35px 25px;
-    }
-
-    .title {
-        font-size: 34px;
-    }
-
-    .subtitle {
-        font-size: 15px;
-    }
-}
-
-
-/* ================================
-   DESKTOP BESAR
-================================ */
+/* =====================================================
+   RESPONSIVE — DESKTOP BESAR (≥ 1280px)
+===================================================== */
 @media (min-width: 1280px) {
 
-    .card {
-        max-width: 500px;
-    }
+    .index-card { max-width: 480px; }
+
+    .deskripsi-wrapper { max-width: 920px; }
+
+    .deskripsi-header .title { font-size: 40px; }
 }

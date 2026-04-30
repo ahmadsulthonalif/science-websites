@@ -2,77 +2,78 @@
 <html lang="id">
 
 <head>
-     <!-- ================================
-         META DASAR
-    ================================= -->
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-     <!-- Judul halaman -->
-     <title>FormulaCMD - DESKRIPSI</title>
-
-
-     <!-- ================================
-         GLOBAL CSS
-         Path relatif dari folder /pages
-    ================================= -->
-     <link rel="stylesheet" href="../css/global.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormulaCMD - DESKRIPSI</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
-
-<!-- =====================================================
-     BODY DENGAN CLASS KHUSUS
-     .page2 digunakan untuk scoped styling
-===================================================== -->
-
 <body class="page2">
-     <!-- random formula -->
-     <div class="formula-random"></div>
+    <div class="formula-random"></div>
+    <div class="grid-bg"></div>
 
-     <!-- ================================
-         GRID BACKGROUND (DEKORASI)
-    ================================= -->
-     <div class="grid-bg"></div>
+    <div class="container">
 
+        <!-- Wrapper vertical: judul + 2 card + tombol -->
+        <div class="deskripsi-wrapper">
 
-     <!-- ================================
-         CONTAINER UTAMA
-    ================================= -->
-     <div class="container">
+            <div class="deskripsi-header">
+                <h1 class="title">Apa yang akan kamu pelajari?</h1>
+                <p class="subtitle">Pilih topik dan mulai perjalananmu</p>
+            </div>
 
-          <!-- ================================
-             CARD
-             - Komponen utama
-             - Ada event hover (sound effect)
-        ================================= -->
-          <div class="card" onmouseenter="playHoverSound()">
+            <!-- 2 card sejajar -->
+            <div class="deskripsi-cards">
 
-               <!-- Judul -->
-               <h1 class="title">Welcome</h1>
+                <!-- Card Fisika -->
+                <div class="card subject-card">
+                    <div class="subject-icon">🔭</div>
+                    <h2 class="subject-title">Fisika</h2>
+                    <ul class="subject-list">
+                        <li>
+                            <span class="tag">GLB</span>
+                            Gerak Lurus Beraturan — benda bergerak dengan kecepatan konstan tanpa percepatan.
+                        </li>
+                        <li>
+                            <span class="tag">GLBB</span>
+                            Gerak Lurus Berubah Beraturan — kecepatan berubah secara konsisten setiap detiknya.
+                        </li>
+                        <li>
+                            <span class="tag">Gaya</span>
+                            Hukum Newton — hubungan antara gaya, massa, dan percepatan benda.
+                        </li>
+                    </ul>
+                </div>
 
-               <!-- Deskripsi -->
-               <p class="subtitle">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit deserunt laborum accusantium nihil sunt quis, quae possimus?
-                    Quaerat, distinctio nulla! Atque rem, mollitia voluptatum deserunt
-                    quia officiis exercitationem inventore ratione.
-               </p>
+                <!-- Card Kimia -->
+                <div class="card subject-card">
+                    <div class="subject-icon">🧪</div>
+                    <h2 class="subject-title">Kimia</h2>
+                    <ul class="subject-list">
+                        <li>
+                            <span class="tag">Mol</span>
+                            Konsep Mol — satuan jumlah partikel zat dalam kimia (6,02 × 10²³).
+                        </li>
+                        <li>
+                            <span class="tag">Stoikiometri</span>
+                            Perhitungan reaksi kimia berdasarkan perbandingan mol zat-zat yang bereaksi.
+                        </li>
+                    </ul>
+                </div>
 
-               <!-- Tombol lanjut ke halaman input -->
-               <a href="auth/input.html" class="btn-start">
-                    Lanjut
-               </a>
+            </div>
 
-          </div>
-     </div>
+            <!-- Tombol lanjut -->
+            <div class="deskripsi-footer">
+                <a href="auth/input.html" class="btn-start">Mulai Belajar →</a>
+            </div>
 
+        </div>
+    </div>
 
-     <!-- ================================
-         GLOBAL JAVASCRIPT
-         Path relatif dari folder /pages
-    ================================= -->
-     <script src="../js/global.js"></script>
-
+    <script src="../js/global.js"></script>
 </body>
-
 </html>

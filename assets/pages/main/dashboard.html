@@ -2,87 +2,70 @@
 <html lang="id">
 
 <head>
-    <!-- ================================
-         META DASAR
-    ================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard – FormulaCMD</title>
 
-    <!-- Judul halaman -->
-    <title>Dashboard</title>
-
-
-    <!-- ================================
-         STYLESHEET
-    ================================= -->
-
-    <!-- GLOBAL CSS -->
+    <!-- GLOBAL CSS (grid bg + formula random) -->
     <link rel="stylesheet" href="../../css/global.css">
 
-    <!-- CSS DASHBOARD -->
+    <!-- DASHBOARD CSS -->
     <link rel="stylesheet" href="../../css/dashboard.css">
 
-
-    <!-- ================================
-         ICON (FONT AWESOME)
-    ================================= -->
+    <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-
-<!-- =====================================================
-     BODY
-     .main-page → untuk styling khusus dashboard
-===================================================== -->
-
 <body class="main-page">
-    <!-- random formula -->
+
+    <!-- Formula random + grid (dari global.css) -->
     <div class="formula-random"></div>
-
-    <!-- ================================
-         GRID BACKGROUND (DEKORASI)
-    ================================= -->
     <div class="grid-bg"></div>
-
 
     <!-- =====================================================
          NAVBAR
-         - Navigasi utama
-         - Berisi logo, menu, dan profile
+         Desktop : logo | nav-center | profile
+         Mobile  : logo | hamburger | [spacer] | profile
     ====================================================== -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
 
-        <!-- LEFT: LOGO / HOME -->
+        <!-- LEFT: Logo rumah -->
         <div class="nav-left">
-            <a href="#home" class="logo">
+            <a href="#home" class="logo" aria-label="Home">
                 <i class="fa-solid fa-house-chimney"></i>
             </a>
+
+            <!-- Hamburger (mobile only) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
 
-        <!-- CENTER: MENU NAVIGASI -->
-        <div class="nav-center">
-            <a href="#home">Home</a>
-            <a href="#steps">Steps</a>
-            <a href="#subjects">Mata Pelajaran</a>
-            <a href="#quiz">Quiz</a>
+        <!-- CENTER: Menu (desktop) + Mobile drawer -->
+        <div class="nav-center" id="navCenter">
+            <a href="#home"     class="nav-link">Home</a>
+            <a href="#steps"    class="nav-link">Steps</a>
+            <a href="#subjects" class="nav-link">Mata Pelajaran</a>
+            <a href="#quiz"     class="nav-link">Quiz</a>
         </div>
 
-        <!-- RIGHT: PROFILE -->
+        <!-- RIGHT: Profile -->
         <div class="nav-right">
-
-            <!-- Profile button -->
             <div class="profile" id="profileBtn">
-
-                <!-- Initial username (diisi dari JS) -->
                 <span id="profileInitial">A</span>
 
-                <!-- Dropdown profile -->
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
                     <a href="#" id="logoutBtn">Logout</a>
                 </div>
-
             </div>
         </div>
 
@@ -90,102 +73,173 @@
 
 
     <!-- =====================================================
-         SECTION 1: HOME
-         Landing utama dashboard
+         SECTION 1 — HOME
+         Navbar menyatu di sini, sticky saat scroll
     ====================================================== -->
-    <section class="section home" id="home">
-        <div class="card">
-            <h1>Selamat Datang</h1>
-            <p>Mulai perjalanan belajarmu sekarang</p>
-        </div>
-    </section>
+    <section class="section home-section" id="home">
 
-
-    <!-- =====================================================
-         SECTION 2: STEPS
-         Navigasi ke langkah belajar
-    ====================================================== -->
-    <section class="section" id="steps">
-        <div class="card">
-            <h2>Langkah Belajar</h2>
-            <p>
-                Ikuti urutan belajar yang sudah disusun agar lebih mudah dipahami.
-            </p>
-
-            <!-- Tombol menuju halaman langkah -->
-            <a href="../steps/step.html">
-                <button class="lihat-langkah-btn">
-                Lihat Langkah
-                </button>
-            </a>
-        </div>
-    </section>
-
-
-    <!-- =====================================================
-         SECTION 3: MATA PELAJARAN
-         Pilihan subject
-    ====================================================== -->
-    <section class="section subjects" id="subjects">
-
-        <!-- Header -->
-        <div class="card subjects-header">
-            <h2>Mata Pelajaran</h2>
+        <!-- Dekorasi atom fisika -->
+        <div class="deco-orbit">
+            <div class="orbit-ring ring-1"></div>
+            <div class="orbit-ring ring-2"></div>
+            <div class="orbit-dot dot-1"></div>
+            <div class="orbit-dot dot-2"></div>
+            <div class="nucleus"></div>
         </div>
 
-        <!-- Card Fisika -->
-        <div class="subject-card fisika">
-            <a href="../mata_pelajaran/fisika/main_page_fisika.html">
-                <h2>Fisika</h2>
-            </a>
+        <!-- Dekorasi molekul kimia kanan -->
+        <div class="deco-molecule">
+            <div class="mol-atom a1"></div>
+            <div class="mol-atom a2"></div>
+            <div class="mol-atom a3"></div>
+            <div class="mol-bond b1"></div>
+            <div class="mol-bond b2"></div>
         </div>
 
-        <!-- Card Kimia -->
-        <div class="subject-card kimia">
-            <a href="../mata_pelajaran/kimia/main_page_kimia.html">
-                <h2>Kimia</h2>
-            </a>
+        <div class="home-content">
+            <div class="home-badge">⚗️ FormulaCMD</div>
+            <h1 class="home-title">Selamat Datang, <span id="homeUsername" class="highlight">Pelajar</span>!</h1>
+            <p class="home-sub">Mulai perjalanan belajar Fisika & Kimia interaktifmu sekarang.</p>
+            <div class="home-tags">
+                <span class="htag fisika-tag">🔭 Fisika</span>
+                <span class="htag kimia-tag">🧪 Kimia</span>
+                <span class="htag">📐 GLB · GLBB · Gaya</span>
+                <span class="htag">⚗️ Mol · Stoikiometri</span>
+            </div>
         </div>
 
     </section>
 
 
     <!-- =====================================================
-         SECTION 4: QUIZ
+         SECTION 2 — STEPS
     ====================================================== -->
-    <section class="section" id="quiz">
-        <div class="card">
-            <h2>Quiz</h2>
-            <p>Uji pemahamanmu dengan berbagai soal interaktif.</p>
+    <section class="section steps-section" id="steps">
 
-            <!-- Tombol menuju quiz -->
-            <a href="../quiz/main_page_quiz.html">
-                <button class="lihat-quiz-btn">
-                    Lihat Quiz
-                </button>
-            </a>
+        <!-- Dekorasi tipis kiri -->
+        <div class="steps-deco-left">
+            <div class="deco-line"></div>
+            <div class="deco-circle"></div>
+            <div class="deco-line"></div>
         </div>
+
+        <div class="steps-content">
+            <div class="card steps-card">
+                <div class="steps-icon">📋</div>
+                <h2>Langkah Belajar</h2>
+                <p>Ikuti urutan belajar yang sudah disusun agar lebih mudah dipahami dan dipraktikkan.</p>
+                <a href="../steps/step.html" class="btn-start">Lihat Langkah →</a>
+            </div>
+        </div>
+
+        <!-- Dekorasi tipis kanan -->
+        <div class="steps-deco-right">
+            <div class="deco-line"></div>
+            <div class="deco-circle"></div>
+            <div class="deco-line"></div>
+        </div>
+
     </section>
 
 
     <!-- =====================================================
-         FOOTER
+         SECTION 3 — MATA PELAJARAN
+         Judul di-click → 2 card muncul
     ====================================================== -->
+    <section class="section subjects-section" id="subjects">
+
+        <!-- Dekorasi sudut -->
+        <div class="subj-deco-tl"></div>
+        <div class="subj-deco-br"></div>
+
+        <!-- Judul (clickable) -->
+        <div class="subjects-trigger" id="subjectsTrigger">
+            <h2 class="subjects-title">Mata Pelajaran</h2>
+            <span class="subjects-hint">Klik untuk melihat</span>
+            <div class="subjects-arrow" id="subjectsArrow">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <!-- 2 card muncul setelah click -->
+        <div class="subjects-cards" id="subjectsCards">
+            <a href="../mata_pelajaran/fisika/main_page_fisika.html" class="subject-card-new fisika-card">
+                <div class="sc-icon">🔭</div>
+                <h3>Fisika</h3>
+                <ul>
+                    <li>Gerak Lurus Beraturan</li>
+                    <li>Gerak Lurus Berubah Beraturan</li>
+                    <li>Hukum Newton & Gaya</li>
+                </ul>
+                <span class="sc-cta">Mulai Belajar →</span>
+            </a>
+
+            <a href="../mata_pelajaran/kimia/main_page_kimia.html" class="subject-card-new kimia-card">
+                <div class="sc-icon">🧪</div>
+                <h3>Kimia</h3>
+                <ul>
+                    <li>Konsep Mol</li>
+                    <li>Stoikiometri Reaksi</li>
+                    <li>Perhitungan Kimia</li>
+                </ul>
+                <span class="sc-cta">Mulai Belajar →</span>
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 4 — QUIZ
+    ====================================================== -->
+    <section class="section quiz-section" id="quiz">
+
+        <!-- Dekorasi tantangan -->
+        <div class="quiz-deco-sparks">
+            <span class="spark s1">⚡</span>
+            <span class="spark s2">🎯</span>
+            <span class="spark s3">⚡</span>
+            <span class="spark s4">🏆</span>
+            <span class="spark s5">⚡</span>
+        </div>
+
+        <div class="quiz-content">
+            <div class="quiz-badge">⚡ TANTANGAN</div>
+            <h2 class="quiz-title">Siap Diuji?</h2>
+            <p class="quiz-sub">Uji pemahaman Fisika & Kimia kamu dengan soal-soal interaktif. Seberapa jauh kamu mengerti?</p>
+
+            <div class="quiz-stats">
+                <div class="stat-item">
+                    <span class="stat-num">20+</span>
+                    <span class="stat-label">Soal</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">2</span>
+                    <span class="stat-label">Mata Pelajaran</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">⏱</span>
+                    <span class="stat-label">Timed</span>
+                </div>
+            </div>
+
+            <a href="../quiz/main_page_quiz.html" class="btn-quiz">Mulai Quiz →</a>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 Alp dan Aldi EduLearn. All rights reserved.</p>
     </footer>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <!-- JS GLOBAL -->
+    <!-- JS -->
     <script src="../../js/global.js"></script>
-
-    <!-- JS KHUSUS DASHBOARD -->
     <script src="../../js/dashboard.js"></script>
 
 </body>
-
 </html>

@@ -1,775 +1,345 @@
 /* =====================================================
-   DASHBOARD CSS
-   Mengcover semua styling khusus dashboard.
-   global.css tetap menangani: grid-bg, formula-random, fade
+   ROOT VARIABLES (THEME & COLOR SYSTEM)
 ===================================================== */
-
-/* =====================================================
-   OVERRIDE GLOBAL — body jadi scroll page
-===================================================== */
-body.main-page {
-    display: block;
-    min-height: 100vh;
-    overflow-x: hidden;
+:root {
+    --primary-text-color: rgb(238, 234, 234);
+    --secondary-text-color: #1b1b1b;
+    --primary-background-color: hsl(210, 95%, 14%);
+    --secondary-background-color: hsl(210, 94%, 7%);
+    --card-color: rgba(8, 0, 255, 0.336);
+    --card-secondary-color: rgba(0, 255, 255, 0.02);
+    --card-hover-color: rgba(0, 255, 255, 0.02);
+    --accent: #facc15;
+    --accent-hover: #eab308;
 }
 
-/* Grid tetap di belakang */
-.main-page .grid-bg { z-index: -1; }
+
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 
 /* =====================================================
-   NAVBAR
-   - Di section home: transparan & menyatu
-   - Setelah scroll melewati home: sticky + solid
+   BODY
 ===================================================== */
-.navbar {
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        var(--primary-background-color),
+        var(--secondary-background-color)
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-color);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-in  { opacity: 1; }
+body.fade-out { opacity: 0; }
+
+
+/* =====================================================
+   FORMULA RANDOM
+===================================================== */
+.formula-random {
     position: fixed;
-    top: 0;
+    top: 0; left: 0;
     width: 100%;
-    height: 70px;
-
-    /* Awalnya transparan — menyatu dgn section home */
-    background: transparent;
-    backdrop-filter: none;
-    box-shadow: none;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 0 40px;
-    z-index: 9999;
-
-    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
 }
 
-/* State: navbar solid (setelah scroll) */
-.navbar.scrolled {
-    background: rgba(10, 20, 40, 0.92);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-/* ================================
-   NAV LEFT
-================================ */
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.nav-left .logo {
-    font-size: 22px;
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.2s, transform 0.2s;
-}
-
-.nav-left .logo:hover { color: #facc15; transform: scale(1.15); }
-
-/* ================================
-   NAV CENTER (desktop pill)
-================================ */
-.nav-center {
-    display: flex;
-    gap: 2em;
-    padding: 0.45em 2em;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50px;
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(8px);
-    transition: background 0.3s, box-shadow 0.3s;
-}
-
-.nav-center:hover {
-    background: rgba(255,255,255,0.12);
-    box-shadow: 0 2px 12px rgba(255,255,255,0.08);
-}
-
-.nav-center a {
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 2px 0;
-    transition: color 0.3s;
-}
-
-.nav-center a:hover { color: #fff; }
-
-.nav-center a.active {
-    color: #38bdf8;
-    border-bottom: 2px solid #38bdf8;
-}
-
-/* ================================
-   NAV RIGHT — Profile
-================================ */
-.nav-right { position: relative; }
-
-.profile {
-    width: 38px;
-    height: 38px;
-    background: #facc15;
-    color: #0f172a;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    font-size: 15px;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
-    user-select: none;
-}
-
-.profile:hover { transform: scale(1.08); box-shadow: 0 0 12px rgba(250,204,21,0.4); }
-.profile:active { transform: scale(0.95); }
-
-/* Dropdown */
-.profile-dropdown {
+.formula-random span {
     position: absolute;
-    top: 50px;
-    right: 0;
-    background: linear-gradient(160deg, #0f1e3a, #1a3a6e);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    min-width: 140px;
-    display: none;
-    flex-direction: column;
+    font-size: 30px;
+    color: rgba(255,255,255,0.06);
+    font-weight: bold;
+    white-space: nowrap;
     opacity: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateY(10px);
 }
 
-.profile-dropdown.show {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-}
+.formula-in  { animation: formulaFadeIn  1s ease forwards; }
+.formula-out { animation: formulaFadeOut 1s ease forwards; }
 
-.profile-dropdown h4 {
-    padding: 10px 16px;
-    font-size: 13px;
-    color: #facc15;
-    background: rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
-}
-
-.profile-dropdown a {
-    padding: 11px 16px;
-    text-decoration: none;
-    color: rgba(255,255,255,0.85);
-    font-size: 14px;
-    transition: background 0.2s;
-}
-
-.profile-dropdown a:hover { background: rgba(255,255,255,0.08); }
-
-/* ================================
-   HAMBURGER (mobile only)
-================================ */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-}
-
-.hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-/* Hamburger open state */
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@keyframes formulaFadeIn  { to { opacity: 1; transform: translateY(0);    } }
+@keyframes formulaFadeOut { to { opacity: 0; transform: translateY(-10px); } }
 
 
 /* =====================================================
-   SECTION BASE
+   GRID BACKGROUND
 ===================================================== */
-.section {
+.grid-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
     min-height: 100vh;
-    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Section home selalu visible (no reveal animation) */
-.home-section {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-
-/* =====================================================
-   SECTION HOME
-===================================================== */
-.home-section {
-    padding-top: 70px; /* tinggi navbar */
-    text-align: center;
-}
-
-/* --- Dekorasi Orbit (atom fisika) kiri atas --- */
-.deco-orbit {
-    position: absolute;
-    top: 60px;
-    left: -80px;
-    width: 220px;
-    height: 220px;
-    pointer-events: none;
-    opacity: 0.18;
-}
-
-.orbit-ring {
-    position: absolute;
-    border: 1.5px solid #38bdf8;
-    border-radius: 50%;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.ring-1 { width: 140px; height: 140px; transform: translate(-50%,-50%) rotate(30deg); animation: spinRing 12s linear infinite; }
-.ring-2 { width: 200px; height: 200px; transform: translate(-50%,-50%) rotate(-20deg); animation: spinRing 18s linear infinite reverse; }
-
-@keyframes spinRing {
-    to { transform: translate(-50%,-50%) rotate(360deg); }
-}
-
-.orbit-dot {
-    position: absolute;
-    width: 8px; height: 8px;
-    background: #38bdf8;
-    border-radius: 50%;
-    top: 50%; left: 50%;
-}
-
-.dot-1 { animation: orbitDot1 12s linear infinite; }
-.dot-2 { animation: orbitDot2 18s linear infinite reverse; }
-
-@keyframes orbitDot1 {
-    0%   { transform: translate(-50%,-50%) rotate(0deg)   translateX(70px); }
-    100% { transform: translate(-50%,-50%) rotate(360deg) translateX(70px); }
-}
-@keyframes orbitDot2 {
-    0%   { transform: translate(-50%,-50%) rotate(0deg)   translateX(100px); }
-    100% { transform: translate(-50%,-50%) rotate(360deg) translateX(100px); }
-}
-
-.nucleus {
-    position: absolute;
-    width: 18px; height: 18px;
-    background: #38bdf8;
-    border-radius: 50%;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0 12px #38bdf8;
-}
-
-/* --- Dekorasi Molekul (kimia) kanan bawah --- */
-.deco-molecule {
-    position: absolute;
-    bottom: 60px;
-    right: -40px;
-    width: 160px;
-    height: 160px;
-    pointer-events: none;
-    opacity: 0.15;
-}
-
-.mol-atom {
-    position: absolute;
-    border-radius: 50%;
-    background: #f472b6;
-}
-
-.a1 { width: 28px; height: 28px; top: 50%; left: 50%; transform: translate(-50%,-50%); box-shadow: 0 0 10px #f472b6; }
-.a2 { width: 18px; height: 18px; top: 10%;  left: 65%; }
-.a3 { width: 18px; height: 18px; top: 70%;  left: 20%; }
-
-.mol-bond {
-    position: absolute;
-    height: 2px;
-    background: #f472b6;
-    transform-origin: left center;
-}
-
-.b1 { width: 50px; top: 30%; left: 52%; transform: rotate(-40deg); }
-.b2 { width: 50px; top: 58%; left: 28%; transform: rotate(-40deg); }
-
-/* --- Konten home --- */
-.home-content { position: relative; z-index: 2; max-width: 620px; padding: 0 20px; }
-
-.home-badge {
-    display: inline-block;
-    background: rgba(250,204,21,0.12);
-    color: #facc15;
-    border: 1px solid rgba(250,204,21,0.3);
-    padding: 5px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-.home-title {
-    font-size: 52px;
-    font-weight: 900;
-    line-height: 1.15;
-    margin-bottom: 14px;
-    color: #fff;
-}
-
-.home-title .highlight { color: #facc15; }
-
-.home-sub {
-    font-size: 17px;
-    color: #94a3b8;
-    margin-bottom: 28px;
-    line-height: 1.7;
-}
-
-.home-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.htag {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.75);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-}
-
-.fisika-tag { border-color: rgba(56,189,248,0.4); color: #38bdf8; background: rgba(56,189,248,0.08); }
-.kimia-tag  { border-color: rgba(244,114,182,0.4); color: #f472b6; background: rgba(244,114,182,0.08); }
-
-
-/* =====================================================
-   SECTION STEPS
-===================================================== */
-.steps-section {
-    flex-direction: row;
-    gap: 0;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Dekorasi kiri & kanan */
-.steps-deco-left,
-.steps-deco-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    opacity: 0.2;
-    padding: 0 32px;
-}
-
-.deco-line {
-    width: 2px;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent, #38bdf8, transparent);
-}
-
-.deco-circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid #38bdf8;
-}
-
-.steps-content { z-index: 1; }
-
-.steps-card {
-    max-width: 420px;
-    width: 100%;
-    text-align: center;
-    padding: 44px 36px;
-}
-
-.steps-icon { font-size: 40px; margin-bottom: 16px; }
-.steps-card h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
-.steps-card p  { color: #94a3b8; line-height: 1.7; margin-bottom: 24px; }
-
-
-/* =====================================================
-   SECTION SUBJECTS
-===================================================== */
-.subjects-section {
-    gap: 0;
     padding: 40px 20px;
 }
 
-/* Dekorasi sudut tipis */
-.subj-deco-tl {
-    position: absolute;
-    top: 60px; left: 40px;
-    width: 80px; height: 80px;
-    border-top: 2px solid rgba(56,189,248,0.25);
-    border-left: 2px solid rgba(56,189,248,0.25);
-    border-radius: 4px;
-    pointer-events: none;
+
+/* =====================================================
+   CARD (BASE)
+===================================================== */
+.card {
+    background: linear-gradient(135deg, var(--card-color), var(--card-secondary-color));
+    padding: 48px 40px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.subj-deco-br {
-    position: absolute;
-    bottom: 60px; right: 40px;
-    width: 80px; height: 80px;
-    border-bottom: 2px solid rgba(244,114,182,0.25);
-    border-right: 2px solid rgba(244,114,182,0.25);
-    border-radius: 4px;
-    pointer-events: none;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.35);
 }
 
-/* Trigger (judul clickable) */
-.subjects-trigger {
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+.title {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #cbd5f5;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+.btn-start {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 32px;
+    background: var(--accent);
+    color: #0f172a;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(250,204,21,0.35);
+}
+
+
+/* =====================================================
+   INDEX PAGE — Card tunggal tengah
+===================================================== */
+.index-card {
+    max-width: 440px;
+    width: 100%;
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 14px;
+}
+
+
+/* =====================================================
+   DESKRIPSI PAGE — 2 card sejajar
+===================================================== */
+.deskripsi-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    user-select: none;
-    padding: 20px;
-    transition: transform 0.2s;
+    gap: 32px;
+    width: 100%;
+    max-width: 860px;
 }
 
-.subjects-trigger:hover { transform: scale(1.03); }
-
-.subjects-title {
-    font-size: 38px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #fff;
+.deskripsi-header {
+    text-align: center;
 }
 
-.subjects-hint {
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
+.deskripsi-header .title {
+    font-size: 36px;
     letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
-.subjects-arrow {
-    font-size: 18px;
-    color: rgba(255,255,255,0.5);
-    transition: transform 0.4s ease;
+.deskripsi-header .subtitle {
+    margin-bottom: 0;
 }
 
-.subjects-arrow.open { transform: rotate(180deg); }
-
-/* 2 subject cards (hidden by default) */
-.subjects-cards {
+/* 2 card sejajar */
+.deskripsi-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    max-width: 720px;
     width: 100%;
-    margin-top: 32px;
-
-    /* Hidden state */
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(16px);
-    pointer-events: none;
-    transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
 }
 
-.subjects-cards.open {
-    max-height: 600px;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+/* Subject card */
+.subject-card {
+    text-align: left;
+    padding: 36px 30px;
 }
 
-/* Masing-masing card */
-.subject-card-new {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 32px 28px;
-    border-radius: 18px;
-    text-decoration: none;
-    color: #fff;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+.subject-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
 }
 
-.subject-card-new::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.subject-card-new:hover { transform: translateY(-6px); }
-.subject-card-new:hover::before { opacity: 1; }
-
-.fisika-card {
-    background: rgba(56,189,248,0.08);
-    border: 1px solid rgba(56,189,248,0.3);
-    box-shadow: 0 8px 32px rgba(56,189,248,0.08);
-}
-
-.fisika-card:hover { box-shadow: 0 12px 40px rgba(56,189,248,0.2); }
-
-.kimia-card {
-    background: rgba(244,114,182,0.08);
-    border: 1px solid rgba(244,114,182,0.3);
-    box-shadow: 0 8px 32px rgba(244,114,182,0.08);
-}
-
-.kimia-card:hover { box-shadow: 0 12px 40px rgba(244,114,182,0.2); }
-
-.sc-icon { font-size: 34px; margin-bottom: 12px; }
-
-.subject-card-new h3 {
+.subject-title {
     font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    color: var(--accent);
 }
 
-.fisika-card h3 { color: #38bdf8; }
-.kimia-card  h3 { color: #f472b6; }
-
-.subject-card-new ul {
+.subject-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 14px;
 }
 
-.subject-card-new ul li {
+.subject-list li {
     font-size: 14px;
-    color: rgba(255,255,255,0.7);
-    padding-left: 12px;
-    position: relative;
+    color: #cbd5f5;
+    line-height: 1.6;
 }
 
-.subject-card-new ul li::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: rgba(255,255,255,0.35);
-}
-
-.sc-cta {
-    font-size: 13px;
+/* Tag label kecil */
+.tag {
+    display: inline-block;
+    background: rgba(250,204,21,0.15);
+    color: var(--accent);
+    font-size: 11px;
     font-weight: 700;
-    margin-top: auto;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
-.fisika-card .sc-cta { color: #38bdf8; }
-.kimia-card  .sc-cta { color: #f472b6; }
+.deskripsi-footer {
+    text-align: center;
+}
 
 
 /* =====================================================
-   SECTION QUIZ
+   INPUT PAGE
 ===================================================== */
-.quiz-section {
-    text-align: center;
-    position: relative;
+.input-page .card {
+    max-width: 440px;
+    width: 100%;
 }
 
-/* Dekorasi spark melayang */
-.quiz-deco-sparks {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.spark {
-    position: absolute;
-    font-size: 24px;
-    opacity: 0.15;
-    animation: floatSpark 5s ease-in-out infinite;
-}
-
-.s1 { top: 15%; left: 8%;  animation-delay: 0s;    font-size: 20px; }
-.s2 { top: 25%; right: 10%; animation-delay: 1.2s; }
-.s3 { top: 70%; left: 12%; animation-delay: 2.4s; font-size: 18px; }
-.s4 { top: 60%; right: 8%; animation-delay: 0.6s; font-size: 30px; }
-.s5 { top: 40%; left: 5%;  animation-delay: 3s;   font-size: 16px; }
-
-@keyframes floatSpark {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-14px); }
-}
-
-.quiz-content { position: relative; z-index: 2; max-width: 520px; padding: 0 20px; }
-
-.quiz-badge {
-    display: inline-block;
-    background: rgba(250,204,21,0.1);
-    color: #facc15;
-    border: 1px solid rgba(250,204,21,0.35);
-    padding: 5px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-}
-
-.quiz-title {
-    font-size: 52px;
-    font-weight: 900;
-    margin-bottom: 14px;
-    line-height: 1.1;
-    color: #fff;
-}
-
-.quiz-sub {
-    color: #94a3b8;
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-/* Statistik quiz */
-.quiz-stats {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 34px;
-    padding: 18px 28px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-}
-
-.stat-item {
+.input-page form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    gap: 14px;
+    margin-top: 4px;
 }
 
-.stat-num  { font-size: 24px; font-weight: 900; color: #facc15; }
-.stat-label{ font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; }
-
-.stat-divider {
-    width: 1px;
-    height: 36px;
-    background: rgba(255,255,255,0.12);
+.input-page input {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transition: border 0.2s ease;
 }
 
-/* Quiz CTA button */
-.btn-quiz {
-    display: inline-block;
-    text-decoration: none;
-    padding: 14px 40px;
-    background: linear-gradient(135deg, #facc15, #f59e0b);
-    color: #0f172a;
-    border-radius: 50px;
-    font-weight: 800;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 6px 24px rgba(250,204,21,0.35);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+.input-page input::placeholder { color: rgba(255,255,255,0.45); }
 
-.btn-quiz:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(250,204,21,0.5);
-}
+.input-page input:focus { border-color: var(--accent); }
 
-
-/* =====================================================
-   FOOTER
-===================================================== */
-footer {
-    background: rgba(10, 20, 40, 0.8);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.4);
-    padding: 30px 0;
+.input-page .btn-start {
+    width: 100%;
     text-align: center;
-    font-size: 13px;
 }
 
 
 /* =====================================================
-   RESPONSIVE — TABLET (≤ 900px)
+   RESPONSIVE — TABLET (≤ 768px)
 ===================================================== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
-    /* Navbar: sembunyikan nav-center desktop */
-    .navbar { padding: 0 20px; }
-    .nav-center { display: none; }
-    .hamburger  { display: flex; }
-
-    /* Nav center jadi drawer mobile */
-    .nav-center.mobile-open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 220px;
-        background: rgba(10,20,40,0.97);
-        backdrop-filter: blur(16px);
-        border-right: 1px solid rgba(255,255,255,0.08);
-        border-bottom-right-radius: 16px;
-        padding: 20px 0;
-        gap: 0;
-        z-index: 9998;
-        box-shadow: 6px 0 24px rgba(0,0,0,0.4);
+    .container {
+        padding: 32px 20px;
     }
 
-    .nav-center.mobile-open a {
-        padding: 14px 28px;
-        font-size: 16px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        border-radius: 0;
+    /* Index */
+    .index-card {
+        max-width: 380px;
+        padding: 40px 28px;
     }
 
-    /* Steps: sembunyikan deco samping */
-    .steps-deco-left,
-    .steps-deco-right { display: none; }
+    .title { font-size: 36px; }
 
-    /* Subjects: 1 kolom */
-    .subjects-cards { grid-template-columns: 1fr; max-width: 400px; }
+    /* Deskripsi: stack vertikal */
+    .deskripsi-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 
-    /* Home title */
-    .home-title { font-size: 36px; }
+    .deskripsi-wrapper {
+        gap: 24px;
+    }
+
+    .deskripsi-header .title {
+        font-size: 26px;
+    }
+
+    /* Input */
+    .input-page .card {
+        max-width: 380px;
+        padding: 36px 24px;
+    }
 }
 
 
@@ -778,1198 +348,57 @@ footer {
 ===================================================== */
 @media (max-width: 480px) {
 
-    .navbar { height: 60px; }
-
-    .home-title { font-size: 28px; }
-    .home-sub   { font-size: 15px; }
-
-    .home-tags { gap: 8px; }
-    .htag { font-size: 12px; padding: 5px 10px; }
-
-    /* Deco orbit & molecule lebih kecil di mobile */
-    .deco-orbit    { width: 140px; height: 140px; left: -60px; top: 40px; }
-    .deco-molecule { width: 100px; height: 100px; right: -30px; }
-
-    .subjects-title { font-size: 28px; }
-
-    .quiz-title { font-size: 36px; }
-
-    .quiz-stats { gap: 14px; padding: 14px 16px; }
-
-    .stat-num { font-size: 20px; }
-
-    .home-section { padding-top: 60px; }
-}
-
-
-/* =====================================================
-   STEP PAGE
-   body.step-page — halaman langkah belajar
-===================================================== */
-
-/* Body step: navbar selalu solid (tidak transparan) */
-body.step-page .navbar {
-    background: rgba(10, 20, 40, 0.92) !important;
-    backdrop-filter: blur(14px) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-}
-
-/* Tengah navbar: judul halaman */
-.nav-center-empty {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.step-page-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* Tombol back */
-.back-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 18px;
-    color: rgba(255,255,255,0.8) !important;
-    transition: color 0.2s, transform 0.2s !important;
-}
-
-.back-btn:hover {
-    color: #facc15 !important;
-    transform: translateX(-3px) !important;
-}
-
-
-/* =====================================================
-   STEP MAIN CONTENT
-===================================================== */
-.step-main {
-    min-height: 100vh;
-    padding: 110px 60px 60px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-/* Header */
-.step-header {
-    text-align: center;
-    margin-bottom: 52px;
-}
-
-.step-main-title {
-    font-size: 42px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.step-main-sub {
-    font-size: 16px;
-    color: #94a3b8;
-    line-height: 1.7;
-}
-
-/* =====================================================
-   STEPS GRID — 3 kolom
-===================================================== */
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-/* Satu step card */
-.step-card-new {
-    background: linear-gradient(135deg, rgba(8,0,255,0.18), rgba(0,255,255,0.02));
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 28px 24px;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.step-card-new::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
-    pointer-events: none;
-}
-
-.step-card-new:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-    border-color: rgba(255,255,255,0.16);
-}
-
-/* Nomor besar di pojok */
-.step-num {
-    font-size: 48px;
-    font-weight: 900;
-    color: rgba(255,255,255,0.05);
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    line-height: 1;
-    user-select: none;
-    letter-spacing: -2px;
-}
-
-/* Emoji icon */
-.step-icon {
-    font-size: 28px;
-    margin-bottom: 2px;
-}
-
-/* Judul langkah */
-.step-card-new h3 {
-    font-size: 17px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.3;
-}
-
-/* Deskripsi */
-.step-card-new p {
-    font-size: 13.5px;
-    color: #94a3b8;
-    line-height: 1.7;
-    flex: 1;
-}
-
-/* Tag label bawah */
-.step-tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.5);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    width: fit-content;
-    margin-top: auto;
-}
-
-.step-tag.fisika-step {
-    background: rgba(56,189,248,0.1);
-    border-color: rgba(56,189,248,0.3);
-    color: #38bdf8;
-}
-
-.step-tag.kimia-step {
-    background: rgba(244,114,182,0.1);
-    border-color: rgba(244,114,182,0.3);
-    color: #f472b6;
-}
-
-
-/* =====================================================
-   STEP RESPONSIVE — TABLET (≤ 900px)
-===================================================== */
-@media (max-width: 900px) {
-
-    .step-main {
-        padding: 100px 30px 50px;
+    .container {
+        padding: 24px 16px;
+        align-items: flex-start;
+        padding-top: 48px;
     }
 
-    .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
+    .card {
+        border-radius: 16px;
     }
 
-    .step-main-title { font-size: 32px; }
-}
-
-
-/* =====================================================
-   STEP RESPONSIVE — MOBILE (≤ 480px)
-===================================================== */
-@media (max-width: 480px) {
-
-    .step-main {
-        padding: 85px 16px 40px;
+    /* Index */
+    .index-card {
+        padding: 32px 22px;
     }
 
-    .step-header { margin-bottom: 32px; }
-
-    .step-main-title { font-size: 26px; }
-
-    .step-main-sub  { font-size: 14px; }
-
-    .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    .title {
+        font-size: 28px;
+        letter-spacing: 1px;
     }
 
-    .step-card-new { padding: 22px 18px; }
+    .subtitle { font-size: 14px; }
 
-    .step-card-new h3 { font-size: 16px; }
+    .card-icon { font-size: 36px; }
 
-    .step-page-title { display: none; } /* sembunyikan teks tengah di hp */
-}
+    /* Deskripsi */
+    .deskripsi-header .title { font-size: 22px; }
 
+    .subject-card { padding: 28px 20px; }
 
-/* =====================================================
-   MAPEL PAGE (main_page_fisika / kimia)
-   body.mapel-page
-===================================================== */
+    .subject-title { font-size: 18px; }
 
-body.mapel-page {
-    display: block;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+    .subject-list li { font-size: 13px; }
 
-/* Navbar selalu solid di mapel page */
-body.mapel-page .navbar {
-    background: rgba(10, 20, 40, 0.92) !important;
-    backdrop-filter: blur(14px) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-}
+    /* Input */
+    .input-page .card { padding: 28px 18px; }
 
-/* ================================
-   BREADCRUMB (tengah navbar)
-================================ */
-.nav-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-}
-
-.breadcrumb-parent {
-    color: rgba(255,255,255,0.38);
-    font-weight: 500;
-}
-
-.breadcrumb-sep {
-    font-size: 10px;
-    color: rgba(255,255,255,0.25);
-}
-
-.breadcrumb-current {
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.fisika-crumb { color: #38bdf8; }
-.kimia-crumb  { color: #f472b6; }
-
-
-/* =====================================================
-   MAPEL MAIN — layout full center
-===================================================== */
-.mapel-main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 90px 40px 60px;
-    gap: 40px;
-}
-
-/* ================================
-   TRIGGER — tulisan mapel, clickable
-================================ */
-.mapel-trigger {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Ring dekorasi melingkar di belakang judul */
-.mapel-deco-ring {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-/* Saat card terbuka, ring muncul */
-.mapel-cards.open ~ .mapel-trigger .mapel-deco-ring,
-.mapel-trigger:hover .mapel-deco-ring {
-    opacity: 1;
-}
-
-/* Fisika: ring biru */
-body.mapel-fisika .ring-a {
-    width: 180px; height: 180px;
-    border: 1.5px solid rgba(56,189,248,0.18);
-    animation: spinRing 14s linear infinite;
-}
-body.mapel-fisika .ring-b {
-    width: 240px; height: 240px;
-    border: 1px solid rgba(56,189,248,0.08);
-    animation: spinRing 22s linear infinite reverse;
-}
-
-/* Kimia: ring pink */
-body.mapel-kimia .ring-a {
-    width: 180px; height: 180px;
-    border: 1.5px solid rgba(244,114,182,0.18);
-    animation: spinRing 14s linear infinite;
-}
-body.mapel-kimia .ring-b {
-    width: 240px; height: 240px;
-    border: 1px solid rgba(244,114,182,0.08);
-    animation: spinRing 22s linear infinite reverse;
-}
-
-/* Konten dalam trigger */
-.mapel-trigger-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 32px 48px;
-    border-radius: 24px;
-    transition: background 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.mapel-trigger:hover .mapel-trigger-inner {
-    background: rgba(255,255,255,0.03);
-}
-
-.mapel-emoji { font-size: 52px; margin-bottom: 4px; }
-
-.mapel-title {
-    font-size: 64px;
-    font-weight: 900;
-    letter-spacing: 6px;
-    line-height: 1;
-}
-
-.fisika-title { color: #fff; text-shadow: 0 0 40px rgba(56,189,248,0.25); }
-.kimia-title  { color: #fff; text-shadow: 0 0 40px rgba(244,114,182,0.25); }
-
-.mapel-hint {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 4px;
-}
-
-.mapel-arrow {
-    font-size: 16px;
-    color: rgba(255,255,255,0.35);
-    margin-top: 4px;
-    transition: transform 0.4s ease;
-}
-
-.mapel-arrow.open { transform: rotate(180deg); }
-
-
-/* ================================
-   DROPDOWN — 2 card kiri & kanan
-================================ */
-.mapel-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    width: 100%;
-    max-width: 680px;
-
-    /* Hidden */
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(12px);
-    pointer-events: none;
-    transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
-}
-
-.mapel-cards.open {
-    max-height: 400px;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-/* Card individu */
-.mapel-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 30px 26px;
-    border-radius: 18px;
-    text-decoration: none;
-    color: #fff;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mapel-card:hover { transform: translateY(-6px); }
-
-/* Materi card — biru fisika */
-.materi-card {
-    background: rgba(56,189,248,0.07);
-    border: 1px solid rgba(56,189,248,0.25);
-    box-shadow: 0 8px 28px rgba(56,189,248,0.06);
-}
-.materi-card:hover { box-shadow: 0 14px 40px rgba(56,189,248,0.18); }
-
-/* Kalkulator card — kuning netral */
-.kalkulator-card {
-    background: rgba(250,204,21,0.06);
-    border: 1px solid rgba(250,204,21,0.2);
-    box-shadow: 0 8px 28px rgba(250,204,21,0.04);
-}
-.kalkulator-card:hover { box-shadow: 0 14px 40px rgba(250,204,21,0.15); }
-
-/* Kimia: materi card pink */
-body.mapel-kimia .materi-card {
-    background: rgba(244,114,182,0.07);
-    border-color: rgba(244,114,182,0.25);
-    box-shadow: 0 8px 28px rgba(244,114,182,0.06);
-}
-body.mapel-kimia .materi-card:hover { box-shadow: 0 14px 40px rgba(244,114,182,0.18); }
-
-.mc-icon {
-    font-size: 32px;
-    margin-bottom: 4px;
-}
-
-.mapel-card h2 {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.mapel-card p {
-    font-size: 13.5px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-    flex: 1;
-}
-
-.mc-cta {
-    font-size: 13px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.45);
-    margin-top: 4px;
-    transition: color 0.2s;
-}
-
-.mapel-card:hover .mc-cta { color: rgba(255,255,255,0.9); }
-
-
-/* =====================================================
-   MAPEL RESPONSIVE — TABLET (≤ 768px)
-===================================================== */
-@media (max-width: 768px) {
-
-    .mapel-title { font-size: 48px; letter-spacing: 4px; }
-
-    .mapel-cards { max-width: 520px; gap: 16px; }
-
-    .mapel-cards.open { max-height: 520px; }
-}
-
-
-/* =====================================================
-   MAPEL RESPONSIVE — MOBILE (≤ 480px)
-===================================================== */
-@media (max-width: 480px) {
-
-    .mapel-main { padding: 85px 16px 40px; gap: 28px; }
-
-    .mapel-emoji { font-size: 38px; }
-
-    .mapel-title { font-size: 36px; letter-spacing: 3px; }
-
-    .mapel-hint  { font-size: 11px; }
-
-    /* Stack vertikal di mobile */
-    .mapel-cards {
-        grid-template-columns: 1fr;
-        max-width: 360px;
+    .btn-start {
+        padding: 11px 24px;
+        font-size: 14px;
     }
-
-    .mapel-cards.open { max-height: 700px; }
-
-    .mapel-card { padding: 22px 18px; }
-
-    .mapel-card h2 { font-size: 18px; }
-
-    /* Breadcrumb lebih kecil */
-    .nav-breadcrumb { font-size: 12px; }
-    .breadcrumb-parent { display: none; }
-    .breadcrumb-sep    { display: none; }
 }
 
 
 /* =====================================================
-   MATERI FISIKA PAGE
-   body.materi-fisika-page
+   RESPONSIVE — DESKTOP BESAR (≥ 1280px)
 ===================================================== */
+@media (min-width: 1280px) {
 
-body.materi-fisika-page {
-    display: block;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+    .index-card { max-width: 480px; }
 
-/* Navbar selalu solid */
-body.materi-fisika-page .navbar {
-    background: rgba(10, 20, 40, 0.95) !important;
-    backdrop-filter: blur(14px) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-}
+    .deskripsi-wrapper { max-width: 920px; }
 
-/* ================================
-   NAVBAR TABS (tengah)
-================================ */
-.materi-tabs {
-    display: flex;
-    gap: 6px;
-    padding: 6px 10px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 50px;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(6px);
-}
-
-.tab-btn {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.55);
-    font-size: 14px;
-    font-weight: 700;
-    padding: 6px 18px;
-    border-radius: 30px;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    transition: background 0.25s ease, color 0.25s ease;
-}
-
-.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
-
-.tab-btn.active {
-    background: #38bdf8;
-    color: #0f172a;
-}
-
-
-/* =====================================================
-   SLIDE WRAPPER & SLIDE
-===================================================== */
-.slide-wrapper {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-}
-
-.slide {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 90px 60px 40px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(16px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.slide.active {
-    position: relative;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-}
-
-/* Layout dalam slide: kiri teks, kanan visual */
-.slide-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    max-width: 1100px;
-    width: 100%;
-}
-
-
-/* =====================================================
-   SLIDE — KIRI (TEKS)
-===================================================== */
-.slide-text {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* Badge */
-.slide-badge {
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    width: fit-content;
-}
-
-.fisika-badge {
-    background: rgba(56,189,248,0.1);
-    border: 1px solid rgba(56,189,248,0.3);
-    color: #38bdf8;
-}
-
-/* Judul besar slide */
-.slide-title {
-    font-size: 40px;
-    font-weight: 900;
-    line-height: 1.15;
-    color: #fff;
-    letter-spacing: 0.5px;
-}
-
-/* ================================
-   SUBTABS (Pengertian/Rumus/dst)
-================================ */
-.subtabs {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 4px;
-}
-
-.subtab {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.5);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.subtab:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
-
-.subtab.active {
-    background: rgba(56,189,248,0.12);
-    border-color: rgba(56,189,248,0.4);
-    color: #38bdf8;
-}
-
-/* ================================
-   SUBCONTENT
-================================ */
-.subcontent {
-    display: none;
-    flex-direction: column;
-    gap: 12px;
-    animation: fadeSubContent 0.3s ease;
-}
-
-.subcontent.active { display: flex; }
-
-@keyframes fadeSubContent {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-.subcontent > p {
-    font-size: 15px;
-    color: #94a3b8;
-    line-height: 1.75;
-}
-
-/* List */
-.materi-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0;
-}
-
-.materi-list li {
-    font-size: 14px;
-    color: #94a3b8;
-    line-height: 1.6;
-    padding-left: 16px;
-    position: relative;
-}
-
-.materi-list li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: #38bdf8;
-    font-weight: bold;
-}
-
-/* Rumus box */
-.rumus-box {
-    background: rgba(56,189,248,0.06);
-    border: 1px solid rgba(56,189,248,0.2);
-    border-radius: 14px;
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.rumus-utama {
-    font-size: 28px;
-    font-weight: 900;
-    color: #38bdf8;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 1px;
-}
-
-.rumus-turunan {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-}
-
-.rumus-turunan span {
-    font-size: 16px;
-    color: rgba(56,189,248,0.7);
-    font-family: 'Courier New', monospace;
-}
-
-/* Keterangan variabel */
-.rumus-keterangan {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.rumus-keterangan p {
-    font-size: 13px !important;
-    color: rgba(255,255,255,0.45) !important;
-}
-
-.var {
-    color: #38bdf8;
-    font-weight: 700;
-    font-family: 'Courier New', monospace;
-}
-
-/* Soal & Jawaban */
-.soal-box, .jawaban-box {
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.soal-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.09);
-}
-
-.jawaban-box {
-    background: rgba(56,189,248,0.05);
-    border: 1px solid rgba(56,189,248,0.18);
-}
-
-.soal-label, .jawaban-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.4);
-}
-
-.soal-box p, .jawaban-box p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.65;
-}
-
-.rumus-inline {
-    font-family: 'Courier New', monospace;
-    font-size: 14px !important;
-    color: #38bdf8 !important;
-}
-
-
-/* =====================================================
-   SLIDE — KANAN (VISUAL)
-===================================================== */
-.slide-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.visual-box {
-    width: 100%;
-    max-width: 360px;
-    border-radius: 20px;
-    padding: 24px 20px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-}
-
-.fisika-visual {
-    background: rgba(56,189,248,0.04);
-    border: 1px solid rgba(56,189,248,0.15);
-}
-
-.materi-svg {
-    width: 100%;
-    height: auto;
-}
-
-.visual-caption {
-    font-size: 12px;
-    color: rgba(255,255,255,0.3);
-    text-align: center;
-    letter-spacing: 0.5px;
-}
-
-
-/* =====================================================
-   MATERI RESPONSIVE — TABLET (≤ 900px)
-===================================================== */
-@media (max-width: 900px) {
-
-    /* Tab navbar: sembunyikan pill, tampilkan hamburger */
-    .materi-tabs  { display: none; }
-    .hamburger    { display: flex; }
-
-    /* Drawer mobile untuk tab materi */
-    .materi-tabs.mobile-open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 200px;
-        background: rgba(10,20,40,0.97);
-        backdrop-filter: blur(16px);
-        border-right: 1px solid rgba(255,255,255,0.08);
-        border-bottom-right-radius: 16px;
-        padding: 16px 12px;
-        gap: 8px;
-        z-index: 9998;
-        box-shadow: 6px 0 24px rgba(0,0,0,0.4);
-    }
-
-    .materi-tabs.mobile-open .tab-btn {
-        border-radius: 10px;
-        text-align: left;
-        padding: 10px 16px;
-        font-size: 15px;
-    }
-
-    /* Slide layout: stack vertikal */
-    .slide {
-        padding: 90px 24px 40px;
-    }
-
-    .slide-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    /* Visual di bawah teks */
-    .slide-visual { order: 2; }
-    .slide-text   { order: 1; }
-
-    .slide-title { font-size: 32px; }
-
-    .visual-box { max-width: 100%; }
-}
-
-
-/* =====================================================
-   MATERI RESPONSIVE — MOBILE (≤ 480px)
-===================================================== */
-@media (max-width: 480px) {
-
-    .slide { padding: 80px 16px 32px; }
-
-    .slide-title { font-size: 26px; }
-
-    .rumus-utama { font-size: 22px; }
-
-    .subtab { font-size: 12px; padding: 5px 11px; }
-
-    .visual-box { padding: 16px 12px; }
-}
-
-/* =====================================================
-   QUIZ MAIN PAGE
-   body.quiz-main-page
-===================================================== */
-
-body.quiz-main-page {
-    display: block;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* Navbar selalu solid */
-body.quiz-main-page .navbar {
-    background: rgba(10, 20, 40, 0.92) !important;
-    backdrop-filter: blur(14px) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-}
-
-/* Warna crumb quiz */
-.quiz-crumb { color: #facc15; font-weight: 800; }
-
-/* ================================
-   QUIZ PAGE MAIN — center layout
-================================ */
-.quiz-page-main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 90px 40px 60px;
-    gap: 40px;
-    position: relative;
-}
-
-/* ================================
-   DEKORASI SPARK
-================================ */
-.quiz-page-sparks {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.qspark {
-    position: absolute;
-    opacity: 0.1;
-    animation: floatSpark 5s ease-in-out infinite;
-    font-size: 22px;
-}
-
-.qs1 { top: 12%; left: 6%;   animation-delay: 0s;   }
-.qs2 { top: 22%; right: 8%;  animation-delay: 1.3s; font-size: 26px; }
-.qs3 { top: 68%; left: 10%;  animation-delay: 2.5s; font-size: 18px; }
-.qs4 { top: 55%; right: 6%;  animation-delay: 0.7s; font-size: 30px; }
-.qs5 { top: 38%; left: 4%;   animation-delay: 3.2s; font-size: 16px; }
-.qs6 { top: 80%; right: 12%; animation-delay: 1.8s; font-size: 24px; }
-
-/* ================================
-   QUIZ TRIGGER
-================================ */
-.quiz-trigger {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-/* Ring dekorasi kuning */
-.quiz-ring {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0.12;
-    animation: spinRing 16s linear infinite;
-}
-
-.qr-a {
-    width: 200px; height: 200px;
-    border: 1.5px solid #facc15;
-    animation-duration: 14s;
-}
-
-.qr-b {
-    width: 280px; height: 280px;
-    border: 1px solid rgba(250,204,21,0.5);
-    animation-duration: 22s;
-    animation-direction: reverse;
-}
-
-.quiz-trigger-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 36px 56px;
-    border-radius: 24px;
-    position: relative;
-    z-index: 1;
-    transition: background 0.3s ease;
-}
-
-.quiz-trigger:hover .quiz-trigger-inner {
-    background: rgba(250,204,21,0.04);
-}
-
-.quiz-trigger-emoji {
-    font-size: 52px;
-    margin-bottom: 2px;
-}
-
-.quiz-trigger-title {
-    font-size: 72px;
-    font-weight: 900;
-    letter-spacing: 8px;
-    color: #fff;
-    line-height: 1;
-    text-shadow: 0 0 60px rgba(250,204,21,0.2);
-}
-
-.quiz-trigger-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 2px;
-}
-
-/* Statistik kecil */
-.quiz-trigger-stats {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    margin-top: 6px;
-}
-
-.qdot { color: rgba(255,255,255,0.2); }
-
-/* ================================
-   QUIZ CARDS — inherit dari mapel-cards
-   Override untuk warna quiz
-================================ */
-.quiz-cards {
-    max-width: 700px;
-}
-
-/* Fisika card di quiz — biru */
-.quiz-fisika-card {
-    background: rgba(56,189,248,0.07);
-    border: 1px solid rgba(56,189,248,0.25);
-    box-shadow: 0 8px 28px rgba(56,189,248,0.06);
-}
-
-.quiz-fisika-card:hover { box-shadow: 0 14px 40px rgba(56,189,248,0.18); }
-
-/* Kimia card di quiz — pink */
-.quiz-kimia-card {
-    background: rgba(244,114,182,0.07);
-    border: 1px solid rgba(244,114,182,0.25);
-    box-shadow: 0 8px 28px rgba(244,114,182,0.06);
-}
-
-.quiz-kimia-card:hover { box-shadow: 0 14px 40px rgba(244,114,182,0.18); }
-
-/* Meta tags (GLB, GLBB, dll) */
-.quiz-card-meta {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 4px;
-}
-
-.qmeta-tag {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 9px;
-    border-radius: 10px;
-    background: rgba(56,189,248,0.12);
-    border: 1px solid rgba(56,189,248,0.25);
-    color: #38bdf8;
-    letter-spacing: 0.3px;
-}
-
-.qmeta-tag.kimia-tag {
-    background: rgba(244,114,182,0.12);
-    border-color: rgba(244,114,182,0.25);
-    color: #f472b6;
-}
-
-/* Info bawah (soal & waktu) */
-.quiz-card-info {
-    display: flex;
-    gap: 14px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    margin-top: 4px;
-}
-
-/* CTA kimia */
-.kimia-cta { color: #f472b6 !important; }
-
-
-/* =====================================================
-   QUIZ PAGE RESPONSIVE — TABLET (≤ 768px)
-===================================================== */
-@media (max-width: 768px) {
-
-    .quiz-trigger-title { font-size: 52px; letter-spacing: 5px; }
-
-    .quiz-cards { max-width: 520px; }
-
-    .quiz-cards.open { max-height: 640px; }
-}
-
-
-/* =====================================================
-   QUIZ PAGE RESPONSIVE — MOBILE (≤ 480px)
-===================================================== */
-@media (max-width: 480px) {
-
-    .quiz-page-main { padding: 85px 16px 40px; gap: 28px; }
-
-    .quiz-trigger-inner { padding: 24px 28px; }
-
-    .quiz-trigger-emoji { font-size: 38px; }
-
-    .quiz-trigger-title { font-size: 40px; letter-spacing: 4px; }
-
-    .quiz-trigger-stats { font-size: 12px; gap: 8px; flex-wrap: wrap; justify-content: center; }
-
-    .quiz-cards {
-        grid-template-columns: 1fr;
-        max-width: 360px;
-    }
-
-    .quiz-cards.open { max-height: 800px; }
-
-    .qr-a { width: 150px; height: 150px; }
-    .qr-b { width: 210px; height: 210px; }
+    .deskripsi-header .title { font-size: 40px; }
 }

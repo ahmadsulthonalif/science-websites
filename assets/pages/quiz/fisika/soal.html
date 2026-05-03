@@ -1,44 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
-    <title>Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal – Quiz Fisika</title>
 
     <link rel="stylesheet" href="../../../css/global.css">
+    <link rel="stylesheet" href="../../../css/dashboard.css">
     <link rel="stylesheet" href="../../../css/quiz.css">
 
-    <style>
-        
-    </style>
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="main-page soal-page">
 
-<div class="grid-bg"></div>
-<div class="formula-random"></div>
+    <div class="grid-bg"></div>
+    <div class="formula-random"></div>
 
-<div class="container">
-
-    <div class="card quiz-box">
-
-        <h2 id="pertanyaan"></h2>
-
-        <div id="opsi"></div>
-
-        <!-- PENJELASAN -->
-        <div id="penjelasanBox" style="display:none;"></div>
-
-        <div style="display:flex; gap:10px;">
-            <button id="nextBtn" class="tombol">Next</button>
+    <!-- NAVBAR soal: hanya indikator di tengah -->
+    <nav class="navbar scrolled soal-navbar">
+        <div class="nav-left">
+            <!-- Tidak ada back saat quiz aktif -->
+            <span class="soal-nav-label">Quiz Fisika</span>
         </div>
 
-    </div>
+        <!-- Indikator soal ke-n / total -->
+        <div class="nav-center-empty">
+            <div class="soal-indikator-wrap">
+                <span id="indikator" class="soal-indikator">1 / 5</span>
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
 
-</div>
+        <!-- Timer -->
+        <div class="nav-right">
+            <div class="timer-box">
+                <i class="fa-regular fa-clock"></i>
+                <span id="timerEl" class="timer-text">02:00</span>
+            </div>
+        </div>
+    </nav>
 
-<script src="../../../js/quiz_fisika.js"></script>
-<script src="../../../js/global.js"></script>
+
+    <!-- MAIN SOAL -->
+    <main class="soal-main">
+
+        <div class="soal-card">
+
+            <!-- Badge topik -->
+            <div class="soal-top">
+                <span id="topikBadge" class="topik-badge">GLB</span>
+            </div>
+
+            <!-- Pertanyaan -->
+            <h2 id="pertanyaan" class="soal-pertanyaan"></h2>
+
+            <!-- Pilihan jawaban -->
+            <div id="opsi" class="opsi-grid"></div>
+
+            <!-- Penjelasan (review mode) -->
+            <div id="penjelasanBox" class="penjelasan-box" style="display:none;"></div>
+
+            <!-- Tombol navigasi -->
+            <div class="soal-actions">
+                <button id="backBtn" class="soal-btn-back" style="display:none;">
+                    <i class="fa-solid fa-arrow-left"></i> Sebelumnya
+                </button>
+                <button id="nextBtn" class="soal-btn-next">
+                    Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Dekorasi tipis pojok -->
+        <div class="soal-deco-tl"></div>
+        <div class="soal-deco-br"></div>
+
+    </main>
+
+    <script src="../../../js/global.js"></script>
+    <script src="../../../js/quiz_fisika.js"></script>
 
 </body>
 </html>

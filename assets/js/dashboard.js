@@ -68,18 +68,6 @@ if (tentangKamiBtn) {
 
 
 /* =====================================================
-   LOGOUT
-===================================================== */
-const logoutBtn = document.getElementById("logoutBtn");
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("username");
-        window.location.href = "../../../index.html";
-    });
-}
-
-
-/* =====================================================
    SMOOTH SCROLL (anchor #)
 ===================================================== */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

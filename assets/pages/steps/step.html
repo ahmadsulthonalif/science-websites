@@ -2,124 +2,189 @@
 <html lang="id">
 
 <head>
-    <!-- ================================
-         META DASAR
-    ================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Judul halaman -->
-    <title>Steps</title>
-
-
-    <!-- ================================
-         STYLESHEET
-    ================================= -->
+    <title>Langkah Belajar – FormulaCMD</title>
 
     <!-- GLOBAL CSS -->
     <link rel="stylesheet" href="../../css/global.css">
 
-    <!-- CSS DASHBOARD -->
+    <!-- DASHBOARD CSS (navbar + step styles) -->
     <link rel="stylesheet" href="../../css/dashboard.css">
 
-    <!-- ================================
-         ICON (FONT AWESOME)
-    ================================= -->
+    <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
+<body class="main-page step-page">
 
-<!-- =====================================================
-     BODY
-     .main-page → untuk styling khusus dashboard
-===================================================== -->
-
-<body class="step-page">
-    <!-- grid -->
     <div class="grid-bg"></div>
-    <!-- FORMULA RANDOM -->
     <div class="formula-random"></div>
 
     <!-- =====================================================
-         NAVBAR
-         - Navigasi utama
-         - Berisi logo, menu, dan profile
+         NAVBAR — sama dgn dashboard
+         Kiri: panah back | Tengah: kosong | Kanan: profile
     ====================================================== -->
-    <nav class="navbar">
+    <nav class="navbar scrolled" id="navbar">
+
+        <!-- LEFT: tombol kembali -->
         <div class="nav-left">
-            <a href="../main/dashboard.html" class="logo"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="../main/dashboard.html" class="logo back-btn" aria-label="Kembali ke Dashboard">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
-        <!-- RIGHT: PROFILE -->
+        <!-- CENTER: kosong (spacer) -->
+        <div class="nav-center-empty">
+            <span class="step-page-title">Langkah Belajar</span>
+        </div>
+
+        <!-- RIGHT: Profile -->
         <div class="nav-right">
-
-            <!-- Profile button -->
             <div class="profile" id="profileBtn">
-
-                <!-- Initial username (diisi dari JS) -->
                 <span id="profileInitial">A</span>
 
-                <!-- Dropdown profile -->
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" id="logoutBtn">Logout</a>
+                    <a href="#" id="logoutBtn" onclick="logOut()">Logout</a>
                 </div>
-
             </div>
         </div>
 
     </nav>
 
-    <section class="section langkah-wrapper">
 
-        <div class="card step-card">
-            <h2>Langkah 1</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur, necessitatibus eum voluptatem commodi unde dolorum ratione aut sapiente qui fugit delectus ullam, veniam, deleniti illum nobis voluptatum similique optio!</p>
+    <!-- =====================================================
+         MAIN CONTENT — 3 kolom grid
+    ====================================================== -->
+    <main class="step-main">
+
+        <!-- Header -->
+        <div class="step-header">
+            <h1 class="step-main-title">Langkah Belajar</h1>
+            <p class="step-main-sub">Ikuti urutan ini agar materi lebih mudah dipahami dan tersusun rapi.</p>
         </div>
 
-        <div class="card step-card">
-            <h2>Langkah 2</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel quas modi adipisci dignissimos vero reiciendis deleniti accusantium perspiciatis ratione, fugit quisquam beatae quia quaerat repellat unde incidunt harum culpa officia?</p>
+        <!-- Grid 3 kolom -->
+        <div class="steps-grid">
+
+            <!-- Langkah 1 -->
+            <div class="step-card-new">
+                <div class="step-num">01</div>
+                <div class="step-icon">🎯</div>
+                <h3>Kenali Konsep Dasar</h3>
+                <p>Mulai dengan memahami definisi dan konsep dasar setiap materi — GLB, GLBB, Gaya, Mol, dan
+                    Stoikiometri — sebelum masuk ke rumus.</p>
+                <div class="step-tag">Fondasi</div>
+            </div>
+
+            <!-- Langkah 2 -->
+            <div class="step-card-new">
+                <div class="step-num">02</div>
+                <div class="step-icon">📖</div>
+                <h3>Pelajari Materi Fisika</h3>
+                <p>Masuk ke bagian Fisika dan pelajari Gerak Lurus Beraturan (GLB), Gerak Lurus Berubah Beraturan
+                    (GLBB), serta konsep Gaya dan Hukum Newton.</p>
+                <div class="step-tag fisika-step">Fisika</div>
+            </div>
+
+            <!-- Langkah 3 -->
+            <div class="step-card-new">
+                <div class="step-num">03</div>
+                <div class="step-icon">🧪</div>
+                <h3>Pelajari Materi Kimia</h3>
+                <p>Lanjutkan ke bagian Kimia dan pahami Konsep Mol serta Stoikiometri — cara menghitung zat dalam reaksi
+                    kimia secara sistematis.</p>
+                <div class="step-tag kimia-step">Kimia</div>
+            </div>
+
+            <!-- Langkah 4 -->
+            <div class="step-card-new">
+                <div class="step-num">04</div>
+                <div class="step-icon">📐</div>
+                <h3>Pahami Rumus & Satuan</h3>
+                <p>Hafalkan dan pahami rumus-rumus kunci beserta satuan yang digunakan. Contoh: v = s/t untuk GLB, n =
+                    m/Mr untuk Mol.</p>
+                <div class="step-tag">Rumus</div>
+            </div>
+
+            <!-- Langkah 5 -->
+            <div class="step-card-new">
+                <div class="step-num">05</div>
+                <div class="step-icon">✏️</div>
+                <h3>Latihan Soal Mandiri</h3>
+                <p>Kerjakan contoh soal dari masing-masing materi. Mulai dari soal sederhana lalu tingkatkan
+                    kesulitannya secara bertahap.</p>
+                <div class="step-tag">Latihan</div>
+            </div>
+
+            <!-- Langkah 6 -->
+            <div class="step-card-new">
+                <div class="step-num">06</div>
+                <div class="step-icon">🔁</div>
+                <h3>Ulangi yang Sulit</h3>
+                <p>Jika ada bagian yang belum dimengerti, ulangi materi tersebut. Jangan lanjut ke langkah berikutnya
+                    sebelum paham betul.</p>
+                <div class="step-tag">Review</div>
+            </div>
+
+            <!-- Langkah 7 -->
+            <div class="step-card-new">
+                <div class="step-num">07</div>
+                <div class="step-icon">🔗</div>
+                <h3>Hubungkan Antar Materi</h3>
+                <p>Cari keterkaitan antara Fisika dan Kimia — misalnya satuan energi, konsep partikel, hingga penerapan
+                    Hukum Kekekalan Massa.</p>
+                <div class="step-tag">Koneksi</div>
+            </div>
+
+            <!-- Langkah 8 -->
+            <div class="step-card-new">
+                <div class="step-num">08</div>
+                <div class="step-icon">⚡</div>
+                <h3>Ikuti Quiz</h3>
+                <p>Uji semua pemahaman yang sudah kamu bangun lewat Quiz interaktif. Lihat skor dan evaluasi mana bagian
+                    yang masih perlu diperkuat.</p>
+                <div class="step-tag">Evaluasi</div>
+            </div>
+
+            <!-- Langkah 9 -->
+            <div class="step-card-new">
+                <div class="step-num">09</div>
+                <div class="step-icon">🏆</div>
+                <h3>Kuasai & Terapkan</h3>
+                <p>Setelah semua langkah selesai, kamu siap mengaplikasikan ilmu Fisika dan Kimia dalam soal ujian
+                    maupun kehidupan sehari-hari.</p>
+                <div class="step-tag">Selesai</div>
+            </div>
+
         </div>
+        <!-- /steps-grid -->
 
-        <div class="card step-card">
-            <h2>Langkah 3</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, animi, rem ab ut corporis accusantium maiores non sunt praesentium modi, placeat quod aut nemo quas. Ab placeat tempore laudantium sint.</p>
-        </div>
+    </main>
 
-        <div class="card step-card">
-            <h2>Langkah 4</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo impedit at ut laborum ipsam quia nulla in nobis rerum eaque, quos id saepe eligendi possimus rem ducimus iusto tempora.</p>
-        </div>
 
-                <div class="card step-card">
-            <h2>Langkah 4</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo impedit at ut laborum ipsam quia nulla in nobis rerum eaque, quos id saepe eligendi possimus rem ducimus iusto tempora.</p>
-        </div>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Alp dan Aldi EduLearn. All rights reserved.</p>
+    </footer>
 
-                <div class="card step-card">
-            <h2>Langkah 4</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo impedit at ut laborum ipsam quia nulla in nobis rerum eaque, quos id saepe eligendi possimus rem ducimus iusto tempora.</p>
-        </div>
 
-                <div class="card step-card">
-            <h2>Langkah 4</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo impedit at ut laborum ipsam quia nulla in nobis rerum eaque, quos id saepe eligendi possimus rem ducimus iusto tempora.</p>
-        </div>
-
-                <div class="card step-card">
-            <h2>Langkah 4</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quo impedit at ut laborum ipsam quia nulla in nobis rerum eaque, quos id saepe eligendi possimus rem ducimus iusto tempora.</p>
-        </div>
-
-    </section>
-
-    <!-- GLOBAL JS -->
+    <!-- JS -->
     <script src="../../js/global.js"></script>
-
-    <!-- DASHBOARD JS -->
     <script src="../../js/dashboard.js"></script>
+
+    <script>
+        function logOut() {
+            window.location.href = "../../../index.html";
+        }
+    </script>
 </body>
 
 </html>

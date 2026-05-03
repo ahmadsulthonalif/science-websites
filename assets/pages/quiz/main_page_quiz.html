@@ -1,97 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIZ</title>
+    <title>Quiz – FormulaCMD</title>
 
-    <!-- GLOBAL CSS -->
     <link rel="stylesheet" href="../../css/global.css">
-
-    <!-- DASHBOARD CSS -->
     <link rel="stylesheet" href="../../css/dashboard.css">
 
-    <!-- QUIZ CSS -->
-    <link rel="stylesheet" href="../../css/quiz.css">
-
-
-    <!-- LINK ICON AWESOME -->
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body class="main-page-fisika">
-    <!-- GRID BACKGROUND -->
+<body class="main-page quiz-main-page">
+
     <div class="grid-bg"></div>
-    <!-- FORMULA RANDOM -->
     <div class="formula-random"></div>
 
-
-    <!-- ================================
+    <!-- =====================================================
          NAVBAR
-    ================================= -->
-    <nav class="navbar">
+         Kiri: panah back ke dashboard | Tengah: label | Kanan: profile
+    ====================================================== -->
+    <nav class="navbar scrolled" id="navbar">
+
         <div class="nav-left">
-            <a href="#" class="logo"></a>
+            <a href="../main/dashboard.html" class="logo back-btn" aria-label="Kembali ke Dashboard">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
-        <div class="nav-center">
-            <a href="../main/dashboard.html">Dashboard</a>
+        <div class="nav-center-empty">
+            <div class="nav-breadcrumb">
+                <span class="breadcrumb-current quiz-crumb">⚡ Quiz</span>
+            </div>
         </div>
 
         <div class="nav-right">
             <div class="profile" id="profileBtn">
                 <span id="profileInitial">A</span>
-
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="#" id="logoutBtn" onclick="logOut()">Logout</a>
                 </div>
             </div>
         </div>
+
     </nav>
 
 
-    <!-- SECTION FISIKA -->
-    <section class="section">
-        <div class="card">
-            <h2 class="h2">FISIKA</h2>
-            <p class="p">loremdjifjdasjhhdsigdufha</p>
-            <a href="../quiz/fisika/quiz_fisika.html">
-                <button class="tombol">
-                    START
-                </button>
-            </a>
-        </div>
-    </section>
+    <!-- =====================================================
+         MAIN — Trigger QUIZ + dropdown 2 card
+    ====================================================== -->
+    <main class="quiz-page-main">
 
-    <!-- SECTION KIMIA -->
-    <section class="section">
-        <div class="card">
-            <h2 class="h2">KIMIA</h2>
-            <p class="p">loremdjifjdasjhhdsigdufha</p>
-            <a href="../quiz/kimia/quiz_kimia.html">
-                <button class="tombol">
-                    START
-                </button>
-            </a>
+        <!-- Dekorasi spark melayang -->
+        <div class="quiz-page-sparks">
+            <span class="qspark qs1">⚡</span>
+            <span class="qspark qs2">🎯</span>
+            <span class="qspark qs3">⚡</span>
+            <span class="qspark qs4">🏆</span>
+            <span class="qspark qs5">⚡</span>
+            <span class="qspark qs6">❓</span>
         </div>
-    </section>
 
-    <!-- JS GLOBAL -->
+        <!-- Trigger: tulisan QUIZ, klik → dropdown -->
+        <div class="quiz-trigger" id="quizTrigger">
+
+            <!-- Ring dekorasi -->
+            <div class="quiz-ring qr-a"></div>
+            <div class="quiz-ring qr-b"></div>
+
+            <div class="quiz-trigger-inner">
+                <div class="quiz-trigger-emoji">⚡</div>
+                <h1 class="quiz-trigger-title">QUIZ</h1>
+                <p class="quiz-trigger-sub">Pilih mata pelajaran</p>
+                <div class="quiz-trigger-stats">
+                    <span>📋 20+ Soal</span>
+                    <span class="qdot">·</span>
+                    <span>⏱ Timed</span>
+                    <span class="qdot">·</span>
+                    <span>🏆 Skor</span>
+                </div>
+                <div class="mapel-arrow" id="quizArrow">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown: 2 card Fisika & Kimia -->
+        <div class="mapel-cards quiz-cards" id="quizCards">
+
+            <!-- Kiri: Quiz Fisika -->
+            <a href="../quiz/fisika/start.html" class="mapel-card quiz-fisika-card">
+                <div class="mc-icon">🔭</div>
+                <h2>Quiz Fisika</h2>
+                <div class="quiz-card-meta">
+                    <span class="qmeta-tag">GLB</span>
+                    <span class="qmeta-tag">GLBB</span>
+                    <span class="qmeta-tag">Gaya</span>
+                </div>
+                <p>Uji pemahamanmu tentang gerak lurus dan hukum-hukum Newton lewat soal pilihan ganda interaktif.</p>
+                <div class="quiz-card-info">
+                    <span>📋 5 Soal</span>
+                    <span>⏱ 10 Menit</span>
+                </div>
+                <span class="mc-cta">Mulai Quiz →</span>
+            </a>
+
+            <!-- Kanan: Quiz Kimia -->
+            <a href="../quiz/kimia/start.html" class="mapel-card quiz-kimia-card">
+                <div class="mc-icon">🧪</div>
+                <h2>Quiz Kimia</h2>
+                <div class="quiz-card-meta">
+                    <span class="qmeta-tag kimia-tag">Mol</span>
+                    <span class="qmeta-tag kimia-tag">Stoikiometri</span>
+                </div>
+                <p>Uji pemahamanmu tentang konsep mol dan perhitungan stoikiometri reaksi kimia secara interaktif.</p>
+                <div class="quiz-card-info">
+                    <span>📋 5 Soal</span>
+                    <span>⏱ 10 Menit</span>
+                </div>
+                <span class="mc-cta kimia-cta">Mulai Quiz →</span>
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- JS -->
     <script src="../../js/global.js"></script>
-
-    <!-- JS DASHBOARD -->
     <script src="../../js/dashboard.js"></script>
-
-    <!-- FUNCTION LOGOUT -->
     <script>
-        function logout() {
-            window.location.href = "../../../../index.html";
-            localStorage.clear();
+        const quizTrigger = document.getElementById("quizTrigger");
+        const quizCards   = document.getElementById("quizCards");
+        const quizArrow   = document.getElementById("quizArrow");
+
+        if (quizTrigger) {
+            quizTrigger.addEventListener("click", () => {
+                quizCards.classList.toggle("open");
+                quizArrow.classList.toggle("open");
+            });
+        }
+
+        function logOut() {
+            window.location.href = "../../../index.html";
         }
     </script>
-</body>
 
+</body>
 </html>

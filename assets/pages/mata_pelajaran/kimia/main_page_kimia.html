@@ -1,81 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapel Kimia</title>
+    <title>Kimia – FormulaCMD</title>
 
-    <!-- GLOBAL CSS -->
     <link rel="stylesheet" href="../../../css/global.css">
-
-    <!-- DASHBOARD CSS -->
     <link rel="stylesheet" href="../../../css/dashboard.css">
 
-    <!-- MATA PELAJARAN CSS -->
-    <link rel="stylesheet" href="../../../css/mata_pelajaran.css">
-
-    <!-- LINK ICON AWESOME -->
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body class="main-page-fisika">
-    <!-- GRID BACKGROUND -->
+<body class="main-page mapel-page mapel-kimia">
+
     <div class="grid-bg"></div>
-    <!-- FORMULA RANDOM -->
     <div class="formula-random"></div>
 
-
-    <!-- ================================
-         NAVBAR
-    ================================= -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-left">
-            <a href="../../main/dashboard.html" class="logo"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="../../main/dashboard.html" class="logo back-btn" aria-label="Kembali">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
-
+        <div class="nav-center-empty">
+            <div class="nav-breadcrumb">
+                <span class="breadcrumb-parent">Mata Pelajaran</span>
+                <i class="fa-solid fa-chevron-right breadcrumb-sep"></i>
+                <span class="breadcrumb-current kimia-crumb">Kimia</span>
+            </div>
+        </div>
         <div class="nav-right">
             <div class="profile" id="profileBtn">
                 <span id="profileInitial">A</span>
-
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="#" id="logoutBtn">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="menu-wrapper">
+    <main class="mapel-main">
 
-        <h1 class="judul card">KIMIA</h1>
+        <!-- Ring dekorasi pink -->
+        <div class="mapel-deco-ring ring-a"></div>
+        <div class="mapel-deco-ring ring-b"></div>
 
-        <div class="menu">
-            <a href="../kimia/materi/materi.html" class="menu-card">
-                <h2>MATERI</h2>
-            </a>
-
-            <a href="../kimia/calculator/calculator.html" class="menu-card">
-                <h2>CALCULATOR</h2>
-            </a>
+        <!-- Trigger: klik → 2 card muncul -->
+        <div class="mapel-trigger" id="mapelTrigger">
+            <div class="mapel-trigger-inner">
+                <div class="mapel-emoji">🧪</div>
+                <h1 class="mapel-title kimia-title">KIMIA</h1>
+                <p class="mapel-hint">Klik untuk mulai</p>
+                <div class="mapel-arrow" id="mapelArrow">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
         </div>
 
-    </section>
+        <!-- 2 card dropdown -->
+        <div class="mapel-cards" id="mapelCards">
 
-    <!-- JS GLOBAL -->
+            <!-- Materi -->
+            <a href="../kimia/materi/materi.html" class="mapel-card materi-card">
+                <div class="mc-icon">📖</div>
+                <h2>Materi</h2>
+                <p>Pelajari Konsep Mol dan Stoikiometri Reaksi secara lengkap dengan rumus dan contoh soal.</p>
+                <span class="mc-cta">Buka Materi →</span>
+            </a>
+
+            <!-- Kalkulator -->
+            <a href="../kimia/calculator/calculator.html" class="mapel-card kalkulator-card">
+                <div class="mc-icon">🧮</div>
+                <h2>Kalkulator</h2>
+                <p>Hitung mol, massa, volume gas, dan molaritas secara interaktif dan mudah.</p>
+                <span class="mc-cta">Buka Kalkulator →</span>
+            </a>
+
+        </div>
+
+    </main>
+
     <script src="../../../js/global.js"></script>
-
-    <!-- JS DASHBOARD -->
     <script src="../../../js/dashboard.js"></script>
-
-    <!-- FUNCTION LOGOUT -->
     <script>
-        function logout() {
-            window.location.href = "../../../../index.html";
-            localStorage.clear();
+        const mapelTrigger = document.getElementById("mapelTrigger");
+        const mapelCards   = document.getElementById("mapelCards");
+        const mapelArrow   = document.getElementById("mapelArrow");
+
+        if (mapelTrigger) {
+            mapelTrigger.addEventListener("click", () => {
+                mapelCards.classList.toggle("open");
+                mapelArrow.classList.toggle("open");
+            });
         }
     </script>
-</body>
 
+</body>
 </html>

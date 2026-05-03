@@ -1322,3 +1322,654 @@ body.mapel-kimia .materi-card:hover { box-shadow: 0 14px 40px rgba(244,114,182,0
     .breadcrumb-parent { display: none; }
     .breadcrumb-sep    { display: none; }
 }
+
+
+/* =====================================================
+   MATERI FISIKA PAGE
+   body.materi-fisika-page
+===================================================== */
+
+body.materi-fisika-page {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navbar selalu solid */
+body.materi-fisika-page .navbar {
+    background: rgba(10, 20, 40, 0.95) !important;
+    backdrop-filter: blur(14px) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* ================================
+   NAVBAR TABS (tengah)
+================================ */
+.materi-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+.tab-btn.active {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+
+/* =====================================================
+   SLIDE WRAPPER & SLIDE
+===================================================== */
+.slide-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 60px 40px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.slide.active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Layout dalam slide: kiri teks, kanan visual */
+.slide-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    width: 100%;
+}
+
+
+/* =====================================================
+   SLIDE — KIRI (TEKS)
+===================================================== */
+.slide-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Badge */
+.slide-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: fit-content;
+}
+
+.fisika-badge {
+    background: rgba(56,189,248,0.1);
+    border: 1px solid rgba(56,189,248,0.3);
+    color: #38bdf8;
+}
+
+/* Judul besar slide */
+.slide-title {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* ================================
+   SUBTABS (Pengertian/Rumus/dst)
+================================ */
+.subtabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.subtab {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.subtab:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+
+.subtab.active {
+    background: rgba(56,189,248,0.12);
+    border-color: rgba(56,189,248,0.4);
+    color: #38bdf8;
+}
+
+/* ================================
+   SUBCONTENT
+================================ */
+.subcontent {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeSubContent 0.3s ease;
+}
+
+.subcontent.active { display: flex; }
+
+@keyframes fadeSubContent {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.subcontent > p {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.75;
+}
+
+/* List */
+.materi-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+}
+
+.materi-list li {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+}
+
+.materi-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+/* Rumus box */
+.rumus-box {
+    background: rgba(56,189,248,0.06);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rumus-utama {
+    font-size: 28px;
+    font-weight: 900;
+    color: #38bdf8;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.rumus-turunan {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.rumus-turunan span {
+    font-size: 16px;
+    color: rgba(56,189,248,0.7);
+    font-family: 'Courier New', monospace;
+}
+
+/* Keterangan variabel */
+.rumus-keterangan {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rumus-keterangan p {
+    font-size: 13px !important;
+    color: rgba(255,255,255,0.45) !important;
+}
+
+.var {
+    color: #38bdf8;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+}
+
+/* Soal & Jawaban */
+.soal-box, .jawaban-box {
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.soal-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+}
+
+.jawaban-box {
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.18);
+}
+
+.soal-label, .jawaban-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+}
+
+.soal-box p, .jawaban-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+}
+
+.rumus-inline {
+    font-family: 'Courier New', monospace;
+    font-size: 14px !important;
+    color: #38bdf8 !important;
+}
+
+
+/* =====================================================
+   SLIDE — KANAN (VISUAL)
+===================================================== */
+.slide-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual-box {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 20px;
+    padding: 24px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.fisika-visual {
+    background: rgba(56,189,248,0.04);
+    border: 1px solid rgba(56,189,248,0.15);
+}
+
+.materi-svg {
+    width: 100%;
+    height: auto;
+}
+
+.visual-caption {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+
+/* =====================================================
+   MATERI RESPONSIVE — TABLET (≤ 900px)
+===================================================== */
+@media (max-width: 900px) {
+
+    /* Tab navbar: sembunyikan pill, tampilkan hamburger */
+    .materi-tabs  { display: none; }
+    .hamburger    { display: flex; }
+
+    /* Drawer mobile untuk tab materi */
+    .materi-tabs.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 200px;
+        background: rgba(10,20,40,0.97);
+        backdrop-filter: blur(16px);
+        border-right: 1px solid rgba(255,255,255,0.08);
+        border-bottom-right-radius: 16px;
+        padding: 16px 12px;
+        gap: 8px;
+        z-index: 9998;
+        box-shadow: 6px 0 24px rgba(0,0,0,0.4);
+    }
+
+    .materi-tabs.mobile-open .tab-btn {
+        border-radius: 10px;
+        text-align: left;
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+
+    /* Slide layout: stack vertikal */
+    .slide {
+        padding: 90px 24px 40px;
+    }
+
+    .slide-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    /* Visual di bawah teks */
+    .slide-visual { order: 2; }
+    .slide-text   { order: 1; }
+
+    .slide-title { font-size: 32px; }
+
+    .visual-box { max-width: 100%; }
+}
+
+
+/* =====================================================
+   MATERI RESPONSIVE — MOBILE (≤ 480px)
+===================================================== */
+@media (max-width: 480px) {
+
+    .slide { padding: 80px 16px 32px; }
+
+    .slide-title { font-size: 26px; }
+
+    .rumus-utama { font-size: 22px; }
+
+    .subtab { font-size: 12px; padding: 5px 11px; }
+
+    .visual-box { padding: 16px 12px; }
+}
+
+/* =====================================================
+   QUIZ MAIN PAGE
+   body.quiz-main-page
+===================================================== */
+
+body.quiz-main-page {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navbar selalu solid */
+body.quiz-main-page .navbar {
+    background: rgba(10, 20, 40, 0.92) !important;
+    backdrop-filter: blur(14px) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* Warna crumb quiz */
+.quiz-crumb { color: #facc15; font-weight: 800; }
+
+/* ================================
+   QUIZ PAGE MAIN — center layout
+================================ */
+.quiz-page-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 40px 60px;
+    gap: 40px;
+    position: relative;
+}
+
+/* ================================
+   DEKORASI SPARK
+================================ */
+.quiz-page-sparks {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.qspark {
+    position: absolute;
+    opacity: 0.1;
+    animation: floatSpark 5s ease-in-out infinite;
+    font-size: 22px;
+}
+
+.qs1 { top: 12%; left: 6%;   animation-delay: 0s;   }
+.qs2 { top: 22%; right: 8%;  animation-delay: 1.3s; font-size: 26px; }
+.qs3 { top: 68%; left: 10%;  animation-delay: 2.5s; font-size: 18px; }
+.qs4 { top: 55%; right: 6%;  animation-delay: 0.7s; font-size: 30px; }
+.qs5 { top: 38%; left: 4%;   animation-delay: 3.2s; font-size: 16px; }
+.qs6 { top: 80%; right: 12%; animation-delay: 1.8s; font-size: 24px; }
+
+/* ================================
+   QUIZ TRIGGER
+================================ */
+.quiz-trigger {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Ring dekorasi kuning */
+.quiz-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.12;
+    animation: spinRing 16s linear infinite;
+}
+
+.qr-a {
+    width: 200px; height: 200px;
+    border: 1.5px solid #facc15;
+    animation-duration: 14s;
+}
+
+.qr-b {
+    width: 280px; height: 280px;
+    border: 1px solid rgba(250,204,21,0.5);
+    animation-duration: 22s;
+    animation-direction: reverse;
+}
+
+.quiz-trigger-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 36px 56px;
+    border-radius: 24px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.quiz-trigger:hover .quiz-trigger-inner {
+    background: rgba(250,204,21,0.04);
+}
+
+.quiz-trigger-emoji {
+    font-size: 52px;
+    margin-bottom: 2px;
+}
+
+.quiz-trigger-title {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #fff;
+    line-height: 1;
+    text-shadow: 0 0 60px rgba(250,204,21,0.2);
+}
+
+.quiz-trigger-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Statistik kecil */
+.quiz-trigger-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 6px;
+}
+
+.qdot { color: rgba(255,255,255,0.2); }
+
+/* ================================
+   QUIZ CARDS — inherit dari mapel-cards
+   Override untuk warna quiz
+================================ */
+.quiz-cards {
+    max-width: 700px;
+}
+
+/* Fisika card di quiz — biru */
+.quiz-fisika-card {
+    background: rgba(56,189,248,0.07);
+    border: 1px solid rgba(56,189,248,0.25);
+    box-shadow: 0 8px 28px rgba(56,189,248,0.06);
+}
+
+.quiz-fisika-card:hover { box-shadow: 0 14px 40px rgba(56,189,248,0.18); }
+
+/* Kimia card di quiz — pink */
+.quiz-kimia-card {
+    background: rgba(244,114,182,0.07);
+    border: 1px solid rgba(244,114,182,0.25);
+    box-shadow: 0 8px 28px rgba(244,114,182,0.06);
+}
+
+.quiz-kimia-card:hover { box-shadow: 0 14px 40px rgba(244,114,182,0.18); }
+
+/* Meta tags (GLB, GLBB, dll) */
+.quiz-card-meta {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.qmeta-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 10px;
+    background: rgba(56,189,248,0.12);
+    border: 1px solid rgba(56,189,248,0.25);
+    color: #38bdf8;
+    letter-spacing: 0.3px;
+}
+
+.qmeta-tag.kimia-tag {
+    background: rgba(244,114,182,0.12);
+    border-color: rgba(244,114,182,0.25);
+    color: #f472b6;
+}
+
+/* Info bawah (soal & waktu) */
+.quiz-card-info {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 4px;
+}
+
+/* CTA kimia */
+.kimia-cta { color: #f472b6 !important; }
+
+
+/* =====================================================
+   QUIZ PAGE RESPONSIVE — TABLET (≤ 768px)
+===================================================== */
+@media (max-width: 768px) {
+
+    .quiz-trigger-title { font-size: 52px; letter-spacing: 5px; }
+
+    .quiz-cards { max-width: 520px; }
+
+    .quiz-cards.open { max-height: 640px; }
+}
+
+
+/* =====================================================
+   QUIZ PAGE RESPONSIVE — MOBILE (≤ 480px)
+===================================================== */
+@media (max-width: 480px) {
+
+    .quiz-page-main { padding: 85px 16px 40px; gap: 28px; }
+
+    .quiz-trigger-inner { padding: 24px 28px; }
+
+    .quiz-trigger-emoji { font-size: 38px; }
+
+    .quiz-trigger-title { font-size: 40px; letter-spacing: 4px; }
+
+    .quiz-trigger-stats { font-size: 12px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
+    .quiz-cards {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+    }
+
+    .quiz-cards.open { max-height: 800px; }
+
+    .qr-a { width: 150px; height: 150px; }
+    .qr-b { width: 210px; height: 210px; }
+}

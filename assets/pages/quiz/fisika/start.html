@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Fisika – FormulaCMD</title>
+
+    <link rel="stylesheet" href="../../../css/global.css">
+    <link rel="stylesheet" href="../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../css/quiz.css">
+
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="main-page quiz-lobby-page">
+
+    <div class="grid-bg"></div>
+    <div class="formula-random"></div>
+
+    <!-- Spark dekorasi -->
+    <div class="lobby-sparks">
+        <span class="lspark ls1">⚡</span>
+        <span class="lspark ls2">🔭</span>
+        <span class="lspark ls3">⚡</span>
+        <span class="lspark ls4">📐</span>
+        <span class="lspark ls5">⚡</span>
+        <span class="lspark ls6">🏆</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar scrolled">
+        <div class="nav-left">
+            <a href="../main_page_quiz.html" class="logo back-btn" aria-label="Kembali">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
+        <div class="nav-center-empty">
+            <div class="nav-breadcrumb">
+                <span class="breadcrumb-parent">Quiz</span>
+                <i class="fa-solid fa-chevron-right breadcrumb-sep"></i>
+                <span class="breadcrumb-current fisika-crumb">Fisika</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="usernameDisplay">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN LOBBY -->
+    <main class="lobby-main">
+
+        <!-- Ring dekorasi -->
+        <div class="lobby-ring lr-a"></div>
+        <div class="lobby-ring lr-b"></div>
+
+        <div class="lobby-card">
+
+            <!-- Badge -->
+            <div class="lobby-badge">⚡ QUIZ FISIKA</div>
+
+            <!-- Judul -->
+            <h1 class="lobby-title">Siap Diuji?</h1>
+            <p class="lobby-sub">
+                Uji pemahaman Fisika kamu — GLB, GLBB, dan Gaya.<br>
+                5 soal acak dari bank soal 20 pertanyaan.
+            </p>
+
+            <!-- Info stats -->
+            <div class="lobby-stats">
+                <div class="lstat">
+                    <span class="lstat-icon">📋</span>
+                    <span class="lstat-val">5</span>
+                    <span class="lstat-label">Soal</span>
+                </div>
+                <div class="lstat-div"></div>
+                <div class="lstat">
+                    <span class="lstat-icon">⏱</span>
+                    <span class="lstat-val">2:00</span>
+                    <span class="lstat-label">/ Soal</span>
+                </div>
+                <div class="lstat-div"></div>
+                <div class="lstat">
+                    <span class="lstat-icon">🏆</span>
+                    <span class="lstat-val">100</span>
+                    <span class="lstat-label">Skor Max</span>
+                </div>
+            </div>
+
+            <!-- Topik -->
+            <div class="lobby-topik">
+                <span class="ltag">📐 GLB</span>
+                <span class="ltag">📉 GLBB</span>
+                <span class="ltag">💪 Gaya</span>
+            </div>
+
+            <!-- Tombol mulai -->
+            <button id="startBtn" class="lobby-start-btn">
+                Mulai Quiz <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+    </main>
+
+    <script src="../../../js/global.js"></script>
+    <script src="../../../js/dashboard.js"></script>
+    <script src="../../../js/quiz_fisika.js"></script>
+
+</body>
+</html>

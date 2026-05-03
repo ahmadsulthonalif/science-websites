@@ -1,0 +1,1029 @@
+/* =====================================================
+   MAPEL CSS
+   Digunakan oleh: materi fisika & materi kimia
+   Warna fisika  : #38bdf8 (biru)  → via .fisika-*
+   Warna kimia   : #f472b6 (pink)  → via .kimia-*
+===================================================== */
+
+/* =====================================================
+   BODY OVERRIDE
+===================================================== */
+body.materi-fisika-page,
+body.materi-kimia-page {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navbar selalu solid */
+body.materi-fisika-page .navbar,
+body.materi-kimia-page .navbar {
+    background: rgba(10, 20, 40, 0.95) !important;
+    backdrop-filter: blur(14px) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+
+/* =====================================================
+   NAVBAR — MATERI TAB (tengah pill)
+===================================================== */
+.materi-nav {
+    display: flex;
+    gap: 4px;
+    padding: 5px 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+}
+
+.materi-tab {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.22s ease, color 0.22s ease;
+    white-space: nowrap;
+}
+
+.materi-tab:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+}
+
+/* Fisika: tab aktif biru */
+body.materi-fisika-page .materi-tab.active {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* Kimia: tab aktif pink */
+body.materi-kimia-page .materi-tab.active {
+    background: #f472b6;
+    color: #fff;
+}
+
+
+/* =====================================================
+   SLIDE WRAPPER & SLIDE
+===================================================== */
+.materi-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.materi-slide {
+    display: none !important;
+    min-height: 100vh;
+    padding: 88px 60px 56px;
+    align-items: center;
+    justify-content: center;
+}
+
+.materi-slide.active {
+    display: flex !important;
+    animation: slideIn 0.35s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Layout dalam slide: kiri teks, kanan visual */
+.materi-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1080px;
+    width: 100%;
+}
+
+
+/* =====================================================
+   KIRI — TEKS
+===================================================== */
+.materi-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Badge atas */
+.materi-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: fit-content;
+}
+
+.fisika-badge {
+    background: rgba(56,189,248,0.1);
+    border: 1px solid rgba(56,189,248,0.3);
+    color: #38bdf8;
+}
+
+.kimia-badge {
+    background: rgba(244,114,182,0.1);
+    border: 1px solid rgba(244,114,182,0.3);
+    color: #f472b6;
+}
+
+/* Judul besar */
+.materi-judul {
+    font-size: 38px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+}
+
+
+/* =====================================================
+   SUBTAB (Pengertian / Ciri / Latihan / Penerapan)
+===================================================== */
+.subtab-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.subtab {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.subtab:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.25);
+}
+
+/* Fisika aktif */
+body.materi-fisika-page .subtab.active {
+    background: rgba(56,189,248,0.12);
+    border-color: rgba(56,189,248,0.4);
+    color: #38bdf8;
+}
+
+/* Kimia aktif */
+body.materi-kimia-page .subtab.active {
+    background: rgba(244,114,182,0.12);
+    border-color: rgba(244,114,182,0.4);
+    color: #f472b6;
+}
+
+
+/* =====================================================
+   SUBCONTENT
+===================================================== */
+.subcontent {
+    display: none !important;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeSubContent 0.28s ease;
+}
+
+.subcontent.active { display: flex !important; }
+
+@keyframes fadeSubContent {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.subcontent > p {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.75;
+}
+
+
+/* =====================================================
+   LIST
+===================================================== */
+.materi-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+}
+
+.materi-list li {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.65;
+    padding-left: 16px;
+    position: relative;
+}
+
+/* Bullet fisika biru */
+body.materi-fisika-page .materi-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+/* Bullet kimia pink */
+body.materi-kimia-page .materi-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #f472b6;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   RUMUS CARD
+===================================================== */
+.rumus-card {
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fisika-rumus {
+    background: rgba(56,189,248,0.06);
+    border: 1px solid rgba(56,189,248,0.2);
+}
+
+.kimia-rumus {
+    background: rgba(244,114,182,0.06);
+    border: 1px solid rgba(244,114,182,0.2);
+}
+
+.rumus-utama {
+    font-size: 26px;
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+body.materi-fisika-page .rumus-utama { color: #38bdf8; }
+body.materi-kimia-page  .rumus-utama { color: #f472b6; }
+
+.rumus-turunan {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rumus-turunan span {
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+body.materi-fisika-page .rumus-turunan span { color: rgba(56,189,248,0.7); }
+body.materi-kimia-page  .rumus-turunan span { color: rgba(244,114,182,0.7); }
+
+.rumus-ket p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+}
+
+.var {
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+}
+
+body.materi-fisika-page .var { color: #38bdf8; }
+body.materi-kimia-page  .var { color: #f472b6; }
+
+
+/* =====================================================
+   SOAL & JAWABAN CARD
+===================================================== */
+.soal-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.soal-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+}
+
+.soal-card > p:not(.soal-label) {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.jawaban-card {
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+body.materi-fisika-page .jawaban-card {
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.15);
+}
+
+body.materi-kimia-page .jawaban-card {
+    background: rgba(244,114,182,0.05);
+    border: 1px solid rgba(244,114,182,0.15);
+}
+
+.jawaban-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+}
+
+.jawaban-card > p:not(.jawaban-label) {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.rumus-inline {
+    font-family: 'Courier New', monospace;
+    font-size: 13px !important;
+}
+
+body.materi-fisika-page .rumus-inline { color: #38bdf8 !important; }
+body.materi-kimia-page  .rumus-inline { color: #f472b6 !important; }
+
+
+/* =====================================================
+   KANAN — VISUAL
+===================================================== */
+.materi-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual-card {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 20px;
+    padding: 22px 18px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.fisika-visual-card {
+    background: rgba(56,189,248,0.04);
+    border: 1px solid rgba(56,189,248,0.13);
+}
+
+.kimia-visual-card {
+    background: rgba(244,114,182,0.04);
+    border: 1px solid rgba(244,114,182,0.13);
+}
+
+.materi-svg {
+    width: 100%;
+    height: auto;
+}
+
+.visual-caption {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+
+/* =====================================================
+   HAMBURGER
+===================================================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* =====================================================
+   RESPONSIVE — TABLET (≤ 900px)
+===================================================== */
+@media (max-width: 900px) {
+
+    /* Sembunyikan nav pill, tampilkan hamburger */
+    .materi-nav   { display: none; }
+    .hamburger    { display: flex; }
+
+    /* Drawer mobile */
+    .materi-nav.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 200px;
+        background: rgba(10,20,40,0.97);
+        backdrop-filter: blur(16px);
+        border-right: 1px solid rgba(255,255,255,0.08);
+        border-bottom-right-radius: 16px;
+        padding: 14px 10px;
+        gap: 6px;
+        z-index: 9998;
+        box-shadow: 6px 0 24px rgba(0,0,0,0.4);
+    }
+
+    .materi-nav.mobile-open .materi-tab {
+        border-radius: 10px;
+        text-align: left;
+        padding: 11px 16px;
+        font-size: 15px;
+        width: 100%;
+    }
+
+    /* Slide: stack vertikal */
+    .materi-slide { padding: 88px 24px 48px; }
+
+    .materi-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    /* Visual di bawah teks */
+    .materi-right { order: 2; }
+    .materi-left  { order: 1; }
+
+    .materi-judul { font-size: 30px; }
+
+    .visual-card { max-width: 100%; }
+}
+
+
+/* =====================================================
+   RESPONSIVE — MOBILE (≤ 480px)
+===================================================== */
+@media (max-width: 480px) {
+
+    .materi-slide { padding: 80px 16px 36px; }
+
+    .materi-judul { font-size: 24px; }
+
+    .rumus-utama  { font-size: 20px; }
+
+    .subtab { font-size: 12px; padding: 5px 10px; }
+
+    .soal-card    { padding: 14px 14px; }
+    .jawaban-card { padding: 10px 12px; }
+
+    .visual-card  { padding: 16px 12px; }
+}
+
+
+/* =====================================================
+   CALCULATOR PAGE
+   body.calc-page — dipakai fisika & kimia kalkulator
+===================================================== */
+
+body.calc-page {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body.calc-page .navbar {
+    background: rgba(10, 20, 40, 0.95) !important;
+    backdrop-filter: blur(14px) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+
+/* =====================================================
+   LANDING — 3 tombol pilih topik
+===================================================== */
+.calc-landing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    padding: 90px 20px 60px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.calc-landing.hidden {
+    opacity: 0;
+    transform: translateY(-16px);
+    pointer-events: none;
+}
+
+.calc-landing-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+}
+
+.calc-landing-title {
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 1px;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.calc-landing-title span { color: #38bdf8; }
+
+/* Kimia: warna pink */
+body.calc-kimia-page .calc-landing-title span { color: #f472b6; }
+
+.calc-nav-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.calc-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.18);
+    border-radius: 14px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.22s ease, border-color 0.22s ease, transform 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.calc-nav-btn:hover {
+    background: rgba(56,189,248,0.12);
+    border-color: rgba(56,189,248,0.4);
+    transform: translateX(5px);
+}
+
+body.calc-kimia-page .calc-nav-btn {
+    background: rgba(244,114,182,0.05);
+    border-color: rgba(244,114,182,0.18);
+}
+body.calc-kimia-page .calc-nav-btn:hover {
+    background: rgba(244,114,182,0.12);
+    border-color: rgba(244,114,182,0.4);
+}
+
+.btn-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.btn-icon  { font-size: 22px; }
+
+.btn-info  { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+
+.btn-label { font-size: 15px; font-weight: 800; color: #fff; }
+
+.btn-sub   { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 400; }
+
+.btn-arrow {
+    font-size: 13px;
+    color: rgba(56,189,248,0.5);
+    transition: transform 0.2s;
+}
+body.calc-kimia-page .btn-arrow { color: rgba(244,114,182,0.5); }
+.calc-nav-btn:hover .btn-arrow  { transform: translateX(4px); }
+
+
+/* =====================================================
+   SECTION WRAPPER
+===================================================== */
+.calc-section-wrapper {
+    display: none;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    min-height: 100vh;
+    padding: 90px 40px 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.calc-section-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tombol kembali */
+.calc-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 30px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 18px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+.calc-back-btn:hover {
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+    transform: translateX(-3px);
+}
+
+/* Header section */
+.calc-section-header { text-align: center; }
+
+.calc-section-badge {
+    display: inline-block;
+    background: rgba(56,189,248,0.1);
+    border: 1px solid rgba(56,189,248,0.3);
+    color: #38bdf8;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+body.calc-kimia-page .calc-section-badge {
+    background: rgba(244,114,182,0.1);
+    border-color: rgba(244,114,182,0.3);
+    color: #f472b6;
+}
+
+.calc-section-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.calc-section-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+}
+
+
+/* =====================================================
+   CALCULATOR CARD
+===================================================== */
+.calc-card {
+    background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(8,0,255,0.07));
+    border: 1px solid rgba(56,189,248,0.16);
+    border-radius: 20px;
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+body.calc-kimia-page .calc-card {
+    background: linear-gradient(135deg, rgba(244,114,182,0.05), rgba(8,0,255,0.07));
+    border-color: rgba(244,114,182,0.16);
+}
+
+/* Pilih variabel */
+.rumus-pilih {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.rumus-pilih button {
+    flex: 1;
+    min-width: 70px;
+    padding: 9px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.rumus-pilih button:hover,
+.rumus-pilih button.active-var {
+    background: rgba(56,189,248,0.13);
+    border-color: rgba(56,189,248,0.4);
+    color: #38bdf8;
+}
+body.calc-kimia-page .rumus-pilih button:hover,
+body.calc-kimia-page .rumus-pilih button.active-var {
+    background: rgba(244,114,182,0.13);
+    border-color: rgba(244,114,182,0.4);
+    color: #f472b6;
+}
+
+/* GLBB eq tabs */
+.glbb-eq-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.glbb-eq-btn {
+    flex: 1;
+    min-width: 110px;
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: rgba(255,255,255,0.45);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.glbb-eq-btn:hover,
+.glbb-eq-btn.active-eq {
+    background: rgba(56,189,248,0.12);
+    border-color: rgba(56,189,248,0.35);
+    color: #38bdf8;
+}
+
+/* Variabel GLBB */
+.glbb-var-btn {
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.2s;
+}
+
+.glbb-var-btn:hover,
+.glbb-var-btn.active-var {
+    background: rgba(56,189,248,0.12);
+    border-color: rgba(56,189,248,0.35);
+    color: #38bdf8;
+}
+
+/* Rumus display */
+.rumus-display {
+    font-size: 22px;
+    font-weight: 900;
+    color: #38bdf8;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    padding: 14px 16px;
+    background: rgba(56,189,248,0.04);
+    border: 1px solid rgba(56,189,248,0.13);
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+body.calc-kimia-page .rumus-display {
+    color: #f472b6;
+    background: rgba(244,114,182,0.04);
+    border-color: rgba(244,114,182,0.13);
+}
+
+/* Input group */
+.input-group { display: flex; flex-direction: column; gap: 10px; }
+
+.calc-input-wrap { display: flex; flex-direction: column; gap: 4px; }
+
+.calc-input-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.calc-input {
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+.calc-input:focus { border-color: rgba(56,189,248,0.5); }
+body.calc-kimia-page .calc-input:focus { border-color: rgba(244,114,182,0.5); }
+.calc-input::placeholder { color: rgba(255,255,255,0.22); }
+
+/* Tombol hitung */
+.calc-hitung-btn {
+    padding: 13px;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #0f172a;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(56,189,248,0.3);
+    font-family: 'Roboto', sans-serif;
+}
+.calc-hitung-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(56,189,248,0.4);
+}
+.calc-hitung-btn:active { transform: scale(0.98); }
+
+body.calc-kimia-page .calc-hitung-btn {
+    background: linear-gradient(135deg, #f472b6, #ec4899);
+    box-shadow: 0 4px 16px rgba(244,114,182,0.3);
+}
+body.calc-kimia-page .calc-hitung-btn:hover {
+    box-shadow: 0 8px 24px rgba(244,114,182,0.4);
+}
+
+/* Error */
+.calc-error {
+    font-size: 13px;
+    color: #f87171;
+    display: none;
+}
+.calc-error.show { display: block; }
+
+/* Hasil */
+.calc-hasil {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 18px;
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.18);
+    border-radius: 12px;
+    animation: fadeSubContent 0.3s ease;
+}
+.calc-hasil.show { display: flex; }
+
+body.calc-kimia-page .calc-hasil {
+    background: rgba(244,114,182,0.05);
+    border-color: rgba(244,114,182,0.18);
+}
+
+.hasil-label  { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.35); text-transform: uppercase; }
+
+.hasil-nilai  { font-size: 30px; font-weight: 900; color: #38bdf8; font-family: 'Courier New', monospace; }
+body.calc-kimia-page .hasil-nilai { color: #f472b6; }
+
+.hasil-satuan { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+
+/* =====================================================
+   CALCULATOR RESPONSIVE — TABLET (≤ 768px)
+===================================================== */
+@media (max-width: 768px) {
+    .calc-section-wrapper { padding: 90px 24px 50px; }
+    .calc-landing-title   { font-size: 38px; }
+    .calc-card            { padding: 24px 20px; }
+    .calc-section-title   { font-size: 26px; }
+}
+
+
+/* =====================================================
+   CALCULATOR RESPONSIVE — MOBILE (≤ 480px)
+===================================================== */
+@media (max-width: 480px) {
+    .calc-landing      { padding: 85px 16px 50px; gap: 20px; }
+    .calc-landing-title { font-size: 30px; }
+    .calc-nav-btns     { max-width: 100%; }
+    .calc-nav-btn      { padding: 14px 16px; }
+    .btn-sub           { display: none; }
+    .calc-section-wrapper { padding: 85px 16px 40px; gap: 20px; }
+    .calc-section-title { font-size: 22px; }
+    .calc-card         { padding: 20px 16px; gap: 14px; }
+    .rumus-display     { font-size: 17px; min-height: 48px; }
+    .hasil-nilai       { font-size: 24px; }
+    .glbb-eq-btn       { font-size: 11px; min-width: 90px; }
+}
+
+
+/* =====================================================
+   STOIKIOMETRI — elemen khusus
+===================================================== */
+.stoi-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stoi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stoi-contoh {
+    background: rgba(244,114,182,0.04);
+    border: 1px solid rgba(244,114,182,0.15);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stoi-contoh-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(244,114,182,0.6);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.stoi-contoh p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+    .stoi-row { grid-template-columns: 1fr; }
+}

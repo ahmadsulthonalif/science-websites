@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Kimia – FormulaCMD</title>
+    <link rel="stylesheet" href="../../../css/global.css">
+    <link rel="stylesheet" href="../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../css/quiz.css">
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="main-page quiz-lobby-page kimia-lobby">
+
+    <div class="grid-bg"></div>
+    <div class="formula-random"></div>
+
+    <!-- Elemen periodik melayang (dekorasi khas kimia) -->
+    <div class="elemen-bg">
+        <div class="elemen-card ec1"><span class="ec-num">1</span><span class="ec-sym">H</span><span
+                class="ec-name">Hidrogen</span></div>
+        <div class="elemen-card ec2"><span class="ec-num">8</span><span class="ec-sym">O</span><span
+                class="ec-name">Oksigen</span></div>
+        <div class="elemen-card ec3"><span class="ec-num">6</span><span class="ec-sym">C</span><span
+                class="ec-name">Karbon</span></div>
+        <div class="elemen-card ec4"><span class="ec-num">11</span><span class="ec-sym">Na</span><span
+                class="ec-name">Natrium</span></div>
+        <div class="elemen-card ec5"><span class="ec-num">17</span><span class="ec-sym">Cl</span><span
+                class="ec-name">Klorin</span></div>
+        <div class="elemen-card ec6"><span class="ec-num">7</span><span class="ec-sym">N</span><span
+                class="ec-name">Nitrogen</span></div>
+        <div class="elemen-card ec7"><span class="ec-num">26</span><span class="ec-sym">Fe</span><span
+                class="ec-name">Besi</span></div>
+        <div class="elemen-card ec8"><span class="ec-num">79</span><span class="ec-sym">Au</span><span
+                class="ec-name">Emas</span></div>
+    </div>
+
+    <div class="lobby-sparks">
+        <span class="lspark ls1">⚗️</span>
+        <span class="lspark ls2">🧪</span>
+        <span class="lspark ls3">⚗️</span>
+        <span class="lspark ls4">🔬</span>
+        <span class="lspark ls5">⚗️</span>
+        <span class="lspark ls6">🏆</span>
+    </div>
+
+    <nav class="navbar scrolled">
+        <div class="nav-left">
+            <a href="../main_page_quiz.html" class="logo back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="nav-center-empty">
+            <div class="nav-breadcrumb">
+                <span class="breadcrumb-parent">Quiz</span>
+                <i class="fa-solid fa-chevron-right breadcrumb-sep"></i>
+                <span class="breadcrumb-current kimia-crumb">Kimia</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">A</span>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <h4 id="usernameDisplay">Username</h4>
+                    <a href="#" id="tentangKamiBtn">Tentang</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="lobby-main">
+        <div class="lobby-ring lr-a kimia-ring"></div>
+        <div class="lobby-ring lr-b kimia-ring"></div>
+
+        <div class="lobby-card kimia-card">
+            <div class="lobby-badge kimia-badge">⚗️ QUIZ KIMIA</div>
+            <h1 class="lobby-title">Siap Diuji?</h1>
+            <p class="lobby-sub">
+                Uji pemahaman Kimia kamu — Konsep Mol & Stoikiometri.<br>
+                5 soal acak dari bank soal 20 pertanyaan.
+            </p>
+
+            <div class="lobby-stats">
+                <div class="lstat"><span class="lstat-icon">📋</span><span class="lstat-val">5</span><span
+                        class="lstat-label">Soal</span></div>
+                <div class="lstat-div"></div>
+                <div class="lstat"><span class="lstat-icon">⏱</span><span class="lstat-val">2:00</span><span
+                        class="lstat-label">/ Soal</span></div>
+                <div class="lstat-div"></div>
+                <div class="lstat"><span class="lstat-icon">🏆</span><span class="lstat-val">100</span><span
+                        class="lstat-label">Skor Max</span></div>
+            </div>
+
+            <!-- Rumus kimia kecil -->
+            <div class="kimia-rumus-row">
+                <span class="krumus">n = m/Mr</span>
+                <span class="krumus">N = n × Nₐ</span>
+                <span class="krumus">V = n × 22,4</span>
+            </div>
+
+            <div class="lobby-topik">
+                <span class="ltag kimia-ltag">⚗️ Mol</span>
+                <span class="ltag kimia-ltag">🔗 Stoikiometri</span>
+            </div>
+
+            <button id="startBtn" class="lobby-start-btn kimia-start-btn">
+                    Mulai Quiz <i class="fa-solid fa-arrow-right"></i>
+                </button>
+        </div>
+    </main>
+
+    <script src="../../../js/global.js"></script>
+    <script src="../../../js/dashboard.js"></script>
+    <script src="../../../js/quiz_kimia.js"></script>
+</body>
+
+</html>

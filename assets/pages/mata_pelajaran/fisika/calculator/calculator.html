@@ -1,130 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Fisika</title>
+    <title>Kalkulator Fisika – FormulaCMD</title>
 
-    <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../../../css/global.css">
-
-    <!-- CSS DASHBOARD -->
     <link rel="stylesheet" href="../../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../../css/mapel.css">
 
-    <!-- CSS CALCULATOR -->
-    <link rel="stylesheet" href="../../../../css/calculator.css">
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
 </head>
 
-<body class="calc-page">
-    <!-- GRID BACKGROUND -->
+<body class="main-page calc-page">
+
     <div class="grid-bg"></div>
-    <!-- FORMULA RANDOM -->
     <div class="formula-random"></div>
 
-    <!-- ================================
-         NAVBAR
-    ================================= -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-left">
-            <!-- NAV MINI -->
-            <div class="calc-nav">
-                <a href="#glb">GLB</a>
-                <a href="#glbb">GLBB</a>
-                <a href="#gaya">Gaya</a>
+            <a href="../main_page_fisika.html" class="logo back-btn" aria-label="Kembali">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
+        <div class="nav-center-empty">
+            <div class="nav-breadcrumb">
+                <span class="breadcrumb-parent">Fisika</span>
+                <i class="fa-solid fa-chevron-right breadcrumb-sep"></i>
+                <span class="breadcrumb-current fisika-crumb">Kalkulator</span>
             </div>
-            <a href="#" class="logo"></a>
         </div>
-
-        <div class="nav-center">
-            <a href="../../../main/dashboard.html">Dashboard</a>
-            <a href="../../fisika/main_page_fisika.html">Fisika</a>
-        </div>
-
         <div class="nav-right">
             <div class="profile" id="profileBtn">
                 <span id="profileInitial">A</span>
-
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="#" id="logoutBtn">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
 
-    <!-- ======================
+    <!-- =====================================================
+         LANDING — 3 pilihan kalkulator
+    ====================================================== -->
+    <div class="calc-landing" id="calcLanding">
+
+        <span class="calc-landing-label">🧮 Kalkulator Fisika</span>
+
+        <h1 class="calc-landing-title">Pilih<br><span>Topik</span></h1>
+
+        <div class="calc-nav-btns">
+
+            <button class="calc-nav-btn" onclick="showCalc('glb')">
+                <div class="btn-left">
+                    <span class="btn-icon">📏</span>
+                    <div class="btn-info">
+                        <span class="btn-label">GLB</span>
+                        <span class="btn-sub">Gerak Lurus Beraturan · s = v × t</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+            <button class="calc-nav-btn" onclick="showCalc('glbb')">
+                <div class="btn-left">
+                    <span class="btn-icon">📉</span>
+                    <div class="btn-info">
+                        <span class="btn-label">GLBB</span>
+                        <span class="btn-sub">Gerak Berubah Beraturan · vₜ = v₀ + at</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+            <button class="calc-nav-btn" onclick="showCalc('gaya')">
+                <div class="btn-left">
+                    <span class="btn-icon">💪</span>
+                    <div class="btn-info">
+                        <span class="btn-label">Gaya</span>
+                        <span class="btn-sub">Hukum Newton II · F = m × a</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- =====================================================
          SECTION GLB
-    ====================== -->
-    <section id="glb" class="calc-section">
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-glb">
 
-        <h2>Gerak Lurus Beraturan (GLB)</h2>
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+
+        <div class="calc-section-header">
+            <div class="calc-section-badge">📏 GLB</div>
+            <h2 class="calc-section-title">Gerak Lurus Beraturan</h2>
+            <p class="calc-section-sub">Pilih variabel yang ingin dicari</p>
+        </div>
 
         <div class="calc-card">
 
-            <!-- PILIH VARIABLE -->
             <div class="rumus-pilih">
-                <button onclick="setGLB('s')">Cari S</button>
-                <button onclick="setGLB('v')">Cari v</button>
-                <button onclick="setGLB('t')">Cari t</button>
+                <button id="btn-glb-s" onclick="setGLB('s')">Cari s</button>
+                <button id="btn-glb-v" onclick="setGLB('v')">Cari v</button>
+                <button id="btn-glb-t" onclick="setGLB('t')">Cari t</button>
             </div>
 
-            <!-- RUMUS DINAMIS -->
-            <p id="rumus_glb" class="rumus-display">Pilih dulu variabel</p>
+            <div class="rumus-display" id="rumus_glb">Pilih variabel</div>
 
-            <!-- INPUT -->
-            <div id="input_glb"></div>
+            <div class="input-group" id="input_glb"></div>
 
-            <button onclick="hitungGLB()">Hitung</button>
+            <p class="calc-error" id="error_glb">⚠ Isi semua input terlebih dahulu.</p>
 
-            <p id="hasil_glb"></p>
+            <button class="calc-hitung-btn" onclick="hitungGLB()">Hitung</button>
+
+            <div class="calc-hasil" id="hasil_glb">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_glb">—</span>
+                <span class="hasil-satuan" id="satuan_glb"></span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SECTION GLBB
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-glbb">
+
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+
+        <div class="calc-section-header">
+            <div class="calc-section-badge">📉 GLBB</div>
+            <h2 class="calc-section-title">Gerak Lurus Berubah Beraturan</h2>
+            <p class="calc-section-sub">Pilih persamaan lalu variabel yang dicari</p>
         </div>
 
-    </section>
+        <div class="calc-card">
 
-    <!-- ======================
+            <!-- Pilih persamaan -->
+            <div class="glbb-eq-tabs">
+                <button class="glbb-eq-btn" id="eq1-btn" onclick="setGLBBEq(1)">vₜ = v₀ + at</button>
+                <button class="glbb-eq-btn" id="eq2-btn" onclick="setGLBBEq(2)">s = v₀t + ½at²</button>
+                <button class="glbb-eq-btn" id="eq3-btn" onclick="setGLBBEq(3)">vₜ² = v₀² + 2as</button>
+            </div>
+
+            <!-- Pilih variabel -->
+            <div class="rumus-pilih" id="rumus-pilih-glbb"></div>
+
+            <div class="rumus-display" id="rumus_glbb">Pilih persamaan dulu</div>
+
+            <div class="input-group" id="input_glbb"></div>
+
+            <p class="calc-error" id="error_glbb">⚠ Isi semua input terlebih dahulu.</p>
+
+            <button class="calc-hitung-btn" onclick="hitungGLBB()">Hitung</button>
+
+            <div class="calc-hasil" id="hasil_glbb">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_glbb">—</span>
+                <span class="hasil-satuan" id="satuan_glbb"></span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- =====================================================
          SECTION GAYA
-    ====================== -->
-    <section id="glb" class="calc-section">
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-gaya">
 
-        <h2>GAYA</h2>
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+
+        <div class="calc-section-header">
+            <div class="calc-section-badge">💪 Gaya</div>
+            <h2 class="calc-section-title">Hukum Newton II</h2>
+            <p class="calc-section-sub">Pilih variabel yang ingin dicari</p>
+        </div>
 
         <div class="calc-card">
 
-            <!-- PILIH VARIABLE -->
             <div class="rumus-pilih">
-                <button onclick="setGaya('f')">Cari F</button>
-                <button onclick="setGaya('m')">Cari m</button>
-                <button onclick="setGaya('a')">Cari a</button>
+                <button id="btn-gaya-f" onclick="setGaya('f')">Cari F</button>
+                <button id="btn-gaya-m" onclick="setGaya('m')">Cari m</button>
+                <button id="btn-gaya-a" onclick="setGaya('a')">Cari a</button>
             </div>
 
-            <!-- RUMUS DINAMIS -->
-            <p id="rumus_gaya" class="rumus-display">Pilih dulu variabel</p>
+            <div class="rumus-display" id="rumus_gaya">Pilih variabel</div>
 
-            <!-- INPUT -->
-            <div id="input_gaya"></div>
+            <div class="input-group" id="input_gaya"></div>
 
-            <button onclick="hitungGaya()">Hitung</button>
+            <p class="calc-error" id="error_gaya">⚠ Isi semua input terlebih dahulu.</p>
 
-            <p id="hasil_gaya"></p>
+            <button class="calc-hitung-btn" onclick="hitungGaya()">Hitung</button>
+
+            <div class="calc-hasil" id="hasil_gaya">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_gaya">—</span>
+                <span class="hasil-satuan" id="satuan_gaya"></span>
+            </div>
+
         </div>
+    </div>
 
-    </section>
-
-    <!-- FUNCTION -->
-    <script>
-        function logout() {
-            window.location.href = "../../../../../index.html";
-            localStorage.clear();
-        }
-    </script>
 
     <!-- JS -->
-    <script src="../../../../js/calculator_fisika.js"></script>
     <script src="../../../../js/global.js"></script>
     <script src="../../../../js/dashboard.js"></script>
-</body>
+    <script src="../../../../js/calculator_fisika.js"></script>
 
+</body>
 </html>

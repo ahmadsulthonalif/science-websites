@@ -1,112 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi Kimia</title>
+    <title>Materi Kimia – FormulaCMD</title>
 
     <link rel="stylesheet" href="../../../../css/global.css">
     <link rel="stylesheet" href="../../../../css/dashboard.css">
-    <link rel="stylesheet" href="../../../../css/mata_pelajaran.css">
+    <link rel="stylesheet" href="../../../../css/mapel.css">
 
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body class="materi-page">
+<body class="main-page materi-kimia-page">
 
     <div class="grid-bg"></div>
     <div class="formula-random"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar">
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-left">
-            <a href="../main_page_kimia.html" class="logo"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="../main_page_kimia.html" class="logo back-btn" aria-label="Kembali">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu Materi">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="nav-center materi-nav" id="navCenter">
+            <button class="materi-tab active" data-slide="mol">Mol</button>
+            <button class="materi-tab" data-slide="stoikiometri">Stoikiometri</button>
         </div>
 
         <div class="nav-right">
             <div class="profile" id="profileBtn">
                 <span id="profileInitial">A</span>
-
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="#" id="logoutBtn">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- WRAPPER -->
+
     <div class="materi-wrapper">
 
-        <!-- Stoikiometri -->
-        <section id="sto" class="materi-full active">
-            <div class="materi-content">
-                <div class="materi-text">
-                    <div class="card">
-                        <h1>Stoikiometri</h1>
-                        <p></p>
-                        <p class="rumus"></p>
-                        <p>Stoikiometri adalah cabang ilmu kimia yang mempelajari hubungan kuantitatif (jumlah zat)
-                            dalam reaksi kimia, meliputi massa, mol, volume, dan jumlah partikel. Dasar perhitungannya
-                            adalah persamaan reaksi setara, di mana koefisien reaksi menunjukkan perbandingan mol
-                            zat-zat yang bereaksi. Konsep utama melibatkan konsep mol, Ar/Mr , dan hukum dasar kimia.
-                        </p>
+        <!-- ========== SLIDE MOL ========== -->
+        <section class="materi-slide active" id="slide-mol">
+            <div class="materi-inner">
 
+                <div class="materi-left">
+                    <span class="materi-badge kimia-badge">🧪 Kimia · Mol</span>
+                    <h1 class="materi-judul">Konsep<br>Mol</h1>
+
+                    <div class="subtab-group">
+                        <button class="subtab active" data-sub="mol-pengertian">Pengertian</button>
+                        <button class="subtab" data-sub="mol-ciri">Ciri-ciri</button>
+                        <button class="subtab" data-sub="mol-soal">Latihan</button>
+                        <button class="subtab" data-sub="mol-penerapan">Penerapan</button>
+                    </div>
+
+                    <!-- Pengertian -->
+                    <div class="subcontent active" id="mol-pengertian">
+                        <p>Mol adalah <strong>satuan jumlah zat</strong> dalam kimia yang menyatakan banyaknya partikel (atom, molekul, atau ion) dalam suatu zat.</p>
+                        <p>1 mol zat mengandung <strong>6,02 × 10²³ partikel</strong> — disebut bilangan Avogadro (Nₐ).</p>
+                        <div class="rumus-card kimia-rumus">
+                            <div class="rumus-utama">n = m / Mr</div>
+                            <div class="rumus-turunan">
+                                <span>N = n × Nₐ</span>
+                                <span>V = n × 22,4</span>
+                            </div>
+                            <div class="rumus-ket">
+                                <p><span class="var">n</span> = mol &nbsp;·&nbsp; <span class="var">m</span> = massa (g) &nbsp;·&nbsp; <span class="var">Mr</span> = massa relatif &nbsp;·&nbsp; <span class="var">V</span> = volume STP (L)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ciri-ciri -->
+                    <div class="subcontent" id="mol-ciri">
+                        <ul class="materi-list">
+                            <li>1 mol = <strong>6,02 × 10²³</strong> partikel (bilangan Avogadro)</li>
+                            <li>Mol menghubungkan <strong>massa makroskopis</strong> dengan <strong>jumlah partikel mikroskopis</strong></li>
+                            <li>Massa 1 mol zat = <strong>massa molar (Mr)</strong> dalam satuan gram</li>
+                            <li>Volume 1 mol gas pada STP = <strong>22,4 liter</strong></li>
+                            <li>Simbol mol: <strong>n</strong> dengan satuan <strong>mol</strong></li>
+                            <li>Berlaku untuk atom, molekul, ion, dan elektron</li>
+                        </ul>
+                    </div>
+
+                    <!-- Latihan Soal -->
+                    <div class="subcontent" id="mol-soal">
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 1</p>
+                            <p>Berapa mol dari <strong>18 gram</strong> air (H₂O)? (Ar H=1, O=16)</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Mr H₂O = (2×1) + 16 = 18 g/mol</p>
+                                <p class="rumus-inline">n = m / Mr = 18 / 18 = <strong>1 mol</strong></p>
+                            </div>
+                        </div>
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 2</p>
+                            <p>Berapa volume <strong>2 mol</strong> gas CO₂ pada STP?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Volume molar STP = 22,4 L/mol</p>
+                                <p class="rumus-inline">V = n × 22,4 = 2 × 22,4 = <strong>44,8 liter</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Penerapan -->
+                    <div class="subcontent" id="mol-penerapan">
+                        <ul class="materi-list">
+                            <li><strong>Industri farmasi</strong> — menghitung dosis obat berdasarkan jumlah mol zat aktif per tablet.</li>
+                            <li><strong>Pembuatan pupuk</strong> — menentukan perbandingan mol unsur N, P, K dalam formulasi pupuk.</li>
+                            <li><strong>Memasak</strong> — takaran bahan kimia (soda kue, garam) secara tidak langsung berbasis konsep mol.</li>
+                            <li><strong>Analisis darah</strong> — konsentrasi zat dalam darah dinyatakan dalam mmol/L (milimol per liter).</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- <div class="materi-img">
-                    <img src="https://dwiveliaaftikasari.wordpress.com/wp-content/uploads/2017/03/81f52-15.png">
-                </div> -->
-            </div>
-        </section>
+                <!-- KANAN — Visual Mol -->
+                <div class="materi-right">
+                    <div class="visual-card kimia-visual-card">
+                        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" class="materi-svg">
+                            <!-- Atom pusat -->
+                            <circle cx="150" cy="100" r="22" fill="rgba(244,114,182,0.15)" stroke="rgba(244,114,182,0.6)" stroke-width="1.5"/>
+                            <text x="141" y="105" fill="#f472b6" font-size="12" font-weight="bold" font-family="monospace">mol</text>
 
-        <!-- KONSEP MOL -->
-        <section id="k-mol" class="materi-full active">
-            <div class="materi-content">
-                <div class="materi-text">
-                    <div class="card">
-                        <h1>Konsep Mol</h1>
-                        <p></p>
-                        <p class="rumus"></p>
-                        <p>Stoikiometri adalah cabang ilmu kimia yang mempelajari hubungan kuantitatif (jumlah zat)
-                            dalam reaksi kimia, meliputi massa, mol, volume, dan jumlah partikel. Dasar perhitungannya
-                            adalah persamaan reaksi setara, di mana koefisien reaksi menunjukkan perbandingan mol
-                            zat-zat yang bereaksi. Konsep utama melibatkan konsep mol, Ar/Mr , dan hukum dasar kimia.
-                        </p>
+                            <!-- Orbit 1 -->
+                            <ellipse cx="150" cy="100" rx="55" ry="22" fill="none" stroke="rgba(244,114,182,0.2)" stroke-width="1" transform="rotate(-30 150 100)"/>
+                            <!-- Elektron orbit 1 -->
+                            <circle r="5" fill="#f472b6" opacity="0.8">
+                                <animateMotion dur="3s" repeatCount="indefinite">
+                                    <mpath href="#orbit1"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="orbit1" d="M 205 100 A 55 22 0 1 1 205 100.01" transform="rotate(-30 150 100)" fill="none"/>
 
+                            <!-- Orbit 2 -->
+                            <ellipse cx="150" cy="100" rx="80" ry="30" fill="none" stroke="rgba(244,114,182,0.12)" stroke-width="1" transform="rotate(40 150 100)"/>
+                            <!-- Elektron orbit 2 -->
+                            <circle r="4" fill="rgba(244,114,182,0.7)">
+                                <animateMotion dur="5s" repeatCount="indefinite">
+                                    <mpath href="#orbit2"/>
+                                </animateMotion>
+                            </circle>
+                            <path id="orbit2" d="M 230 100 A 80 30 0 1 1 230 100.01" transform="rotate(40 150 100)" fill="none"/>
+
+                            <!-- Label Avogadro -->
+                            <text x="50" y="168" fill="rgba(244,114,182,0.7)" font-size="11" font-weight="bold" font-family="monospace">Nₐ = 6,02 × 10²³</text>
+                            <text x="72" y="184" fill="rgba(255,255,255,0.25)" font-size="9" font-family="monospace">partikel per mol</text>
+
+                            <!-- Rumus bawah -->
+                            <rect x="60" y="195" width="180" height="20" rx="4" fill="rgba(244,114,182,0.06)" stroke="rgba(244,114,182,0.15)" stroke-width="1"/>
+                            <text x="95" y="209" fill="rgba(244,114,182,0.6)" font-size="11" font-weight="bold" font-family="monospace">n = m / Mr</text>
+                        </svg>
+                        <p class="visual-caption">Model atom — 1 mol = 6,02 × 10²³ partikel</p>
                     </div>
                 </div>
 
-                <!-- <div class="materi-img">
-                    <img src="https://dwiveliaaftikasari.wordpress.com/wp-content/uploads/2017/03/81f52-15.png">
-                </div> -->
             </div>
         </section>
 
-        
+
+        <!-- ========== SLIDE STOIKIOMETRI ========== -->
+        <section class="materi-slide" id="slide-stoikiometri">
+            <div class="materi-inner">
+
+                <div class="materi-left">
+                    <span class="materi-badge kimia-badge">🧪 Kimia · Stoikiometri</span>
+                    <h1 class="materi-judul">Stoikiometri<br>Reaksi</h1>
+
+                    <div class="subtab-group">
+                        <button class="subtab active" data-sub="stoi-pengertian">Pengertian</button>
+                        <button class="subtab" data-sub="stoi-ciri">Ciri-ciri</button>
+                        <button class="subtab" data-sub="stoi-soal">Latihan</button>
+                        <button class="subtab" data-sub="stoi-penerapan">Penerapan</button>
+                    </div>
+
+                    <!-- Pengertian -->
+                    <div class="subcontent active" id="stoi-pengertian">
+                        <p>Stoikiometri adalah cabang kimia yang mempelajari <strong>perbandingan kuantitatif</strong> zat-zat yang terlibat dalam reaksi kimia berdasarkan hukum kekekalan massa.</p>
+                        <p>Perbandingan mol reaktan dan produk mengikuti <strong>koefisien reaksi</strong> dalam persamaan kimia setara.</p>
+                        <div class="rumus-card kimia-rumus">
+                            <div class="rumus-utama">mol A / mol B = kA / kB</div>
+                            <div class="rumus-turunan">
+                                <span>M = n / V</span>
+                                <span>n = M × V</span>
+                            </div>
+                            <div class="rumus-ket">
+                                <p><span class="var">k</span> = koefisien reaksi &nbsp;·&nbsp; <span class="var">M</span> = molaritas (mol/L) &nbsp;·&nbsp; <span class="var">V</span> = volume (L)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ciri-ciri -->
+                    <div class="subcontent" id="stoi-ciri">
+                        <ul class="materi-list">
+                            <li>Perbandingan mol zat mengikuti <strong>koefisien reaksi</strong></li>
+                            <li>Persamaan reaksi harus <strong>setara</strong> (jumlah atom kiri = kanan)</li>
+                            <li><strong>Pereaksi pembatas</strong> adalah zat yang habis lebih dahulu dan menentukan hasil reaksi</li>
+                            <li><strong>Pereaksi berlebih</strong> adalah zat yang masih tersisa setelah reaksi selesai</li>
+                            <li>Rendemen reaksi = (hasil aktual / hasil teoritis) × 100%</li>
+                            <li>Berlaku hukum <strong>kekekalan massa</strong> — massa reaktan = massa produk</li>
+                        </ul>
+                    </div>
+
+                    <!-- Latihan Soal -->
+                    <div class="subcontent" id="stoi-soal">
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 1</p>
+                            <p>Pada reaksi <strong>N₂ + 3H₂ → 2NH₃</strong>, berapa mol NH₃ yang dihasilkan dari <strong>6 mol H₂</strong>?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Perbandingan H₂ : NH₃ = 3 : 2</p>
+                                <p class="rumus-inline">mol NH₃ = (2/3) × 6 = <strong>4 mol</strong></p>
+                            </div>
+                        </div>
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 2</p>
+                            <p>Pada reaksi <strong>2H₂ + O₂ → 2H₂O</strong>, berapa mol O₂ untuk menghasilkan <strong>4 mol H₂O</strong>?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Perbandingan O₂ : H₂O = 1 : 2</p>
+                                <p class="rumus-inline">mol O₂ = (1/2) × 4 = <strong>2 mol</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Penerapan -->
+                    <div class="subcontent" id="stoi-penerapan">
+                        <ul class="materi-list">
+                            <li><strong>Industri pupuk</strong> — menghitung kebutuhan N₂ dan H₂ untuk produksi amonia (NH₃) secara massal.</li>
+                            <li><strong>Pembakaran bahan bakar</strong> — menentukan perbandingan bahan bakar dan oksigen agar pembakaran sempurna.</li>
+                            <li><strong>Pembuatan obat</strong> — menghitung jumlah mol reaktan yang dibutuhkan untuk menghasilkan dosis produk yang tepat.</li>
+                            <li><strong>Analisis air minum</strong> — titrasi asam-basa menggunakan prinsip stoikiometri untuk mengetahui kadar zat dalam air.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KANAN — Visual Stoikiometri -->
+                <div class="materi-right">
+                    <div class="visual-card kimia-visual-card">
+                        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" class="materi-svg">
+                            <!-- Persamaan reaksi visual -->
+                            <!-- Reaktan kiri -->
+                            <rect x="15" y="60" width="80" height="50" rx="8" fill="rgba(244,114,182,0.08)" stroke="rgba(244,114,182,0.35)" stroke-width="1"/>
+                            <text x="23" y="82" fill="#f472b6" font-size="11" font-weight="bold" font-family="monospace">Reaktan</text>
+                            <text x="28" y="99" fill="rgba(255,255,255,0.5)" font-size="10" font-family="monospace">N₂ + 3H₂</text>
+
+                            <!-- Panah reaksi -->
+                            <line x1="100" y1="85" x2="135" y2="85" stroke="rgba(244,114,182,0.5)" stroke-width="2">
+                                <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <polygon points="130,80 142,85 130,90" fill="rgba(244,114,182,0.6)">
+                                <animate attributeName="fill-opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+                            </polygon>
+
+                            <!-- Produk kanan -->
+                            <rect x="145" y="60" width="80" height="50" rx="8" fill="rgba(244,114,182,0.12)" stroke="rgba(244,114,182,0.5)" stroke-width="1"/>
+                            <text x="158" y="82" fill="#f472b6" font-size="11" font-weight="bold" font-family="monospace">Produk</text>
+                            <text x="165" y="99" fill="rgba(255,255,255,0.5)" font-size="10" font-family="monospace">2NH₃</text>
+
+                            <!-- Koefisien label -->
+                            <text x="15" y="130" fill="rgba(255,255,255,0.3)" font-size="9" font-family="monospace">Koefisien → perbandingan mol</text>
+
+                            <!-- Divider -->
+                            <line x1="15" y1="140" x2="280" y2="140" stroke="rgba(244,114,182,0.1)" stroke-width="1"/>
+
+                            <!-- Tabel perbandingan mol -->
+                            <text x="15" y="158" fill="rgba(244,114,182,0.6)" font-size="10" font-weight="bold" font-family="monospace">N₂ : H₂ : NH₃</text>
+                            <text x="15" y="174" fill="rgba(255,255,255,0.4)" font-size="10" font-family="monospace"> 1  :  3  :   2</text>
+
+                            <!-- Rumus molaritas -->
+                            <rect x="15" y="188" width="265" height="22" rx="4" fill="rgba(244,114,182,0.05)" stroke="rgba(244,114,182,0.15)" stroke-width="1"/>
+                            <text x="55" y="203" fill="rgba(244,114,182,0.6)" font-size="11" font-weight="bold" font-family="monospace">M = n / V (mol/L)</text>
+                        </svg>
+                        <p class="visual-caption">Reaksi N₂ + 3H₂ → 2NH₃ — perbandingan koefisien</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
-    <!-- NAV SWITCH -->
-    <div class="materi-switch">
-        <button onclick="showMateri('sto')" id="btn-sto">Stoikiometri</button>
-        <button onclick="showMateri('k-mol')" id="btn-k-mol">Konsep Mol</button>
-    </div>
-
-    <!-- JS -->
     <script src="../../../../js/global.js"></script>
     <script src="../../../../js/dashboard.js"></script>
     <script src="../../../../js/materi_kimia.js"></script>
 
-    <script>
-        function logout() {
-            window.location.href = "../../../../../index.html";
-            localStorage.clear();
-        }
-    </script>
-
 </body>
-
 </html>

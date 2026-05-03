@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard – FormulaCMD</title>
+    <title>Dashboard – Sci-Fi</title>
 
     <!-- GLOBAL CSS (grid bg + formula random) -->
     <link rel="stylesheet" href="../../css/global.css">
@@ -50,10 +50,10 @@
 
         <!-- CENTER: Menu (desktop) + Mobile drawer -->
         <div class="nav-center" id="navCenter">
-            <a href="#home"     class="nav-link">Home</a>
-            <a href="#steps"    class="nav-link">Steps</a>
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#steps" class="nav-link">Steps</a>
             <a href="#subjects" class="nav-link">Mata Pelajaran</a>
-            <a href="#quiz"     class="nav-link">Quiz</a>
+            <a href="#quiz" class="nav-link">Quiz</a>
         </div>
 
         <!-- RIGHT: Profile -->
@@ -64,7 +64,7 @@
                 <div class="profile-dropdown" id="profileDropdown">
                     <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" id="logoutBtn">Logout</a>
+                    <a href="#" id="logoutBtn" onclick="logOut()">Logout</a>
                 </div>
             </div>
         </div>
@@ -206,7 +206,8 @@
         <div class="quiz-content">
             <div class="quiz-badge">⚡ TANTANGAN</div>
             <h2 class="quiz-title">Siap Diuji?</h2>
-            <p class="quiz-sub">Uji pemahaman Fisika & Kimia kamu dengan soal-soal interaktif. Seberapa jauh kamu mengerti?</p>
+            <p class="quiz-sub">Uji pemahaman Fisika & Kimia kamu dengan soal-soal interaktif. Seberapa jauh kamu
+                mengerti?</p>
 
             <div class="quiz-stats">
                 <div class="stat-item">
@@ -241,5 +242,11 @@
     <script src="../../js/global.js"></script>
     <script src="../../js/dashboard.js"></script>
 
+    <script>
+        function logOut() {
+            window.location.href = "../../../index.html";
+        }
+    </script>
 </body>
+
 </html>

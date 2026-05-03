@@ -1,134 +1,363 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi Fisika</title>
+    <title>Materi Fisika – FormulaCMD</title>
 
     <link rel="stylesheet" href="../../../../css/global.css">
     <link rel="stylesheet" href="../../../../css/dashboard.css">
-    <link rel="stylesheet" href="../../../../css/mata_pelajaran.css">
+    <link rel="stylesheet" href="../../../../css/mapel.css">
 
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body class="materi-page">
+<body class="main-page materi-fisika-page">
 
     <div class="grid-bg"></div>
     <div class="formula-random"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar">
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-left">
-            <a href="#" class="logo"></a>
+            <a href="../main_page_fisika.html" class="logo back-btn" aria-label="Kembali">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu Materi">
+                <span></span><span></span><span></span>
+            </button>
         </div>
 
-        <div class="nav-center">
-            <a href="../../../main/dashboard.html">Dashboard</a>
-            <a href="../../../mata_pelajaran/fisika/main_page_fisika.html">Fisika</a>
+        <div class="nav-center materi-nav" id="navCenter">
+            <button class="materi-tab active" data-slide="glb">GLB</button>
+            <button class="materi-tab" data-slide="glbb">GLBB</button>
+            <button class="materi-tab" data-slide="gaya">Gaya</button>
         </div>
 
         <div class="nav-right">
             <div class="profile" id="profileBtn">
                 <span id="profileInitial">A</span>
-
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="#" id="logoutBtn">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- WRAPPER -->
+
     <div class="materi-wrapper">
 
-        <!-- Umum -->
-        <section id="umum" class="materi-full active">
-            <div class="materi-content">
-                <div class="materi-text">
-                    <div class="card">
-                        <h1>Umum</h1>
-                        <p>Gerak lurus dengan kecepatan konstan.</p>
-                        <p class="rumus">s = v × t</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis exercitationem
-                            culpa autem delectus aut nam magni nobis explicabo, sapiente quod fuga? Modi dolor fuga
-                            minus. Pariatur itaque id dolorum iure?</p>
+        <!-- ========== SLIDE GLB ========== -->
+        <section class="materi-slide active" id="slide-glb">
+            <div class="materi-inner">
 
+                <div class="materi-left">
+                    <span class="materi-badge fisika-badge">🔭 Fisika · GLB</span>
+                    <h1 class="materi-judul">Gerak Lurus<br>Beraturan</h1>
+
+                    <div class="subtab-group">
+                        <button class="subtab active" data-sub="glb-pengertian">Pengertian</button>
+                        <button class="subtab" data-sub="glb-ciri">Ciri-ciri</button>
+                        <button class="subtab" data-sub="glb-soal">Latihan</button>
+                        <button class="subtab" data-sub="glb-penerapan">Penerapan</button>
+                    </div>
+
+                    <div class="subcontent active" id="glb-pengertian">
+                        <p>Gerak Lurus Beraturan (GLB) adalah gerak suatu benda yang lintasannya berupa <strong>garis lurus</strong> dengan <strong>kecepatan tetap (konstan)</strong> sepanjang waktu.</p>
+                        <p>Karena kecepatan konstan, maka <strong>tidak ada percepatan</strong> yang bekerja pada benda (a = 0).</p>
+                        <div class="rumus-card fisika-rumus">
+                            <div class="rumus-utama">s = v × t</div>
+                            <div class="rumus-turunan">
+                                <span>v = s / t</span>
+                                <span>t = s / v</span>
+                            </div>
+                            <div class="rumus-ket">
+                                <p><span class="var">s</span> = jarak (m) &nbsp;·&nbsp; <span class="var">v</span> = kecepatan (m/s) &nbsp;·&nbsp; <span class="var">t</span> = waktu (s)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcontent" id="glb-ciri">
+                        <ul class="materi-list">
+                            <li>Lintasan berbentuk <strong>garis lurus</strong></li>
+                            <li>Kecepatan bernilai <strong>konstan</strong> (tidak berubah)</li>
+                            <li>Percepatan = 0 (tidak ada perubahan kecepatan)</li>
+                            <li>Grafik v-t berupa <strong>garis lurus horizontal</strong></li>
+                            <li>Grafik s-t berupa <strong>garis lurus miring</strong> (jarak bertambah seragam)</li>
+                            <li>Jarak yang ditempuh sebanding dengan waktu</li>
+                        </ul>
+                    </div>
+
+                    <div class="subcontent" id="glb-soal">
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 1</p>
+                            <p>Sebuah mobil bergerak dengan kecepatan <strong>20 m/s</strong> selama <strong>10 detik</strong>. Berapa jarak yang ditempuh?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Diketahui: v = 20 m/s &nbsp;·&nbsp; t = 10 s</p>
+                                <p class="rumus-inline">s = v × t = 20 × 10 = <strong>200 meter</strong></p>
+                            </div>
+                        </div>
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 2</p>
+                            <p>Sebuah sepeda menempuh jarak <strong>300 m</strong> dalam <strong>60 detik</strong>. Tentukan kecepatannya!</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Diketahui: s = 300 m &nbsp;·&nbsp; t = 60 s</p>
+                                <p class="rumus-inline">v = s / t = 300 / 60 = <strong>5 m/s</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcontent" id="glb-penerapan">
+                        <ul class="materi-list">
+                            <li><strong>Mobil di jalan tol</strong> menggunakan cruise control — kecepatan dijaga konstan.</li>
+                            <li><strong>Kereta api</strong> di jalur lurus dengan kecepatan tetap.</li>
+                            <li><strong>Eskalator</strong> yang membawa penumpang dengan kecepatan seragam.</li>
+                            <li><strong>Ban berjalan</strong> di bandara — memindahkan penumpang dengan kecepatan konstan.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="materi-img">
-                    <img src="../../../../images/favicon/favicon.png">
+                <div class="materi-right">
+                    <div class="visual-card fisika-visual-card">
+                        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="materi-svg">
+                            <line x1="20" y1="110" x2="280" y2="110" stroke="rgba(56,189,248,0.2)" stroke-width="2" stroke-dasharray="8,5"/>
+                            <line x1="20" y1="126" x2="280" y2="126" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                            <rect x="20" y="94" width="34" height="16" rx="4" fill="rgba(56,189,248,0.85)">
+                                <animateTransform attributeName="transform" type="translate"
+                                    values="0,0;226,0;0,0" dur="4s" calcMode="linear" repeatCount="indefinite"/>
+                            </rect>
+                            <text x="75" y="86" fill="#38bdf8" font-size="10" font-family="monospace">v = konstan</text>
+                            <defs>
+                                <marker id="arrf" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#38bdf8"/>
+                                </marker>
+                            </defs>
+                            <line x1="75" y1="90" x2="105" y2="90" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrf)"/>
+                            <line x1="35" y1="145" x2="280" y2="145" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                            <line x1="35" y1="145" x2="35" y2="175" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                            <line x1="35" y1="160" x2="278" y2="160" stroke="#38bdf8" stroke-width="1.8"/>
+                            <text x="38" y="188" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">v-t: garis horizontal → a = 0</text>
+                        </svg>
+                        <p class="visual-caption">Benda bergerak konstan — kecepatan tidak berubah</p>
+                    </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- GLB -->
-        <section id="glb" class="materi-full">
-            <div class="materi-content">
-                <div class="materi-text">
-                    <div class="card">
-                        <h1>GLB</h1>
-                        <p>Gerak lurus dengan kecepatan konstan.</p>
-                        <p class="rumus">s = v × t</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis exercitationem
-                            culpa autem delectus aut nam magni nobis explicabo, sapiente quod fuga? Modi dolor fuga
-                            minus. Pariatur itaque id dolorum iure?</p>
 
+        <!-- ========== SLIDE GLBB ========== -->
+        <section class="materi-slide" id="slide-glbb">
+            <div class="materi-inner">
+
+                <div class="materi-left">
+                    <span class="materi-badge fisika-badge">🔭 Fisika · GLBB</span>
+                    <h1 class="materi-judul">Gerak Lurus Berubah<br>Beraturan</h1>
+
+                    <div class="subtab-group">
+                        <button class="subtab active" data-sub="glbb-pengertian">Pengertian</button>
+                        <button class="subtab" data-sub="glbb-ciri">Ciri-ciri</button>
+                        <button class="subtab" data-sub="glbb-soal">Latihan</button>
+                        <button class="subtab" data-sub="glbb-penerapan">Penerapan</button>
+                    </div>
+
+                    <div class="subcontent active" id="glbb-pengertian">
+                        <p>Gerak Lurus Berubah Beraturan (GLBB) adalah gerak pada lintasan lurus dengan <strong>percepatan tetap (konstan)</strong> — kecepatan berubah secara seragam setiap satuan waktu.</p>
+                        <p>Berbeda dengan GLB, pada GLBB kecepatan benda <strong>selalu berubah</strong> akibat adanya percepatan (a ≠ 0).</p>
+                        <div class="rumus-card fisika-rumus">
+                            <div class="rumus-utama">vₜ = v₀ + a·t</div>
+                            <div class="rumus-turunan">
+                                <span>s = v₀t + ½at²</span>
+                                <span>vₜ² = v₀² + 2as</span>
+                            </div>
+                            <div class="rumus-ket">
+                                <p><span class="var">v₀</span> = kec. awal &nbsp;·&nbsp; <span class="var">vₜ</span> = kec. akhir &nbsp;·&nbsp; <span class="var">a</span> = percepatan (m/s²)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcontent" id="glbb-ciri">
+                        <ul class="materi-list">
+                            <li>Lintasan berbentuk <strong>garis lurus</strong></li>
+                            <li>Percepatan bernilai <strong>konstan</strong> (bisa positif atau negatif)</li>
+                            <li>Kecepatan berubah secara teratur setiap detiknya</li>
+                            <li>Grafik v-t berupa <strong>garis miring</strong> (gradien = percepatan)</li>
+                            <li>Grafik s-t berupa <strong>parabola</strong></li>
+                            <li>Terbagi: <strong>dipercepat</strong> (a+) dan <strong>diperlambat</strong> (a−)</li>
+                        </ul>
+                    </div>
+
+                    <div class="subcontent" id="glbb-soal">
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 1</p>
+                            <p>Motor dari diam, percepatan <strong>4 m/s²</strong> selama <strong>6 detik</strong>. Berapa kecepatan akhir dan jarak?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>v₀ = 0 &nbsp;·&nbsp; a = 4 m/s² &nbsp;·&nbsp; t = 6 s</p>
+                                <p class="rumus-inline">vₜ = 0 + 4×6 = <strong>24 m/s</strong></p>
+                                <p class="rumus-inline">s = ½×4×36 = <strong>72 meter</strong></p>
+                            </div>
+                        </div>
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 2</p>
+                            <p>Mobil v₀ = <strong>20 m/s</strong> direm perlambatan <strong>4 m/s²</strong> hingga berhenti. Jarak pengereman?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>vₜ = 0 &nbsp;·&nbsp; v₀ = 20 m/s &nbsp;·&nbsp; a = −4 m/s²</p>
+                                <p class="rumus-inline">0 = 400 − 8s → s = <strong>50 meter</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcontent" id="glbb-penerapan">
+                        <ul class="materi-list">
+                            <li><strong>Kendaraan mengerem</strong> — GLBB diperlambat hingga berhenti.</li>
+                            <li><strong>Pesawat lepas landas</strong> — akselerasi konstan di landasan pacu.</li>
+                            <li><strong>Bola jatuh bebas</strong> — GLBB dipercepat oleh gravitasi (g ≈ 9,8 m/s²).</li>
+                            <li><strong>Lift mulai bergerak</strong> — dipercepat dari diam ke kecepatan operasional.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="materi-img">
-                    <img src="../../../../images/favicon/favicon.png">
+                <div class="materi-right">
+                    <div class="visual-card fisika-visual-card">
+                        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="materi-svg">
+                            <line x1="20" y1="110" x2="280" y2="110" stroke="rgba(56,189,248,0.2)" stroke-width="2" stroke-dasharray="8,5"/>
+                            <line x1="20" y1="126" x2="280" y2="126" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                            <rect x="20" y="95" width="28" height="15" rx="4" fill="rgba(56,189,248,0.85)">
+                                <animateTransform attributeName="transform" type="translate"
+                                    values="0,0;232,0" dur="3s" calcMode="spline"
+                                    keySplines="0.1 0 1 1" repeatCount="indefinite"/>
+                            </rect>
+                            <text x="60" y="84" fill="#38bdf8" font-size="10" font-family="monospace">a = konstan →</text>
+                            <line x1="35" y1="145" x2="280" y2="145" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                            <line x1="35" y1="145" x2="35" y2="178" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                            <line x1="35" y1="176" x2="278" y2="148" stroke="#38bdf8" stroke-width="1.8"/>
+                            <text x="38" y="190" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">v-t: miring → percepatan konstan</text>
+                        </svg>
+                        <p class="visual-caption">Kecepatan bertambah setiap satuan waktu</p>
+                    </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- GLBB -->
-        <section id="glbb" class="materi-full">
-            <div class="materi-content">
-                <div class="materi-text">
-                    <div class="card">
-                        <h1>GLBB</h1>
-                        <p>Gerak lurus dengan kecepatan konstan.</p>
-                        <p class="rumus">s = v × t</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis exercitationem
-                            culpa autem delectus aut nam magni nobis explicabo, sapiente quod fuga? Modi dolor fuga
-                            minus. Pariatur itaque id dolorum iure?</p>
 
+        <!-- ========== SLIDE GAYA ========== -->
+        <section class="materi-slide" id="slide-gaya">
+            <div class="materi-inner">
+
+                <div class="materi-left">
+                    <span class="materi-badge fisika-badge">🔭 Fisika · Gaya</span>
+                    <h1 class="materi-judul">Gaya &<br>Hukum Newton</h1>
+
+                    <div class="subtab-group">
+                        <button class="subtab active" data-sub="gaya-pengertian">Pengertian</button>
+                        <button class="subtab" data-sub="gaya-ciri">Hukum Newton</button>
+                        <button class="subtab" data-sub="gaya-soal">Latihan</button>
+                        <button class="subtab" data-sub="gaya-penerapan">Penerapan</button>
+                    </div>
+
+                    <div class="subcontent active" id="gaya-pengertian">
+                        <p>Gaya adalah <strong>tarikan atau dorongan</strong> pada suatu benda yang dapat mengubah gerak, bentuk, atau arahnya. Gaya merupakan besaran vektor — memiliki besar dan arah.</p>
+                        <p>Satuannya adalah <strong>Newton (N)</strong>, di mana 1 N = 1 kg·m/s².</p>
+                        <div class="rumus-card fisika-rumus">
+                            <div class="rumus-utama">F = m × a</div>
+                            <div class="rumus-turunan">
+                                <span>m = F / a</span>
+                                <span>a = F / m</span>
+                            </div>
+                            <div class="rumus-ket">
+                                <p><span class="var">F</span> = gaya (N) &nbsp;·&nbsp; <span class="var">m</span> = massa (kg) &nbsp;·&nbsp; <span class="var">a</span> = percepatan (m/s²)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcontent" id="gaya-ciri">
+                        <ul class="materi-list">
+                            <li><strong>Hukum I (Inersia):</strong> Benda diam tetap diam, benda bergerak tetap bergerak jika ΣF = 0.</li>
+                            <li><strong>Hukum II:</strong> Percepatan ∝ gaya dan berbanding terbalik dengan massa — F = m·a.</li>
+                            <li><strong>Hukum III (Aksi-Reaksi):</strong> Setiap gaya aksi menimbulkan gaya reaksi yang sama besar dan berlawanan arah.</li>
+                            <li>Gaya adalah besaran <strong>vektor</strong> (memiliki besar dan arah)</li>
+                            <li>Satuan gaya: <strong>Newton (N)</strong> = kg·m/s²</li>
+                        </ul>
+                    </div>
+
+                    <div class="subcontent" id="gaya-soal">
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 1</p>
+                            <p>Benda bermassa <strong>5 kg</strong> didorong hingga percepatan <strong>4 m/s²</strong>. Berapa gaya yang bekerja?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Diketahui: m = 5 kg &nbsp;·&nbsp; a = 4 m/s²</p>
+                                <p class="rumus-inline">F = m × a = 5 × 4 = <strong>20 Newton</strong></p>
+                            </div>
+                        </div>
+                        <div class="soal-card">
+                            <p class="soal-label">📝 Soal 2</p>
+                            <p>Gaya <strong>30 N</strong> menghasilkan percepatan <strong>6 m/s²</strong>. Berapa massa benda?</p>
+                            <div class="jawaban-card">
+                                <p class="jawaban-label">✅ Penyelesaian</p>
+                                <p>Diketahui: F = 30 N &nbsp;·&nbsp; a = 6 m/s²</p>
+                                <p class="rumus-inline">m = F / a = 30 / 6 = <strong>5 kg</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subcontent" id="gaya-penerapan">
+                        <ul class="materi-list">
+                            <li><strong>Mendorong meja</strong> — gaya otot menggerakkan meja (Hukum II Newton).</li>
+                            <li><strong>Sabuk pengaman</strong> — menahan tubuh saat pengereman mendadak (Hukum I / Inersia).</li>
+                            <li><strong>Roket meluncur</strong> — gas ke bawah mendorong roket ke atas (Hukum III Newton).</li>
+                            <li><strong>Berenang</strong> — tangan dorong air ke belakang (aksi), air dorong tubuh ke depan (reaksi).</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="materi-img">
-                    <img src="../../../../images/favicon/favicon.png">
+                <div class="materi-right">
+                    <div class="visual-card fisika-visual-card">
+                        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="materi-svg">
+                            <line x1="30" y1="150" x2="270" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+                            <rect x="118" y="110" width="64" height="40" rx="6"
+                                fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.45)" stroke-width="1.5"/>
+                            <text x="136" y="135" fill="#38bdf8" font-size="14" font-weight="bold" font-family="monospace">m</text>
+                            <line x1="182" y1="130" x2="234" y2="130" stroke="#facc15" stroke-width="2.5">
+                                <animate attributeName="x2" values="234;246;234" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <polygon points="233,125 245,130 233,135" fill="#facc15">
+                                <animate attributeName="points"
+                                    values="233,125 245,130 233,135;245,125 257,130 245,135;233,125 245,130 233,135"
+                                    dur="2s" repeatCount="indefinite"/>
+                            </polygon>
+                            <text x="247" y="122" fill="#facc15" font-size="12" font-family="monospace">F</text>
+                            <line x1="150" y1="110" x2="150" y2="76" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+                            <polygon points="145,76 150,64 155,76" fill="rgba(255,255,255,0.22)"/>
+                            <text x="156" y="72" fill="rgba(255,255,255,0.3)" font-size="10" font-family="monospace">N</text>
+                            <line x1="150" y1="150" x2="150" y2="180" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+                            <polygon points="145,180 150,192 155,180" fill="rgba(255,255,255,0.22)"/>
+                            <text x="156" y="192" fill="rgba(255,255,255,0.3)" font-size="10" font-family="monospace">W</text>
+                            <text x="80" y="198" fill="rgba(56,189,248,0.5)" font-size="12" font-weight="bold" font-family="monospace">F = m × a</text>
+                        </svg>
+                        <p class="visual-caption">Diagram gaya: F (dorong), N (normal), W (berat)</p>
+                    </div>
                 </div>
+
             </div>
         </section>
 
     </div>
 
-    <!-- NAV SWITCH -->
-    <div class="materi-switch">
-        <button onclick="showMateri('umum')" id="btn-umum">Umum</button>
-        <button onclick="showMateri('glb')" id="btn-glb" class="active-btn">GLB</button>
-        <button onclick="showMateri('glbb')" id="btn-glbb">GLBB</button>
-    </div>
-
-    <!-- JS -->
     <script src="../../../../js/global.js"></script>
     <script src="../../../../js/dashboard.js"></script>
     <script src="../../../../js/materi_fisika.js"></script>
 
-    <script>
-        function logout() {
-            window.location.href = "../../../../../index.html";
-            localStorage.clear();
-        }
-    </script>
-
 </body>
-
 </html>

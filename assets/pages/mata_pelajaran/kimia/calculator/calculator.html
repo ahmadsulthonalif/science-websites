@@ -1,157 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Fisika</title>
+    <title>Kalkulator Kimia – FormulaCMD</title>
 
-    <!-- CSS GLOBAL -->
     <link rel="stylesheet" href="../../../../css/global.css">
-
-    <!-- CSS DASHBOARD -->
     <link rel="stylesheet" href="../../../../css/dashboard.css">
+    <link rel="stylesheet" href="../../../../css/mapel.css">
 
-    <!-- CSS CALCULATOR -->
-    <link rel="stylesheet" href="../../../../css/calculator.css">
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body class="calc-page">
-    <!-- GRID BACKGROUND -->
+<body class="main-page calc-page calc-kimia-page">
+
     <div class="grid-bg"></div>
-    <!-- FORMULA RANDOM -->
     <div class="formula-random"></div>
 
-    <!-- ================================
-         NAVBAR
-    ================================= -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+    <nav class="navbar scrolled" id="navbar">
         <div class="nav-left">
-            <!-- NAV MINI -->
-            <div class="calc-nav">
-                <a href="#r1">1</a>
+            <a href="../main_page_kimia.html" class="logo back-btn" aria-label="Kembali">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
+        <div class="nav-center-empty">
+            <div class="nav-breadcrumb">
+                <span class="breadcrumb-parent">Kimia</span>
+                <i class="fa-solid fa-chevron-right breadcrumb-sep"></i>
+                <span class="breadcrumb-current kimia-crumb">Kalkulator</span>
             </div>
-            <a href="#" class="logo"></a>
         </div>
-
-        <div class="nav-center">
-            <a href="../../../main/dashboard.html">Dashboard</a>
-            <a href="../../kimia/main_page_kimia.html">Kimia</a>
-        </div>
-
         <div class="nav-right">
             <div class="profile" id="profileBtn">
                 <span id="profileInitial">A</span>
-
                 <div class="profile-dropdown" id="profileDropdown">
-                    <h4 id="username">Username</h4>
+                    <h4 id="usernameDisplay">Username</h4>
                     <a href="#" id="tentangKamiBtn">Tentang</a>
-                    <a href="#" onclick="logout()">Logout</a>
+                    <a href="#" id="logoutBtn">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
 
-    <!-- ======================
-        SECTION 1 STOIKIOMETRI
-    ====================== -->
-    <section id="r1" class="calc-section">
+    <!-- =====================================================
+         LANDING
+    ====================================================== -->
+    <div class="calc-landing" id="calcLanding">
 
-        <h2>Perhitungan Stoikiometri</h2>
+        <span class="calc-landing-label">🧪 Kalkulator Kimia</span>
+        <h1 class="calc-landing-title">Pilih<br><span>Topik</span></h1>
 
+        <div class="calc-nav-btns">
+
+            <button class="calc-nav-btn" onclick="showCalc('mol-massa')">
+                <div class="btn-left">
+                    <span class="btn-icon">⚖️</span>
+                    <div class="btn-info">
+                        <span class="btn-label">Mol – Massa</span>
+                        <span class="btn-sub">n = m / Mr</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+            <button class="calc-nav-btn" onclick="showCalc('mol-volume')">
+                <div class="btn-left">
+                    <span class="btn-icon">🫧</span>
+                    <div class="btn-info">
+                        <span class="btn-label">Mol – Volume Gas</span>
+                        <span class="btn-sub">V = n × 22,4 (STP)</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+            <button class="calc-nav-btn" onclick="showCalc('mol-partikel')">
+                <div class="btn-left">
+                    <span class="btn-icon">⚛️</span>
+                    <div class="btn-info">
+                        <span class="btn-label">Mol – Partikel</span>
+                        <span class="btn-sub">N = n × Nₐ (6,02×10²³)</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+            <button class="calc-nav-btn" onclick="showCalc('molaritas')">
+                <div class="btn-left">
+                    <span class="btn-icon">🧫</span>
+                    <div class="btn-info">
+                        <span class="btn-label">Molaritas</span>
+                        <span class="btn-sub">M = n / V (mol/L)</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+            <button class="calc-nav-btn" onclick="showCalc('stoikiometri')">
+                <div class="btn-left">
+                    <span class="btn-icon">⚗️</span>
+                    <div class="btn-info">
+                        <span class="btn-label">Stoikiometri Reaksi</span>
+                        <span class="btn-sub">Perbandingan mol berdasarkan koefisien</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SECTION: MOL – MASSA
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-mol-massa">
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+        <div class="calc-section-header">
+            <div class="calc-section-badge">⚖️ Mol – Massa</div>
+            <h2 class="calc-section-title">Hubungan Mol & Massa</h2>
+            <p class="calc-section-sub">Pilih variabel yang ingin dicari</p>
+        </div>
+        <div class="calc-card">
+            <div class="rumus-pilih">
+                <button id="btn-mol-massa-n" onclick="setMolMassa('n')">Cari n (mol)</button>
+                <button id="btn-mol-massa-m" onclick="setMolMassa('m')">Cari m (gram)</button>
+                <button id="btn-mol-massa-mr" onclick="setMolMassa('mr')">Cari Mr</button>
+            </div>
+            <div class="rumus-display" id="rumus_mol-massa">Pilih variabel</div>
+            <div class="input-group" id="input_mol-massa"></div>
+            <p class="calc-error" id="error_mol-massa">⚠ Isi semua input terlebih dahulu.</p>
+            <button class="calc-hitung-btn" onclick="hitungMolMassa()">Hitung</button>
+            <div class="calc-hasil" id="hasil_mol-massa">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_mol-massa">—</span>
+                <span class="hasil-satuan" id="satuan_mol-massa"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SECTION: MOL – VOLUME GAS
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-mol-volume">
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+        <div class="calc-section-header">
+            <div class="calc-section-badge">🫧 Mol – Volume</div>
+            <h2 class="calc-section-title">Volume Gas pada STP</h2>
+            <p class="calc-section-sub">Volume molar STP = 22,4 L/mol</p>
+        </div>
+        <div class="calc-card">
+            <div class="rumus-pilih">
+                <button id="btn-mol-volume-v" onclick="setMolVolume('v')">Cari V (liter)</button>
+                <button id="btn-mol-volume-n" onclick="setMolVolume('n')">Cari n (mol)</button>
+            </div>
+            <div class="rumus-display" id="rumus_mol-volume">Pilih variabel</div>
+            <div class="input-group" id="input_mol-volume"></div>
+            <p class="calc-error" id="error_mol-volume">⚠ Isi semua input terlebih dahulu.</p>
+            <button class="calc-hitung-btn" onclick="hitungMolVolume()">Hitung</button>
+            <div class="calc-hasil" id="hasil_mol-volume">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_mol-volume">—</span>
+                <span class="hasil-satuan" id="satuan_mol-volume"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SECTION: MOL – PARTIKEL
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-mol-partikel">
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+        <div class="calc-section-header">
+            <div class="calc-section-badge">⚛️ Mol – Partikel</div>
+            <h2 class="calc-section-title">Jumlah Partikel</h2>
+            <p class="calc-section-sub">Nₐ = 6,02 × 10²³ partikel/mol</p>
+        </div>
+        <div class="calc-card">
+            <div class="rumus-pilih">
+                <button id="btn-mol-partikel-n2" onclick="setMolPartikel('n')">Cari N (partikel)</button>
+                <button id="btn-mol-partikel-mol" onclick="setMolPartikel('mol')">Cari n (mol)</button>
+            </div>
+            <div class="rumus-display" id="rumus_mol-partikel">Pilih variabel</div>
+            <div class="input-group" id="input_mol-partikel"></div>
+            <p class="calc-error" id="error_mol-partikel">⚠ Isi semua input terlebih dahulu.</p>
+            <button class="calc-hitung-btn" onclick="hitungMolPartikel()">Hitung</button>
+            <div class="calc-hasil" id="hasil_mol-partikel">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_mol-partikel">—</span>
+                <span class="hasil-satuan" id="satuan_mol-partikel"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SECTION: MOLARITAS
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-molaritas">
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+        <div class="calc-section-header">
+            <div class="calc-section-badge">🧫 Molaritas</div>
+            <h2 class="calc-section-title">Konsentrasi Molar</h2>
+            <p class="calc-section-sub">Pilih variabel yang ingin dicari</p>
+        </div>
+        <div class="calc-card">
+            <div class="rumus-pilih">
+                <button id="btn-molaritas-m" onclick="setMolaritas('m')">Cari M (mol/L)</button>
+                <button id="btn-molaritas-n" onclick="setMolaritas('n')">Cari n (mol)</button>
+                <button id="btn-molaritas-v" onclick="setMolaritas('v')">Cari V (liter)</button>
+            </div>
+            <div class="rumus-display" id="rumus_molaritas">Pilih variabel</div>
+            <div class="input-group" id="input_molaritas"></div>
+            <p class="calc-error" id="error_molaritas">⚠ Isi semua input terlebih dahulu.</p>
+            <button class="calc-hitung-btn" onclick="hitungMolaritas()">Hitung</button>
+            <div class="calc-hasil" id="hasil_molaritas">
+                <span class="hasil-label">Hasil</span>
+                <span class="hasil-nilai" id="nilai_molaritas">—</span>
+                <span class="hasil-satuan" id="satuan_molaritas"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         SECTION: STOIKIOMETRI REAKSI
+    ====================================================== -->
+    <div class="calc-section-wrapper" id="section-stoikiometri">
+        <button class="calc-back-btn" onclick="backToLanding()">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+        </button>
+        <div class="calc-section-header">
+            <div class="calc-section-badge">⚗️ Stoikiometri</div>
+            <h2 class="calc-section-title">Perbandingan Mol Reaksi</h2>
+            <p class="calc-section-sub">Hitung mol berdasarkan koefisien persamaan reaksi</p>
+        </div>
         <div class="calc-card">
 
-            <!-- PILIH VARIABLE -->
-            <div class="rumus-pilih">
-                <button onclick="set1('m_1')">Cari m</button>
-                <button onclick="set1('n_1')">Cari n</button>
-                <button onclick="set1('mr_1')">Cari mr</button>
+            <!-- Info rumus -->
+            <div class="rumus-display" id="rumus_stoikiometri">mol A / mol B = kA / kB</div>
+
+            <!-- Input koefisien -->
+            <div class="stoi-group">
+                <p class="calc-input-label">Koefisien & Mol Zat A (diketahui)</p>
+                <div class="stoi-row">
+                    <div class="calc-input-wrap">
+                        <label class="calc-input-label">Koefisien A (kA)</label>
+                        <input class="calc-input" type="number" id="stoi_kA" placeholder="mis: 1" step="any" min="0.01">
+                    </div>
+                    <div class="calc-input-wrap">
+                        <label class="calc-input-label">Mol A (diketahui)</label>
+                        <input class="calc-input" type="number" id="stoi_molA" placeholder="mis: 6" step="any" min="0">
+                    </div>
+                </div>
             </div>
 
-            <!-- RUMUS DINAMIS -->
-            <p id="rumus_1" class="rumus-display">Pilih dulu variabel</p>
-
-            <!-- INPUT -->
-            <div id="input_1"></div>
-
-            <button onclick="hitung1()">Hitung</button>
-
-            <p id="hasil_1"></p>
-        </div>
-
-    </section>
-
-    <!-- ======================
-        SECTION 2 STOIKIOMETRI
-    ====================== -->
-    <section id="r2" class="calc-section">
-
-        <h2>Perhitungan Stoikiometri 2</h2>
-
-        <div class="calc-card">
-
-            <!-- PILIH VARIABLE -->
-            <div class="rumus-pilih">
-                <button onclick="set2('v_2')">Cari V</button>
-                <button onclick="set2('n_2')">Cari n</button>
+            <div class="stoi-group">
+                <p class="calc-input-label">Koefisien Zat B (yang dicari)</p>
+                <div class="calc-input-wrap">
+                    <label class="calc-input-label">Koefisien B (kB)</label>
+                    <input class="calc-input" type="number" id="stoi_kB" placeholder="mis: 2" step="any" min="0.01">
+                </div>
             </div>
 
-            <!-- RUMUS DINAMIS -->
-            <p id="rumus_2" class="rumus-display">Pilih dulu variabel</p>
+            <p class="calc-error" id="error_stoikiometri">⚠ Isi semua input terlebih dahulu.</p>
+            <button class="calc-hitung-btn" onclick="hitungStoikiometri()">Hitung Mol B</button>
 
-            <!-- INPUT -->
-            <div id="input_2"></div>
-
-            <button onclick="hitung2()">Hitung</button>
-
-            <p id="hasil_2"></p>
-        </div>
-
-    </section>
-
-    <!-- ======================
-        SECTION 3 STOIKIOMETRI
-    ====================== -->
-    <section id="r3" class="calc-section">
-
-        <h2>Perhitungan Stoikiometri 3</h2>
-
-        <div class="calc-card">
-
-            <!-- PILIH VARIABLE -->
-            <div class="rumus-pilih">
-                <button onclick="set3('m_3')">Cari M</button>
-                <button onclick="set3('n_3')">Cari n</button>
-                <button onclick="set3('v_3')">Cari V</button>
+            <div class="calc-hasil" id="hasil_stoikiometri">
+                <span class="hasil-label">Mol B yang dihasilkan / dibutuhkan</span>
+                <span class="hasil-nilai" id="nilai_stoikiometri">—</span>
+                <span class="hasil-satuan" id="satuan_stoikiometri">mol</span>
             </div>
 
-            <!-- RUMUS DINAMIS -->
-            <p id="rumus_3" class="rumus-display">Pilih dulu variabel</p>
+            <!-- Contoh reaksi -->
+            <div class="stoi-contoh">
+                <p class="stoi-contoh-label">💡 Contoh</p>
+                <p>Reaksi: N₂ + <strong>3</strong>H₂ → <strong>2</strong>NH₃</p>
+                <p>Jika H₂ = 6 mol → kA=3, molA=6, kB=2 → mol NH₃ = <strong>4 mol</strong></p>
+            </div>
 
-            <!-- INPUT -->
-            <div id="input_3"></div>
-
-            <button onclick="hitung3()">Hitung</button>
-
-            <p id="hasil_3"></p>
         </div>
+    </div>
 
-    </section>
-
-
-    <!-- FUNCTION -->
-    <script>
-        function logout() {
-            window.location.href = "../../../../../index.html";
-            localStorage.clear();
-        }
-    </script>
 
     <!-- JS -->
-    <script src="../../../../js/calculator_kimia.js"></script>
     <script src="../../../../js/global.js"></script>
     <script src="../../../../js/dashboard.js"></script>
-</body>
+    <script src="../../../../js/calculator_kimia.js"></script>
 
+</body>
 </html>

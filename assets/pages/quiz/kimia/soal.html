@@ -1,44 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal – Quiz Kimia</title>
     <link rel="stylesheet" href="../../../css/global.css">
+    <link rel="stylesheet" href="../../../css/dashboard.css">
     <link rel="stylesheet" href="../../../css/quiz.css">
-
-    <style>
-        
-    </style>
+    <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
+<body class="main-page soal-page soal-kimia">
+    <div class="grid-bg"></div>
+    <div class="formula-random"></div>
 
-<body>
-
-<div class="grid-bg"></div>
-<div class="formula-random"></div>
-
-<div class="container">
-
-    <div class="card quiz-box">
-
-        <h2 id="pertanyaan"></h2>
-
-        <div id="opsi"></div>
-
-        <!-- PENJELASAN -->
-        <div id="penjelasanBox" style="display:none;"></div>
-
-        <div style="display:flex; gap:10px;">
-            <button id="nextBtn" class="tombol">Next</button>
-        </div>
-
+    <!-- Elemen periodik mini melayang -->
+    <div class="soal-elemen-deco">
+        <div class="sed-card sed1"><span class="sec-sym">H</span></div>
+        <div class="sed-card sed2"><span class="sec-sym">O</span></div>
+        <div class="sed-card sed3"><span class="sec-sym">C</span></div>
+        <div class="sed-card sed4"><span class="sec-sym">N</span></div>
     </div>
 
-</div>
+    <nav class="navbar scrolled soal-navbar">
+        <div class="nav-left">
+            <span class="soal-nav-label">Quiz Kimia</span>
+        </div>
+        <div class="nav-center-empty">
+            <div class="soal-indikator-wrap">
+                <span id="indikator" class="soal-indikator kimia-indikator">1 / 5</span>
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-fill kimia-progress"></div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="timer-box">
+                <i class="fa-regular fa-clock"></i>
+                <span id="timerEl" class="timer-text">02:00</span>
+            </div>
+        </div>
+    </nav>
 
-<script src="../../../js/quiz_kimia.js"></script>
-<script src="../../../js/global.js"></script>
+    <main class="soal-main">
+        <div class="soal-card kimia-soal-card">
+            <div class="soal-top">
+                <span id="topikBadge" class="topik-badge kimia-topik-badge">Mol</span>
+            </div>
+            <h2 id="pertanyaan" class="soal-pertanyaan"></h2>
+            <div id="opsi" class="opsi-grid"></div>
+            <div id="penjelasanBox" class="penjelasan-box" style="display:none;"></div>
+            <div class="soal-actions">
+                <button id="backBtn" class="soal-btn-back" style="display:none;">
+                    <i class="fa-solid fa-arrow-left"></i> Sebelumnya
+                </button>
+                <button id="nextBtn" class="soal-btn-next kimia-btn-next">
+                    Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="soal-deco-tl kimia-deco"></div>
+        <div class="soal-deco-br kimia-deco"></div>
+    </main>
 
+    <script src="../../../js/global.js"></script>
+    <script src="../../../js/quiz_kimia.js"></script>
 </body>
 </html>

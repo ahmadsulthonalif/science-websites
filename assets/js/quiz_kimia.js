@@ -139,7 +139,7 @@ if (startBtn) {
     localStorage.setItem("score",        "0");
     localStorage.setItem("userAnswers",  JSON.stringify([]));
     localStorage.removeItem("reviewMode");
-    window.location.href = "soal_kimia.html";
+    window.location.href = "soal.html";
   });
 }
 

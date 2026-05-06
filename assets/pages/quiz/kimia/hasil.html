@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil – Quiz Kimia</title>
+    <title>Hasil – Quiz Fisika</title>
+
     <link rel="stylesheet" href="../../../css/global.css">
     <link rel="stylesheet" href="../../../css/dashboard.css">
     <link rel="stylesheet" href="../../../css/quiz.css">
+
     <script src="https://kit.fontawesome.com/09024a6ff6.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="main-page hasil-page hasil-kimia">
+
+<body class="main-page hasil-page">
+
     <div class="grid-bg"></div>
     <div class="formula-random"></div>
 
-    <!-- Elemen periodik melayang di hasil -->
-    <div class="elemen-bg hasil-elemen">
-        <div class="elemen-card ec1"><span class="ec-num">1</span><span class="ec-sym">H</span><span class="ec-name">Hidrogen</span></div>
-        <div class="elemen-card ec2"><span class="ec-num">8</span><span class="ec-sym">O</span><span class="ec-name">Oksigen</span></div>
-        <div class="elemen-card ec3"><span class="ec-num">6</span><span class="ec-sym">C</span><span class="ec-name">Karbon</span></div>
-        <div class="elemen-card ec5"><span class="ec-num">17</span><span class="ec-sym">Cl</span><span class="ec-name">Klorin</span></div>
-        <div class="elemen-card ec7"><span class="ec-num">26</span><span class="ec-sym">Fe</span><span class="ec-name">Besi</span></div>
-        <div class="elemen-card ec8"><span class="ec-num">79</span><span class="ec-sym">Au</span><span class="ec-name">Emas</span></div>
-    </div>
-
+    <!-- Spark dekorasi hasil -->
     <div class="hasil-sparks">
         <span class="hspark hs1">🏆</span>
         <span class="hspark hs2">⭐</span>
-        <span class="hspark hs3">⚗️</span>
+        <span class="hspark hs3">🏆</span>
         <span class="hspark hs4">⭐</span>
         <span class="hspark hs5">✨</span>
-        <span class="hspark hs6">🧪</span>
+        <span class="hspark hs6">🎯</span>
     </div>
 
+    <!-- NAVBAR -->
     <nav class="navbar scrolled">
         <div class="nav-left">
             <span class="soal-nav-label">Hasil Quiz</span>
         </div>
         <div class="nav-center-empty">
             <div class="nav-breadcrumb">
-                <span class="breadcrumb-current kimia-crumb">Kimia</span>
+                <span class="breadcrumb-current fisika-crumb">Fisika</span>
             </div>
         </div>
         <div class="nav-right">
@@ -56,39 +53,57 @@
         </div>
     </nav>
 
+    <!-- MAIN HASIL -->
     <main class="hasil-main">
 
-        <div class="hasil-score-card kimia-score-card" id="scoreCard">
+        <!-- SCORE CARD (clickable → buka panel bawah) -->
+        <div class="hasil-score-card" id="scoreCard">
+
             <p class="hasil-label">Skor Kamu</p>
+
+            <!-- Angka skor besar -->
             <div class="hasil-score-num">
                 <span id="scoreNumber">0</span>
                 <span class="hasil-score-max">/ 100</span>
             </div>
+
+            <!-- Performa label -->
             <p id="performa" class="hasil-performa">🏆 Sempurna!</p>
+
+            <!-- Detail benar/salah -->
             <p id="detailSkor" class="hasil-detail">— benar dari — soal</p>
+
+            <!-- Hint klik -->
             <div class="hasil-hint">
                 <i class="fa-solid fa-chevron-down hasil-chevron" id="hasilChevron"></i>
                 <span>Klik untuk lihat opsi</span>
             </div>
         </div>
 
+        <!-- PANEL DROPDOWN (muncul setelah score diklik) -->
         <div class="hasil-panel" id="reviewPanel">
-            <button class="hasil-action-btn review-btn kimia-review-btn" onclick="reviewQuiz()">
+
+            <!-- Kiri: Lihat Ulasan -->
+            <button class="hasil-action-btn review-btn" onclick="reviewQuiz()">
                 <span class="ha-icon">📖</span>
                 <span class="ha-label">Lihat Ulasan</span>
                 <span class="ha-sub">Cek jawaban tiap soal</span>
             </button>
+
+            <!-- Kanan: Ulangi Quiz -->
             <button class="hasil-action-btn reset-btn" onclick="resetQuiz()">
                 <span class="ha-icon">🔄</span>
                 <span class="ha-label">Ulangi Quiz</span>
                 <span class="ha-sub">Kembali ke halaman quiz</span>
             </button>
+
         </div>
 
     </main>
 
     <script src="../../../js/global.js"></script>
     <script src="../../../js/dashboard.js"></script>
-    <script src="../../../js/quiz_kimia.js"></script>
+    <script src="../../../js/quiz_fisika.js"></script>
+
 </body>
 </html>
